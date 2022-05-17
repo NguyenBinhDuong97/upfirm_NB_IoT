@@ -8685,7 +8685,6 @@ uint8_t ApplicationBoot_Flash_Program (uint32_t Address, uint64_t Data)
 	HAL_Delay(20);
  800351c:	2014      	movs	r0, #20
  800351e:	f7fd fb51 	bl	8000bc4 <HAL_Delay>
-//	HAL_FLASH_Lock();
 	return 1;
  8003522:	2301      	movs	r3, #1
 }

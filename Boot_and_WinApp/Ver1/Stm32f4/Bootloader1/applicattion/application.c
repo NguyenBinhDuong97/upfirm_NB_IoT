@@ -190,7 +190,6 @@ uint8_t ApplicationBoot_Flash_Program (uint32_t Address, uint64_t Data)
 	if ( a != HAL_OK)
 		return 0;
 	HAL_Delay(20);
-//	HAL_FLASH_Lock();
 	return 1;
 }
 
