@@ -48,7 +48,7 @@ uint8_t  ApplicationBoot_Initial (void);
 uint8_t  ApplicationBoot_BootStart_Hanlde(void);
 uint8_t  ApplicationBoot_UART_CheckReceive(void);
 uint8_t  ApplicationBoot_Flash_Program (uint32_t Address, uint64_t Data);
-uint8_t  ApplicationBoot_Jumpto_ApplicationProgram (void);
+void  ApplicationBoot_Jumpto_ApplicationProgram (void);
 uint8_t  ApplicationBoot_EraseFlash_ApplicationProgram(void);
 HAL_StatusTypeDef	OnchipFlashWriteData (uint32_t andress, uint8_t	*data_address, uint32_t data_length);
 

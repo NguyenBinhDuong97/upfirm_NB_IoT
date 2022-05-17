@@ -5,7 +5,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../queue_VHP/queue_p.c 
+C:/Users/Admin/Desktop/stm32f4/Upfirm_wireless_MQTT/Boot_and_WinApp/Ver1/Stm32f4/Bootloader/queue_VHP/queue_p.c 
 
 OBJS += \
 ./queue_VHP/queue_p.o 

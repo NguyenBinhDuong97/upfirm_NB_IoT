@@ -66,18 +66,10 @@ void ApplicationBoot_Hanlde_Event (event Event)
 
 	    	break;
 	    case _BOOT_END_:
-	    	//EventApp = _BOOT_END_;
-//	    	UART_Send_ACK(&ACK_END);
-//	    	HAL_NVIC_SystemReset();
+	    	EventApp = _BOOT_END_;
+	    	HAL_NVIC_SystemReset();
 	    	break;
 	    case _CHECK_LOAD_DATA_RECEIVE_DONE_:
-	    	//CheckReceive = 1;
-//            if ( (ApplicationBoot_Check_Receive_DataLoad_Done() == 1) && (Receive.ui16_length != 0) )
-//            {
-//            	ApplicationBoot_Push_Event_to_Queue (BootApp.sQueue, _CHECK_RECEIVE_);
-//           //CheckReceive = 0;
-//            }
-
 	    	if (Receive.ui16_length != 0)
 	    	{
 	    		if (ApplicationBoot_Check_Receive_DataLoad_Done() == 1)
@@ -86,7 +78,6 @@ void ApplicationBoot_Hanlde_Event (event Event)
 	    	break;
 	    case _CHECK_RECEIVE_:
 	    	ApplicationBoot_UART_CheckReceive();
-//	    	UART_Reset_Data(&Receive);
 	    	break;
 	    case _CALL_APPLICATION_:
 	    	ApplicationBoot_Jumpto_ApplicationProgram();
@@ -162,10 +153,10 @@ uint8_t ApplicationBoot_UART_CheckReceive(void)
 	    	if (strstr( (char*)Receive.DataArray, (char*)"end") != NULL)
 	    	{
 	    		HAL_FLASH_Lock();
-	    		//ApplicationBoot_Push_Event_to_Queue(BootApp.sQueue, _BOOT_END_);
+	    		ApplicationBoot_Push_Event_to_Queue(BootApp.sQueue, _BOOT_END_);
 	    		UART_Reset_Data(&Receive);
 	    		UART_Send_ACK(&ACK_END);
-		    	HAL_NVIC_SystemReset();
+		    	//HAL_NVIC_SystemReset();
 	    	}
 	    	else
 	    	{
@@ -203,27 +194,29 @@ uint8_t ApplicationBoot_Flash_Program (uint32_t Address, uint64_t Data)
 	return 1;
 }
 
-uint8_t ApplicationBoot_Jumpto_ApplicationProgram(void)
+void ApplicationBoot_Jumpto_ApplicationProgram(void)
 {
-	/* Turn off Peripheral, Clear Interrupt Flag*/
-	HAL_RCC_DeInit();
+	SysTick->CTRL = 0x0;
+	SysTick->LOAD = 0;
 
 	/* Clear Pending Interrupt Request, turn  off System Tick*/
 	HAL_DeInit();
 
-//	/* Turn off fault harder*/
-//	SCB->SHCSR &= ~( SCB_SHCSR_USGFAULTENA_Msk |\
-//	SCB_SHCSR_BUSFAULTENA_Msk | \
-//	SCB_SHCSR_MEMFAULTENA_Msk ) ;
+	/* Turn off hard fault handler*/
+	SCB->SHCSR &= ~( SCB_SHCSR_USGFAULTENA_Msk |\
+	SCB_SHCSR_BUSFAULTENA_Msk | \
+	SCB_SHCSR_MEMFAULTENA_Msk ) ;
 
-	   /* Set Main Stack Pointer*/
-	//__set_MSP(*(volatile uint32_t*) (0x08010000));
-	void (*app_reset_handler)(void) = (void*)(*((volatile uint32_t*) (0x08010000 + 4U)));
-	__set_MSP(*(volatile uint32_t*) (0x08010000));
-	SCB->VTOR = 0x08010000;
+	/* Set Main Stack Pointer*/
+	__set_MSP(*(volatile uint32_t*) (START_BOOT_ADDRESS));
+
+	__DMB();
+	SCB->VTOR = START_BOOT_ADDRESS;
+	__DSB();
+
+	void (*app_reset_handler)(void) = (void*)(*((volatile uint32_t*) (START_BOOT_ADDRESS + 4U)));
 	HAL_GPIO_WritePin(LED_START_GPIO_Port, LED_START_Pin, GPIO_PIN_RESET);
 	app_reset_handler();
-	return 1;
 }
 
 uint8_t ApplicationBoot_EraseFlash_ApplicationProgram(void)
@@ -237,43 +230,3 @@ uint8_t ApplicationBoot_EraseFlash_ApplicationProgram(void)
 	return 1;
 }
 
-//HAL_StatusTypeDef	OnchipFlashWriteData (uint32_t andress, uint8_t	*data_address, uint32_t data_length)
-//{
-//	uint8_t		*temp_data_address;
-//	uint16_t	i=0;
-//	uint64_t	writeval=0,writetime=0;
-//	uint32_t	temp_write_address;
-//	HAL_StatusTypeDef status = HAL_ERROR;
-//
-//	temp_data_address = data_address;
-//	temp_write_address = andress;
-//
-//	if ((data_length%8) == 0)
-//	{
-//		//Calculate number of word to write
-//		writetime = data_length/8;
-//
-//		//Unlock flash
-//		HAL_FLASH_Unlock();  //
-//		//Wait for last operation to be completed
-//        FLASH_WaitForLastOperation(1000);
-//		//Change bytes order then write
-//		for (i=0;i<writetime;i++)
-//		{
-//			writeval = *(__IO uint64_t*)(temp_data_address);
-//
-//			status = HAL_FLASH_Program(FLASH_TYPEPROGRAM_DOUBLEWORD,temp_write_address,writeval);
-//
-//			if (status == HAL_ERROR)
-//				break;
-//
-//			temp_write_address = temp_write_address + 8;
-//			temp_data_address = temp_data_address + 8;
-//		}
-//
-//		//Lock flash
-//		HAL_FLASH_Lock();
-//	}
-//
-//	return status;
-//}
