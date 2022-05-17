@@ -1,0 +1,7 @@
+﻿  Serial_Application1.cpp
+C:\Users\Admin\Desktop\stm32f4\Upfirm_wireless_MQTT\Terminal_Win_App\phase_2\serial_Win32_api\Test_serial\Serial_Application1\Serial_Application1\Serial_Application1.cpp(94,12): warning C4101: 'old_n': unreferenced local variable
+C:\Users\Admin\Desktop\stm32f4\Upfirm_wireless_MQTT\Terminal_Win_App\phase_2\serial_Win32_api\Test_serial\Serial_Application1\Serial_Application1\Serial_Application1.cpp(93,9): warning C4101: 'i': unreferenced local variable
+C:\Users\Admin\Desktop\stm32f4\Upfirm_wireless_MQTT\Terminal_Win_App\phase_2\serial_Win32_api\Test_serial\Serial_Application1\Serial_Application1\Serial_Application1.cpp(92,9): warning C4101: 'c': unreferenced local variable
+C:\Users\Admin\Desktop\stm32f4\Upfirm_wireless_MQTT\Terminal_Win_App\phase_2\serial_Win32_api\Test_serial\Serial_Application1\Serial_Application1\Serial_Application1.cpp(94,9): warning C4101: 'n': unreferenced local variable
+C:\Users\Admin\Desktop\stm32f4\Upfirm_wireless_MQTT\Terminal_Win_App\phase_2\serial_Win32_api\Test_serial\Serial_Application1\Serial_Application1\Serial_Application1.cpp(96,10): warning C4101: 'buffer': unreferenced local variable
+  Serial_Application1.vcxproj -> C:\Users\Admin\Desktop\stm32f4\Upfirm_wireless_MQTT\Terminal_Win_App\phase_2\serial_Win32_api\Test_serial\Serial_Application1\x64\Debug\Serial_Application1.exe

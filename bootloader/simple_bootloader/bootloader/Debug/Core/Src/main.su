@@ -1,0 +1,5 @@
+main.c:65:5:main	8	static
+main.c:114:6:SystemClock_Config	88	static
+main.c:158:5:__io_putchar	16	static
+main.c:173:13:goto_application	16	static
+main.c:191:6:Error_Handler	4	static,ignoring_inline_asm
