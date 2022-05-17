@@ -1,0 +1,35 @@
+/*
+ * application.h
+ *
+ *  Created on: May 12, 2022
+ *      Author: Admin
+ */
+
+#ifndef APPLICATION_H_
+#define APPLICATION_H_
+
+#include "main.h"
+#include "stdint.h"
+#include "EventDrive.h"
+
+
+
+typedef enum{
+	_INITIAL_,             //Cac chuc nang khi khoi dong chuong trinh
+	_PUSH_BOOT_BUTTON_,    //thuc hien cac chuc nang khi nhan BOOT BUTTON
+	_BOOT_START_,          //thuc hien cac chuc nang trong phan khoi dong boot
+	_BOOTING_,             //nhay vao qua trinh boot nhu nap vao flash
+	_BOOT_END_,            //thuc hien gui khi xong qua trinh boot
+	_CHECK_RECEIVE_DONE_,  //kiem tra nhan xong hay chua
+	_CHECK_RECEIVE_,       //Kiem tra phan nhan xem co dung yeu cau hay khong chu yeu phan ack
+	_CALL_APPLICATION_,    //nhay den code application
+	_CHECK_BOOT_PROCESS_,  //timer check quá trình boot có bị treo hay không
+	_BOOT_ERROR_,          //xu ly qua trinh boot bi loi
+} EVENT;
+
+
+extern uint8_t EnterBoot;
+
+void Application_Handle_Event (event Event);
+uint8_t Application_Call_Event (event ApplicationEvent, event NameEvent);
+#endif /* APPLICATION_H_ */

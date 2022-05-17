@@ -1,0 +1,15 @@
+/*
+ * myGPIO.c
+ *
+ *  Created on: May 11, 2022
+ *      Author: Admin
+ */
+
+#include "myGPIO.h"
+
+uint8_t GPIO_Led_BootStart_Notify(void)
+{
+	HAL_GPIO_TogglePin(LED_START_Port, LED_START_Pin);
+	return 1;
+}
+

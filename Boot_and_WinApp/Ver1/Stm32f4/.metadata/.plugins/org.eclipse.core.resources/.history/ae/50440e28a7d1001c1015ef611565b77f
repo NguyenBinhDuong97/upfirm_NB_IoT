@@ -1,0 +1,35 @@
+/*
+ * MyUART.c
+ *
+ *  Created on: May 11, 2022
+ *      Author: Admin
+ */
+#include "MyUART.h"
+
+uint8_t ReceiveArray[50] = {0x00};
+uint8_t LengthReceiveArray[5] = {0x00};
+uint8_t TransmitArray[50] = {0x00};
+
+
+
+sData Transmit = {
+	.DataArray = TransmitArray,
+	.ui16_length = 0,
+	.LengthArray = NULL,
+};
+
+sData Receive = {
+	.DataArray = ReceiveArray,
+	.ui16_length = 0,
+	.LengthArray = NULL,
+};
+
+
+uint8_t ReceiveVar = 0;
+uint8_t UART_Additional_Init(void)
+{
+	HAL_UART_Receive_IT(&huart5, &ReceiveVar, 1);
+	return 1;
+}
+
+

@@ -1,0 +1,40 @@
+/*
+ * mylib.c
+ *
+ *  Created on: May 11, 2022
+ *      Author: Admin
+ */
+
+#include "mylib.h"
+
+sData ACK_START = {
+	.DataArray = (uint8_t*)"start",
+	.ui16_length = 5,
+	.LengthArray = (uint8_t*)"00005",
+};
+
+sData ACK_DATA = {
+	.DataArray = (uint8_t*)"data",
+	.ui16_length = 4,
+	.LengthArray = (uint8_t*)"00004",
+};
+
+sData ACK_END = {
+	.DataArray = (uint8_t*)"endACK",
+	.ui16_length = 6,
+	.LengthArray = (uint8_t*)"00006",
+};
+
+sData ACK_ERROR = {
+		.DataArray = (uint8_t*)"error",
+		.ui16_length = 5,
+		.LengthArray = (uint8_t*)"00005"
+};
+
+uint64_t Convert_Hex_to_Int(uint8_t *HexArray)
+{
+    uint64_t result = 0;
+    result = strtol ((char*)HexArray, NULL, 16);
+    return result;
+}
+

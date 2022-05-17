@@ -1,0 +1,22 @@
+/*
+ * MyUART.h
+ *
+ *  Created on: May 11, 2022
+ *      Author: Admin
+ */
+
+#ifndef MYUART_H_
+#define MYUART_H_
+
+#include "main.h"
+#include "stdint.h"
+#include "mylib.h"
+
+extern sData Transmit;
+extern sData Receive;
+
+uint8_t UART_Transmit_Data( uint8_t *Data, uint16_t length );
+uint8_t UART_Wait_ACK( uint8_t *ACK );
+uint8_t UART_Send_ACK( uint8_t *ACK );
+
+#endif /* MYUART_H_ */

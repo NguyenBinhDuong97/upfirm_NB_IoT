@@ -1,0 +1,5 @@
+MyUART.c:29:9:UART_Additional_Init	8	static
+MyUART.c:35:6:HAL_UART_RxCpltCallback	16	static
+MyUART.c:42:6:UART_Reset_Data	24	static
+MyUART.c:59:9:UART_Send_ACK	16	static
+MyUART.c:65:9:UART_Transmit_Data	16	static

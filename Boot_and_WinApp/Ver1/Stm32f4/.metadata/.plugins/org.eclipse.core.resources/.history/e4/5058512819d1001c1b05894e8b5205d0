@@ -1,0 +1,21 @@
+/*
+ * mylib.h
+ *
+ *  Created on: May 11, 2022
+ *      Author: Admin
+ */
+
+#ifndef MYLIB_H_
+#define MYLIB_H_
+
+#include "main.h"
+#include "stdint.h"
+
+
+typedef struct{
+	uint8_t *DataArray;
+	uint16_t ui16_length;
+	uint8_t *LengthArray;
+}sData;
+
+#endif /* MYLIB_H_ */

@@ -1,0 +1,10 @@
+17:30:29 **** Incremental Build of configuration Debug for project DCU_HCM_L4V2 ****
+make -j4 all 
+arm-none-eabi-size   DCU_HCM_L4V2.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 188892	  16152	  36992	 242036	  3b174	DCU_HCM_L4V2.elf
+Finished building: default.size.stdout
+ 
+
+17:30:30 Build Finished. 0 errors, 0 warnings. (took 550ms)
+

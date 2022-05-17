@@ -1,0 +1,5 @@
+﻿  SerialApp.cpp
+C:\Users\Admin\Desktop\stm32f4\Upfirm_wireless_MQTT\Boot_and_WinApp\Ver1\Winapp\Window_Application\Window_Application\SerialApp.h(26,2): warning C4091: 'typedef ': ignored on left of '<unnamed-enum-_INIT_>' when no variable is declared
+C:\Users\Admin\Desktop\stm32f4\Upfirm_wireless_MQTT\Boot_and_WinApp\Ver1\Winapp\Window_Application\Window_Application\SerialApp.cpp(250,89): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Admin\Desktop\stm32f4\Upfirm_wireless_MQTT\Boot_and_WinApp\Ver1\Winapp\Window_Application\Window_Application\SerialApp.cpp(322,61): warning C4267: '=': conversion from 'size_t' to 'uint8_t', possible loss of data
+  Window_Application.vcxproj -> C:\Users\Admin\Desktop\stm32f4\Upfirm_wireless_MQTT\Boot_and_WinApp\Ver1\Winapp\Window_Application\x64\Debug\Window_Application.exe

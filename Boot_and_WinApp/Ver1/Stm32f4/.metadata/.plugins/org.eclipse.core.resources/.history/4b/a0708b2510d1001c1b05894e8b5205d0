@@ -1,0 +1,9 @@
+/*
+ * MyUART.c
+ *
+ *  Created on: May 11, 2022
+ *      Author: Admin
+ */
+#include "MyUART.h"
+
+sData Transmit{};

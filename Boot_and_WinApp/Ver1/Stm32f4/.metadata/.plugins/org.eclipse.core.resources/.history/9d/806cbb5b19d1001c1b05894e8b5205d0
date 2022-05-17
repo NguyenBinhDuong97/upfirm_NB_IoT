@@ -1,0 +1,27 @@
+/*
+ * mylib.c
+ *
+ *  Created on: May 11, 2022
+ *      Author: Admin
+ */
+
+#include "mylib.h"
+
+sData ACK_START = {
+	.DataArray = "start",
+	.ui16_length = 5,
+	.LengthArray = "00005",
+};
+
+sData ACK_DATA = {
+	.DataArray = "data",
+	.ui16_length = 4,
+	.LengthArray = "00004",
+};
+
+sData ACK_END = {
+	.DataArray = "endACK",
+	.ui16_length = 6,
+	.LengthArray = "00006",
+};
+

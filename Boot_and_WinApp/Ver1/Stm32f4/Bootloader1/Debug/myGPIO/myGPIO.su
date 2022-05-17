@@ -1,0 +1,6 @@
+myGPIO.c:12:9:GPIO_Led_BootData_Notify	8	static
+myGPIO.c:18:9:GPIO_Led_BootStop_Notify	16	static
+myGPIO.c:29:9:GPIO_Led_BootError_Notify	16	static
+myGPIO.c:40:9:GPIO_Led_BootStart_Notify	16	static
+myGPIO.c:52:9:GPIO_ResetAll_LED	8	static
+myGPIO.c:61:9:GPIO_Led_Initial	16	static
