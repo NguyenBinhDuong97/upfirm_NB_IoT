@@ -1,0 +1,5 @@
+﻿  hex_file_manipulate.cpp
+D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Boot_and_WinApp\Ver2\WinApp\Extract_Soft\Extract_Software\Extract_Software\SerialApp.h(26,2): warning C4091: 'typedef ': ignored on left of '<unnamed-enum-_INIT_>' when no variable is declared
+D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Boot_and_WinApp\Ver2\WinApp\Extract_Soft\Extract_Software\Extract_Software\hex_file_manipulate.cpp(268,31): warning C4267: '=': conversion from 'size_t' to 'uint8_t', possible loss of data
+D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Boot_and_WinApp\Ver2\WinApp\Extract_Soft\Extract_Software\Extract_Software\hex_file_manipulate.cpp(335,46): warning C4267: '=': conversion from 'size_t' to 'uint8_t', possible loss of data
+  Extract_Software.vcxproj -> D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Boot_and_WinApp\Ver2\WinApp\Extract_Soft\Extract_Software\x64\Debug\Extract_Software.exe

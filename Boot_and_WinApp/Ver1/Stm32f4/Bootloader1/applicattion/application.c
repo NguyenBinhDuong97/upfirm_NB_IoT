@@ -186,10 +186,8 @@ uint8_t ApplicationBoot_Flash_Program (uint32_t Address, uint64_t Data)
     FLASH_WaitForLastOperation(1000);
 	uint8_t a;
 	a = HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, Address, Data);
-	HAL_Delay(20);
 	if ( a != HAL_OK)
 		return 0;
-	HAL_Delay(20);
 	return 1;
 }
 
