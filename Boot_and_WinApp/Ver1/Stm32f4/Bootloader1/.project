@@ -33,7 +33,7 @@
 		<link>
 			<name>queue_VHP</name>
 			<type>2</type>
-			<location>C:/Users/Admin/Desktop/stm32f4/Upfirm_wireless_MQTT/Boot_and_WinApp/Ver1/Stm32f4/Bootloader/queue_VHP</location>
+			<location>D:/Source_Tree_data/projects/NB_IoT/Update_OTA/upfirm_NB_IoT/Boot_and_WinApp/Ver1/Stm32f4/Bootloader1/queue_VHP</location>
 		</link>
 	</linkedResources>
 </projectDescription>

@@ -12,6 +12,13 @@ int main()
     if (HexFile_Open_WordDataFile() == 0)
         return 0;
     HexFile_Calculate_Word_In_WordDataFile();
+    if (SeriApp_COM_Open(ComWin.name, ComWin.baud_rate) == 0)
+        return 0;
+    if ( HexFile_Send_WordDataFile() == 0)
+        return 0;
+    std::cout << "Load process complete" << std::endl;
+    SeriApp_COM_disconnect();
+
 
     return 0;
 }

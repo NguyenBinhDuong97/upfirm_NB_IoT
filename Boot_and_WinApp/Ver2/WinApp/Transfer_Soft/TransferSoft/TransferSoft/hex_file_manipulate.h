@@ -50,4 +50,6 @@ uint8_t HexFile_Extract_Word_From_SourceFile (uint8_t* Array, uint8_t NumberElem
 uint8_t HexFile_Calculate_Word_In_WordDataFile(void);
 uint8_t HexFile_Open_WordDataFile(void);
 uint8_t HexFile_Send_WordDataFile(void);
+uint8_t HexFile_Put_GetPointer_atBegin_SourceFile(void);
+
 #endif

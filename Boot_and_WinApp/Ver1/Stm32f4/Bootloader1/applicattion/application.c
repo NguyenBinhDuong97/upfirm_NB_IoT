@@ -66,8 +66,8 @@ void ApplicationBoot_Hanlde_Event (event Event)
 
 	    	break;
 	    case _BOOT_END_:
-	    	EventApp = _BOOT_END_;
-	    	HAL_NVIC_SystemReset();
+//	    	EventApp = _BOOT_END_;
+//	    	HAL_NVIC_SystemReset();
 	    	break;
 	    case _CHECK_LOAD_DATA_RECEIVE_DONE_:
 	    	if (Receive.ui16_length != 0)
@@ -153,10 +153,10 @@ uint8_t ApplicationBoot_UART_CheckReceive(void)
 	    	if (strstr( (char*)Receive.DataArray, (char*)"end") != NULL)
 	    	{
 	    		HAL_FLASH_Lock();
-	    		ApplicationBoot_Push_Event_to_Queue(BootApp.sQueue, _BOOT_END_);
+	    		//ApplicationBoot_Push_Event_to_Queue(BootApp.sQueue, _BOOT_END_);
 	    		UART_Reset_Data(&Receive);
 	    		UART_Send_ACK(&ACK_END);
-		    	//HAL_NVIC_SystemReset();
+		    	HAL_NVIC_SystemReset();
 	    	}
 	    	else
 	    	{

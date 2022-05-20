@@ -54,7 +54,7 @@
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
-
+void goto_application(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -97,6 +97,7 @@ int main(void)
   UART_Additional_Init();
   ApplicationBoot_Initial();
   event BootApp_Event;
+  //goto_application();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -152,6 +153,40 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+void BootLoader_Jump (void)
+{
+	HAL_RCC_DeInit();
+//	SysTick->CTRL = 0x0;
+//	SysTick->LOAD = 0;
+
+	/* Clear Pending Interrupt Request, turn  off System Tick*/
+	HAL_DeInit();
+
+	/* Turn off hard fault handler*/
+	SCB->SHCSR &= ~( SCB_SHCSR_USGFAULTENA_Msk |\
+	SCB_SHCSR_BUSFAULTENA_Msk | \
+	SCB_SHCSR_MEMFAULTENA_Msk ) ;
+
+	/* Set Main Stack Pointer*/
+	__set_MSP(*(volatile uint32_t*) (0x08010000));
+
+	__DMB();
+	SCB->VTOR = 0x08010000;
+	__DSB();
+
+	void (*app_reset_handler)(void) = (void*)(*((volatile uint32_t*) (0x08010000 + 4U)));
+	HAL_GPIO_WritePin(LED_START_GPIO_Port, LED_START_Pin, GPIO_PIN_RESET);
+	app_reset_handler();
+
+}
+
+ void goto_application(void)
+{
+
+  void (*app_reset_handler)(void) = (void*)(*((volatile uint32_t*) (0x08010000 + 4U)));
+  app_reset_handler();    //call the app reset handler
+}
+
 /* USER CODE END 4 */
 
 /**

@@ -8,5 +8,5 @@ application.c:130:9:ApplicationBoot_Initial	8	static
 application.c:136:9:ApplicationBoot_BootStart_Hanlde	8	static
 application.c:146:9:ApplicationBoot_UART_CheckReceive	16	static
 application.c:181:9:ApplicationBoot_Flash_Program	32	static
-application.c:196:6:ApplicationBoot_Jumpto_ApplicationProgram	16	static,ignoring_inline_asm
-application.c:221:9:ApplicationBoot_EraseFlash_ApplicationProgram	8	static
+application.c:194:6:ApplicationBoot_Jumpto_ApplicationProgram	16	static,ignoring_inline_asm
+application.c:219:9:ApplicationBoot_EraseFlash_ApplicationProgram	8	static

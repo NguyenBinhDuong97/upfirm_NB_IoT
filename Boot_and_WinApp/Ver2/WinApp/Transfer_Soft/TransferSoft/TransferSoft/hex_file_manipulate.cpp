@@ -387,6 +387,7 @@ uint8_t HexFile_Send_WordDataFile(void)
 
 	Reset_Buffer((uint8_t*)Receive.leng_array, 5);
 	Reset_Buffer((uint8_t*)Receive.data_array, 50);
+	HexFile_Put_GetPointer_atBegin_SourceFile();
 	SeriApp_COM_Wait_For_ACK((char*)"start");
 	std::cout << "Start loading process" << std::endl;
 	std::cin.ignore(1);
@@ -410,5 +411,12 @@ uint8_t HexFile_Send_WordDataFile(void)
 	wait(1000);
 	SeriApp_COM_SendArray((char*)END_PROCESS, 8);
 	SeriApp_COM_Wait_For_ACK((char*)"endACK");
+	return 1;
+}
+
+uint8_t HexFile_Put_GetPointer_atBegin_SourceFile(void)
+{
+	SourceFile.clear();
+	SourceFile.seekg(0, ios::beg);
 	return 1;
 }

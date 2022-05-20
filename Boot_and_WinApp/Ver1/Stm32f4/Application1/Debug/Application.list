@@ -393,7 +393,7 @@ int main(void)
   {
     /* USER CODE END WHILE */
     /* USER CODE BEGIN 3 */
-	HAL_UART_Transmit(&huart4, (uint8_t*)"This is ver 1\r\n", strlen( (char*)"This is ver 1\r\n"), 500);
+	HAL_UART_Transmit(&huart4, (uint8_t*)"This is ver 4\r\n", strlen( (char*)"This is ver 4\r\n"), 500);
  80104da:	f44f 73fa 	mov.w	r3, #500	; 0x1f4
  80104de:	220f      	movs	r2, #15
  80104e0:	4908      	ldr	r1, [pc, #32]	; (8010504 <main+0x44>)
@@ -406,7 +406,7 @@ int main(void)
 	HAL_Delay(500);
  80104f2:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
  80104f6:	f000 fa3b 	bl	8010970 <HAL_Delay>
-	HAL_UART_Transmit(&huart4, (uint8_t*)"This is ver 1\r\n", strlen( (char*)"This is ver 1\r\n"), 500);
+	HAL_UART_Transmit(&huart4, (uint8_t*)"This is ver 4\r\n", strlen( (char*)"This is ver 4\r\n"), 500);
  80104fa:	e7ee      	b.n	80104da <main+0x1a>
  80104fc:	e000ed00 	.word	0xe000ed00
  8010500:	08010000 	.word	0x08010000

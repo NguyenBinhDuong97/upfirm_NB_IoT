@@ -91,19 +91,17 @@
                                     									
                                     <listOptionValue builtIn="false" value="../Drivers/CMSIS/Include"/>
                                     									
-                                    <listOptionValue builtIn="false" value="&quot;C:\Users\Admin\Desktop\stm32f4\Upfirm_wireless_MQTT\Boot_and_WinApp\Ver1\Stm32f4\Bootloader\myFlash&quot;"/>
+                                    <listOptionValue builtIn="false" value="&quot;D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Boot_and_WinApp\Ver1\Stm32f4\Bootloader1\applicattion&quot;"/>
                                     									
-                                    <listOptionValue builtIn="false" value="&quot;C:\Users\Admin\Desktop\stm32f4\Upfirm_wireless_MQTT\Boot_and_WinApp\Ver1\Stm32f4\Bootloader\myGPIO&quot;"/>
+                                    <listOptionValue builtIn="false" value="&quot;D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Boot_and_WinApp\Ver1\Stm32f4\Bootloader1\EventDrive&quot;"/>
                                     									
-                                    <listOptionValue builtIn="false" value="&quot;C:\Users\Admin\Desktop\stm32f4\Upfirm_wireless_MQTT\Boot_and_WinApp\Ver1\Stm32f4\Bootloader\MyLib&quot;"/>
+                                    <listOptionValue builtIn="false" value="&quot;D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Boot_and_WinApp\Ver1\Stm32f4\Bootloader1\myGPIO&quot;"/>
                                     									
-                                    <listOptionValue builtIn="false" value="&quot;C:\Users\Admin\Desktop\stm32f4\Upfirm_wireless_MQTT\Boot_and_WinApp\Ver1\Stm32f4\Bootloader\myUART&quot;"/>
+                                    <listOptionValue builtIn="false" value="&quot;D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Boot_and_WinApp\Ver1\Stm32f4\Bootloader1\MyLib&quot;"/>
                                     									
-                                    <listOptionValue builtIn="false" value="&quot;C:\Users\Admin\Desktop\stm32f4\Upfirm_wireless_MQTT\Boot_and_WinApp\Ver1\Stm32f4\Bootloader\queue_VHP&quot;"/>
+                                    <listOptionValue builtIn="false" value="&quot;D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Boot_and_WinApp\Ver1\Stm32f4\Bootloader1\myUART&quot;"/>
                                     									
-                                    <listOptionValue builtIn="false" value="&quot;C:\Users\Admin\Desktop\stm32f4\Upfirm_wireless_MQTT\Boot_and_WinApp\Ver1\Stm32f4\Bootloader\EventDrive&quot;"/>
-                                    									
-                                    <listOptionValue builtIn="false" value="&quot;C:\Users\Admin\Desktop\stm32f4\Upfirm_wireless_MQTT\Boot_and_WinApp\Ver1\Stm32f4\Bootloader\applicattion&quot;"/>
+                                    <listOptionValue builtIn="false" value="&quot;D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Boot_and_WinApp\Ver1\Stm32f4\Bootloader1\queue_VHP&quot;"/>
                                     								
                                 </option>
                                 								

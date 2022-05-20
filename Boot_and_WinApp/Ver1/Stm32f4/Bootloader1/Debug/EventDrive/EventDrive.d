@@ -26,7 +26,7 @@ EventDrive/EventDrive.o: ../EventDrive/EventDrive.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
- C:/Users/Admin/Desktop/stm32f4/Upfirm_wireless_MQTT/Boot_and_WinApp/Ver1/Stm32f4/Bootloader/queue_VHP/queue_p.h
+ D:/Source_Tree_data/projects/NB_IoT/Update_OTA/upfirm_NB_IoT/Boot_and_WinApp/Ver1/Stm32f4/Bootloader1/queue_VHP/queue_p.h
 
 ../EventDrive/EventDrive.h:
 
@@ -84,4 +84,4 @@ EventDrive/EventDrive.o: ../EventDrive/EventDrive.c \
 
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
 
-C:/Users/Admin/Desktop/stm32f4/Upfirm_wireless_MQTT/Boot_and_WinApp/Ver1/Stm32f4/Bootloader/queue_VHP/queue_p.h:
+D:/Source_Tree_data/projects/NB_IoT/Update_OTA/upfirm_NB_IoT/Boot_and_WinApp/Ver1/Stm32f4/Bootloader1/queue_VHP/queue_p.h:

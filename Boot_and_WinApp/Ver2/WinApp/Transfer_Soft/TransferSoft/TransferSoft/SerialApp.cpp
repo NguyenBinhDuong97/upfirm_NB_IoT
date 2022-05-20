@@ -42,6 +42,7 @@ HANDLE            serial_handle_2;                 // ...
 uint8_t SeriApp_SetUp_COM( char *ComArray, int& baudrate )
 {
 	std::cout << "COM: ";
+    std::cin.ignore(1);
 	std::cin.getline( ComArray, 7 );
     std::cout << std::endl << "Baud rate: ";
     std::cin >> baudrate;

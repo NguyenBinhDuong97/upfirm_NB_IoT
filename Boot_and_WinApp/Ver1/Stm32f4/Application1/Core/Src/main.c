@@ -66,7 +66,7 @@ static void MX_UART4_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-  SCB->VTOR = 0x08010000;
+  //SCB->VTOR = 0x08010000;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -98,7 +98,7 @@ int main(void)
   {
     /* USER CODE END WHILE */
     /* USER CODE BEGIN 3 */
-	HAL_UART_Transmit(&huart4, (uint8_t*)"This is ver 1\r\n", strlen( (char*)"This is ver 1\r\n"), 500);
+	HAL_UART_Transmit(&huart4, (uint8_t*)"This is ver 4\r\n", strlen( (char*)"This is ver 4\r\n"), 500);
 	HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin|LED2_Pin);
 	HAL_Delay(500);
   }
