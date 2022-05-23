@@ -44,12 +44,12 @@ Phase 5: Thêm phần mqqt wirless để truyền tín hiệu qua NB_IoT
             _ Sử dụng một WORD của EEPROM để điều chỉnh vùng app nào sẽ chạy mỗi khi boot
             _ Một vùng flash riêng (1 page tạm gọi là page địa chỉ) để lưu địa chỉ WORD nạp code tiếp theo.
        ++ Quá trình thực hiện như sau:
-	      + Host Client sẽ kết nối với Máy tính thông qua UART (phần cứng).
-          + Máy tính mở file chứa dữ liệu WordData hex cần nạp tính tổng số word và số byte thừa cần nạp
+	          + Host Client sẽ kết nối với Máy tính thông qua UART (phần cứng).
+                  + Máy tính mở file chứa dữ liệu WordData hex cần nạp tính tổng số word và số byte thừa cần nạp
 		  + Máy tính mở file hex được copy từ hex nguồn lấy thông tin vị trí bắt đầu của application rồi
 		  quy đổi ra vùng app sẽ nạp gắn vào một biến (dòng đầu tiên của file hex nguồn chứa địa chỉ 
 		  bắt đầu).
-          + Máy tính mở cổng COM để giao tiếp với HostClient.
+                  + Máy tính mở cổng COM để giao tiếp với HostClient.
 		  + Máy tính cho phép nhập ID của AppClient cần nạp.
 		  + Máy tính truyền ID này xuống HostClient qua cổng COM.
 		  + HostClient nhận ID này và ghép vào một chuỗi sau này để subscribe cùng với topic mà mỗi AppClient 
