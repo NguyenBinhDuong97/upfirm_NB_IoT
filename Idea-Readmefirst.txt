@@ -60,22 +60,47 @@ Phase 5: Thêm phần mqqt wirless để truyền tín hiệu qua NB_IoT
 		  thành công.
 		  + HostClient Publish một đoạn tin update start đợi AppClient phản hồi số thứ tự được lưu trong Page 
 		  địa chỉ.
-		  + AppClient nhận được bản tin update start thì đọc từ flash địa chỉ chứa số thứ tự của dòng code 
-		  cần nạp vào app .
 		  + AppClient gán giá trị của WORD trong EEPROM biểu thị app nào đang hoạt động vào một biến gọi 
-		  là AppSelect.
-		  + AppClient gửi giá trị AppSelect + giá trị đọc từ flash trong page địa chỉ qua Topic mà 
-		  HostClient đã đăng kí.
+		  là AppSelect và xóa flash vùng cần nạp.
+		  + AppClient gửi giá trị AppSelect qua Topic mà HostClient đã đăng kí.
 		  + HostClient nhận được thông tin từ AppClient, phân tách gửi cho Máy tính giá trị vùng app đang 
 		  chạy.
 		  + Máy tính hiển thị vùng app đang chạy ở AppClient kiểm tra xem có trùng khớp với vùng app mà 
-		  định nạp hay không nếu có out ra khỏi chương trình.
-		  + 
+		  định nạp hay không nếu có out ra khỏi chương trình máy tính
+		  + Máy tính kiểm tra vùng app định nạp khác với vùng app đang chạy thì gửi HostClient bat dau nap
+		  + HostClient nhận được bắt đầu nạp thì gắn vào một biến để hiển thị rằng đã qua lần start đầu tiên 
+		  để lần sau sẽ chỉ gửi data và ack
+		++ Nạp:
+		  + HostClient sẽ publish thông tin "update"
+		  + AppClient nhận được thông tin "update" sẽ đọc giá trị flash trong page địa chỉ
+		  + AppCliet gửi giá trị trong page địa chỉ, địa chỉ cần nạp tiếp theo vào topic 
+		  mà HostClient đã đăng kí
+		  + HostClient nhận được thứ tự địa chỉ cần nạp rồi gửi thứ tự đó tới máy tính
+		  + Máy tính nhận được thứ tự cần nạp rồi đặt con trỏ tới vị trí tương ứng trong file hex
+		  + Gửi data xuống HostClient
+		  + HostClient nhận data rồi gửi data qua topic
+		  + AppClient nhận được data rồi phân tích chuyển đổi rồi gắn data vào vùng flash cần nạp: 
+		  địa chỉ bắt đầu(tùy thuộc giá trị lưu trong eeprom) + giá trị lưu trong page địa chỉ.
+		  + AppClient sau khi lưu xong giá trị cần nạp tiếp theo tăng lên 1
+		  + AppClient xóa page địa chỉ. 
+		  + AppClient lưu số thứ tự cần nạp tiếp theo tăng lên 1 vào page địa chỉ.
+		  + AppClient gửi thông đã nhận data thành công (OK)
+		  + HostClient nhận thông tin đã nạp thành công (OK)
+		  + HostClient gửi thông tin đó lên Máy tính.
+		  + Máy tính nhận được thông tin này rồi hiển lên console 
+		  + Máy tính gửi tín hiệu update xuống hostclient
+		  + Tiếp tục
+		  + Đến khi hết file thì gửi end xuống HostClient
+		  + HostClient gửi end 
+		  + AppClient nhận end thực hiện quá trình chuẩn bị cho việc boot.
 		  
 		  
-		 
-		  
-		  
-		  
-		 
-		  
+* Quá trình test chia ra làm hai phần.
+  + Phần gửi:
+    ++ HostClient
+    ++ Máy tính + phần mềm MQTT explore
+    ++ Dùng hai cái này để test trước
+  + Phần nhận:
+    ++ AppClient
+	++ phần mềm MQTT explore.
+	++ Dùng hai phần này để test
