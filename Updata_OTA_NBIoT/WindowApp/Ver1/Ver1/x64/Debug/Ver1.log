@@ -1,0 +1,3 @@
+﻿  Ver1.cpp
+D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\WindowApp\Ver1\Ver1\SerialApp.h(26,2): warning C4091: 'typedef ': ignored on left of '<unnamed-enum-_INIT_>' when no variable is declared
+  Ver1.vcxproj -> D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\WindowApp\Ver1\x64\Debug\Ver1.exe

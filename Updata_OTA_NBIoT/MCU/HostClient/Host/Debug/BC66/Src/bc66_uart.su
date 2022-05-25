@@ -1,0 +1,6 @@
+bc66_uart.c:37:6:HAL_UART_RxCpltCallback	16	static
+bc66_uart.c:67:6:BC66_UART_Receive_Init	8	static
+bc66_uart.c:82:6:BC66_UART_Send_Data_To_BC66	24	static
+bc66_uart.c:92:6:BC66_UART_Send_Data_To_Terminal	24	static
+bc66_uart.c:103:9:BC66_UART_Check_Receive_Process_Status	8	static
+bc66_uart.c:126:6:BC66_UART_Clear_BC66_Data	8	static

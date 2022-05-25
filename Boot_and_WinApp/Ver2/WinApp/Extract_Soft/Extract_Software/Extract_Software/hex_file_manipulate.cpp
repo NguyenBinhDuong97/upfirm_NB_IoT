@@ -317,7 +317,7 @@ uint8_t HexFile_Extract_Word_From_SourceFile(uint8_t* Array, uint8_t NumberEleme
 	uint8_t ui8_LineArray[50];
 	uint8_t number = 0;
 	uint8_t ui8_LengthHexArray = 0;
-	uint8_t ui8_SubArray[8] = { 0x00 };
+	uint8_t ui8_SubArray[8] = {0x00};
 	uint8_t ui8_WordHexArray = 0;
 	//uint8_t ui8_SurplusByte = 0;
 	cout << endl << "The content of source file:" << endl;

@@ -9,10 +9,15 @@ có sẵn.
 upfirm xây dựng cùng với trường hợp lỗi đang truyền thi bị ngắt với server.
 + Build code với trường hợp có lỗi trong quá trình upfirm:
   ++ Đang truyền bị ngắt kết nối (do dung server tu do cua mqtt hay hivemq nên
-   lỗi này thường gặp từ lần test kinh nghiệm trước).
+   lỗi này thường gặp từ lần kinh nghiệm với các lần test trước).
   ++ Đang truyền thiết bị đưa vào ngủ
     (Hiện nay đang có ý tưởng giải quyết đó là trong khi upfirm sẽ tạm thời tắt 
 	chế độ ngủ của thiết bị đi và sẽ quét một biến lưu địa chỉ vừa nạp xong mỗi
 	1 phút nếu địa chỉ không thay đổi thì lưu địa chỉ đang nạp vào một ô flash
 	rồi truyền lại khi bắt đầu có tín hiệu nạp từ thiết bị nạp).
-	
+
+/*----------------------------------------------------------------------------------------*/
+Chia ra làm 3 task cơ bản:
+    + Task 1: Thực hiện các thao tác với SIM qua BC66
+	+ Task 2: Thực hiện các thao tác nhận UART từ SIM
+	+ Task 3: Thực hiện các thao tác nhận UART từ WinApp
