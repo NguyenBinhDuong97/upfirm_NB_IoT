@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<item key="LastUsedHeaderTemplate" value="Default C header template"/>
 	<section name="completion_proposal_size">
 	</section>
 	<section name="org.eclipse.cdt.ui.text.hover.CMacroExpansionExploration">
@@ -11,6 +12,9 @@
 		<item key="caseSensitive" value="false"/>
 		<item key="searchFlags" value="227191"/>
 		<list key="previousPatterns">
+			<item value="MX_FREERTOS_Init"/>
+			<item value="s"/>
+			<item value="Search_String_Location_In_Buffer"/>
 			<item value="dType_MQTT_watermetterui8_prev_MQTT_step"/>
 		</list>
 	</section>
