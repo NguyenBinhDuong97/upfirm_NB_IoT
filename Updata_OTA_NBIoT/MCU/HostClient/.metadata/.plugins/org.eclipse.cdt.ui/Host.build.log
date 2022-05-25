@@ -1,4 +1,4 @@
-16:30:44 **** Incremental Build of configuration Debug for project Host ****
+16:38:26 **** Incremental Build of configuration Debug for project Host ****
 make -j4 all 
 arm-none-eabi-gcc "../Core/Src/freertos.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L082xx -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM0 -I"D:/Source_Tree_data/projects/NB_IoT/Update_OTA/upfirm_NB_IoT/Updata_OTA_NBIoT/MCU/HostClient/Host/LibMQTT/inc" -I"D:/Source_Tree_data/projects/NB_IoT/Update_OTA/upfirm_NB_IoT/Updata_OTA_NBIoT/MCU/HostClient/Host/own_lib/inc" -I"D:/Source_Tree_data/projects/NB_IoT/Update_OTA/upfirm_NB_IoT/Updata_OTA_NBIoT/MCU/HostClient/Host/BC66/Inc" -I"D:/Source_Tree_data/projects/NB_IoT/Update_OTA/upfirm_NB_IoT/Updata_OTA_NBIoT/MCU/HostClient/Host/connect" -I"D:/Source_Tree_data/projects/NB_IoT/Update_OTA/upfirm_NB_IoT/Updata_OTA_NBIoT/MCU/HostClient/Host/queue_VDP" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/freertos.d" -MT"Core/Src/freertos.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/freertos.o"
 arm-none-eabi-gcc -o "Host.elf" @"objects.list"   -mcpu=cortex-m0plus -T"D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClient\Host\STM32L082KZTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Host.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -10,11 +10,11 @@ arm-none-eabi-size   Host.elf
    text	   data	    bss	    dec	    hex	filename
   35520	    912	   6752	  43184	   a8b0	Host.elf
 Finished building: default.size.stdout
- 
 Finished building: Host.bin
+ 
  
 Finished building: Host.list
  
 
-16:30:46 Build Finished. 0 errors, 0 warnings. (took 1s.472ms)
+16:39:10 Build Finished. 0 errors, 0 warnings. (took 44s.248ms)
 

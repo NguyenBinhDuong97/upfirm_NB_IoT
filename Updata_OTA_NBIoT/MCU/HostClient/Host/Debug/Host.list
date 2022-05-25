@@ -3397,11 +3397,11 @@ void StartUART_WinApp_Task(void const * argument)
  800162a:	b082      	sub	sp, #8
  800162c:	af00      	add	r7, sp, #0
  800162e:	6078      	str	r0, [r7, #4]
+  /* USER CODE BEGIN StartUART_WinApp_Task */
 
   /* Infinite loop */
   for(;;)
   {
-
     osDelay(10);
  8001630:	200a      	movs	r0, #10
  8001632:	f004 fd0a 	bl	800604a <osDelay>
