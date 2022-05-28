@@ -25,7 +25,7 @@ typedef struct
 	unsigned short packetid;
 	MQTTString topicName; 
 	unsigned char* payload; 
-  int payloadlen;
+     int payloadlen;
 }	pub_struct;
 
 typedef struct
@@ -97,6 +97,7 @@ void MQTT_Init_Connect ( void );
 void MQTT_Init_Pub_Opts ( void );
 void MQTT_Init_Sub_Opts ( void );
 void MQTT_Check_Keepalive_Time ( void );
+void MQTT_Create_Topic_To_Sub (uint8_t *topic, unsigned char dup, unsigned short packetid, int qos);
 
 #endif
 

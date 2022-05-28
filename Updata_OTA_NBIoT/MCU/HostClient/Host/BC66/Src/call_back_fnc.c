@@ -191,7 +191,7 @@ void Send_Debug_Infor (void)
 	strcat ( (char*)ui8Arr_debugString , (char*)ui8Arr_nothing );
 	strcat ( (char*)ui8Arr_debugString , "\r\n" );
 	ui16_SendLen = strlen ( (char*)ui8Arr_debugString );
-  BC66_UART_Send_Data_To_Terminal ( (uint8_t*)ui8Arr_debugString , ui16_SendLen );
+    BC66_UART_Send_Data_To_Terminal ( (uint8_t*)ui8Arr_debugString , ui16_SendLen );
 }
 
 /**
@@ -204,7 +204,9 @@ uint8_t FncCallback_MQTT_Sub_1 (void)
 {
 	uint16_t ui16_serialize_len = 0;
 	Reset_Buffer ( ui8_Buf , ui16_Buflen );
-	ui16_serialize_len = MQTTSerialize_subscribe( ui8_Buf, ui16_Buflen , ui8_sub_dup , 53 , 1 , test_TopicFiltes , test_requestedQoS );
+	ui16_serialize_len = MQTTSerialize_subscribe (ui8_Buf, ui16_Buflen, test_MQTT_sub.dup,
+			                                      test_MQTT_sub.packetid, test_MQTT_sub.count,
+												  test_MQTT_sub.topicFilters, test_MQTT_sub.requestedQoS);
 	BC66_UART_Send_Data_To_BC66 ( ui8_Buf , ui16_serialize_len );
 	osDelay (100);
 	return 1;
@@ -218,8 +220,15 @@ uint8_t FncCallback_MQTT_Sub_1 (void)
 */
 uint8_t FncCallback_MQTT_Sub_2 (void)
 {
+  uint8_t Sub_Ret[10] = "900300";
+  uint8_t SubPacket_id[2] = {0x00};
+
   uint8_t ui8_response_receive = 0;
-  ui8_response_receive = Search_String_In_Buffer ( (uint8_t*)dType_water_NB_IoT.dType_bc66_receive.ui8buf_rx , CountReceive_u16 , (uint8_t*)"0,5,9003003501" , 14 );
+  Interger_To_Hex(test_MQTT_sub.packetid, SubPacket_id);
+  strcat ((char*)Sub_Ret, (char*)SubPacket_id);
+  strcat ((char*)Sub_Ret, (char*)"01");
+
+  ui8_response_receive = Search_String_In_Buffer ( (uint8_t*)dType_water_NB_IoT.dType_bc66_receive.ui8buf_rx , CountReceive_u16 , (uint8_t*)Sub_Ret , 10 );
 	if ( ui8_response_receive == TRUE )
 		return 1;
 	else 

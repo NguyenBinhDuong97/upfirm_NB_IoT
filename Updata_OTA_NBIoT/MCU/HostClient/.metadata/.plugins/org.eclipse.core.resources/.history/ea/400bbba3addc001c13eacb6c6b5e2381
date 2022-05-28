@@ -1,0 +1,116 @@
+/*
+ * uartWinApp.c
+ *
+ *  Created on: May 26, 2022
+ *      Author: Admin
+ */
+
+#include "uartWinnApp.h"
+
+uint8_t WinApp_RecBuff[300];
+
+sUartWinApp UART_REC_WIN[]=
+{
+    { _ID_SIG_,            { (uint8_t*)"Ready", 5 },          fncIdHandle },
+	{ _UPDATE_SIG_,        { (uint8_t*)"Address", 7 },        fncAddressHandle },
+	{ _DATA_SIG_,          { (uint8_t*)"data", 4},            fncDataHandle},
+	{ _END_SIG_,           { (uint8_t*)"end", 3 },            fncEndHandle},
+};
+
+
+volatile sWinAppRec WinUart = {
+	.data = 0,
+	.pData = WinApp_RecBuff,
+    .numb_rec = 0,
+	.pre_numb_rec = 0,
+	.max_element = 300,
+};
+
+
+/**
+  * @brief   Check time out of event
+  * @param   mark:  time that start check time out
+  *          cycle: time that event time out from mark time
+  * @retval  TRUE:  time out happend
+  *          FALSE: time out not happend
+*/
+uint8_t WinApp_Check_Time_Out ( uint32_t mark , uint32_t cycle )
+{
+	uint32_t delta;
+	delta = ui32_tick_count - mark;
+	if ( delta >= cycle)
+		return TRUE;
+	else
+		return FALSE;
+}
+
+uint8_t fncIdHandle (void)
+{
+	return 1;
+};
+
+uint8_t fncAddressHandle (void)
+{
+	return 1;
+};
+
+uint8_t fncDataHandle (void)
+{
+	return 1;
+};
+
+uint8_t fncEndHandle (void)
+{
+	return 1;
+};
+
+uint8_t WinApp_UART_Check_Receive_Process_Status (void)
+{
+	if ( WinUart.numb_rec != 0 )
+	{
+		if ( WinUart.numb_rec == WinUart.pre_numb_rec )
+			return DONE;
+		else if ( WinUart.numb_rec != WinUart.pre_numb_rec )
+		{
+			WinUart.numb_rec = WinUart.pre_numb_rec;
+			return NOT_DONE;
+		}
+	}
+	else if (WinUart.numb_rec == 0)
+	{
+		return NONE;
+	}
+}
+
+uint8_t WinApp_Reset(void)
+{
+	Reset_Buffer ( WinUart.pData, WinUart.max_element );
+	WinUart.numb_rec = 0;
+	WinUart.pre_numb_rec = 0;
+	return 1;
+}
+
+uint8_t WinApp_Handle_UART_Receive(void)
+{
+	for (uint8_t i = 0; i <= _END_SIG_; i++)
+	{
+		if (Search_String_In_Buffer (WinUart.pData, WinUart.numb_rec,
+		                             UART_REC_WIN[i].ReceiveString.pData,
+									 UART_REC_WIN[i].ReceiveString.u16_len_data) == TRUE)
+		{
+			UART_REC_WIN[i].uartWinAppHandle();
+		}
+	}
+	return 1;
+}
+
+Convert_length_array (uint8_t *array, uint16_t ui16array_lenght);
+
+
+
+
+
+
+
+
+

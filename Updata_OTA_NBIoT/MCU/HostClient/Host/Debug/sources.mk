@@ -31,5 +31,5 @@ Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM0 \
 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang \
 connect \
 own_lib/src \
-queue_VDP \
+uartWinApp \
 

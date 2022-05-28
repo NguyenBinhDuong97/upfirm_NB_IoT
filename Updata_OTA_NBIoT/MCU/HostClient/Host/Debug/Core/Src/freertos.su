@@ -1,5 +1,6 @@
-freertos.c:84:6:vApplicationGetIdleTaskMemory	24	static
-freertos.c:98:6:MX_FREERTOS_Init	104	static
-freertos.c:159:6:Start_BC66_Task	16	static
-freertos.c:290:6:UART_BC66_Task	24	static
-freertos.c:336:6:StartUART_WinApp_Task	16	static
+freertos.c:89:6:vApplicationGetIdleTaskMemory	24	static
+freertos.c:103:6:MX_FREERTOS_Init	128	static
+freertos.c:169:6:Start_BC66_Task	16	static
+freertos.c:302:6:UART_BC66_Task	24	static
+freertos.c:349:6:StartUART_WinApp_Task	24	static
+freertos.c:378:6:StartGateKeeper	32	static

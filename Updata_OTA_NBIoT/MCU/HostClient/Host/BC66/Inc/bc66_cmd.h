@@ -9,7 +9,7 @@
 #include "pin_config.h"
 #include "my_lib.h"
 #include "bc66_uart.h"
-#include "queue_p.h"
+
 /*---------------------------------------------------------------------*/
 
 
@@ -190,7 +190,7 @@ extern volatile uint32_t ui32_tick_count;
 
 extern sType_BC66 dType_water_NB_IoT;
 
-extern sQueue_Struct_TypeDef QueueBC66step;
+
 
 /*----------------------------------------------------------------------*/
                          /* declare function section */

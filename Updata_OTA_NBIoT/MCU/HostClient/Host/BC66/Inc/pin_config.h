@@ -26,10 +26,10 @@
    #define SIM_RI_Port       GPIOB
    #define PSM_WKUP          GPIO_PIN_8
    #define PSM_WKUP_Port     GPIOA
-	 #define BC66_TX           GPIO_PIN_9
-	 #define BC66_TX_Port      GPIOA
-	 #define BC66_RX           GPIO_PIN_10
-	 #define BC66_Port         GPIOA
+   #define BC66_TX           GPIO_PIN_9
+   #define BC66_TX_Port      GPIOA
+   #define BC66_RX           GPIO_PIN_10
+   #define BC66_Port         GPIOA
 #endif
 /*---------------------------------------------------------------------------------------------------------------*/
 #if  ( V2 == YES )

@@ -43,7 +43,7 @@ const sType_reason_close dType_TCP_close_reason[] =
 {
 	{ _MQTT_SEND_SUCCESS_      , MQTT_SEND_SUCCESS       , BC66_Handler_TCP_Close_None_Err },
 	{ _MQTT_OPEN_FAIL_         , MQTT_MAX_OPEN_FAIL      , BC66_Handler_TCP_Close_MQTT_Max_Open_Fail },
-  { _MQTT_PUB_FAIL_          , MQTT_MAX_PUB_FAIL       , BC66_Handler_TCP_Close_MQTT_Max_Pub_Fail },
+    { _MQTT_PUB_FAIL_          , MQTT_MAX_PUB_FAIL       , BC66_Handler_TCP_Close_MQTT_Max_Pub_Fail },
 	{ _MQTT_PING_FAIL_         , MQTT_MAX_PING_FAIL      , BC66_Handler_TCP_Close_MQTT_Max_Ping_Fail },
 	{ _TCP_OPEN_FAIL_          , TCP_MAX_OPEN_FAIL       , BC66_Handler_TCP_Close_TCP_Max_Open_Fail },
 }
@@ -76,18 +76,6 @@ sType_con_opt BC66_con_opt[] =
 	{ _PORT_     , { (uint8_t*)"1883" , 4 } },
 };
 
-
-static uint8_t aQueueBC66step[QUEUE_SIZE];
-
-sQueue_Struct_TypeDef QueueBC66step =
-{
-		.number = 0,
-		.head = 0,
-		.tail = 0,
-		.status = 0,
-		.address = aQueueBC66step,
-		.value = 0,
-};
 /*-----------------------------------------------------------------------------------------*/
                              /* constant declaration area */
 
@@ -111,7 +99,7 @@ const sType_AT_struct dTypeArr_set_AT[] =
  { _CHECK_IP_ADDRESS_          ,    { (uint8_t*)"AT+QIPADDR\r" , 11 , 10000 }                                , { (uint8_t*)"OK" , 2 , 0 }                          , NULL },
  
  // TCP setting
- { _TCP_SET_DATA_TEXT_FORMAT_  ,    { (uint8_t*)"AT+QICFG=\"dataformat\",0,1\r" , 26 , 5000 }                , { (uint8_t*)"OK" , 2 , 0 }                          , NULL },
+ { _TCP_SET_DATA_TEXT_FORMAT_  ,    { (uint8_t*)"AT+QICFG=\"dataformat\",1,1\r" , 26 , 5000 }                , { (uint8_t*)"OK" , 2 , 0 }                          , NULL },
  { _TCP_SET_VIEW_MODE_         ,    { (uint8_t*)"AT+QICFG=\"viewmode\",1\r" , 22 , 5000 }                    , { (uint8_t*)"OK" , 2 , 0 }                          , NULL },
  { _TCP_SET_SHOW_LENGTH_       ,    { (uint8_t*)"AT+QICFG=\"showlength\",0\r" , 24 , 5000 }                  , { (uint8_t*)"OK" , 2 , 0 }                          , NULL },
  
@@ -376,7 +364,7 @@ void BC66_Initialize_AT_Commands_Handler ( uint8_t current_cmd , uint8_t next_cm
 					  dType_water_NB_IoT.dType_AT.ui8_pointer = _MQTT_PUB_1_;
 					}
 					  dType_MQTT_watermetter.ui8_prev_MQTT_step = _MQTT_PUB_1_;
-	        // server test hay bi tu ngat ket noi them phan nay vao de xu ly viec tu ngat ket noi do 
+	                 // server test hay bi tu ngat ket noi them phan nay vao de xu ly viec tu ngat ket noi do
 					if ( Search_String_In_Buffer( (uint8_t*)dType_water_NB_IoT.dType_bc66_receive.ui8buf_rx , CountReceive_u16 , (uint8_t*)"closed" , 6 ) == TRUE )
 					{
 						dType_MQTT_watermetter.ui8_start_keepalive = OFF;
@@ -404,7 +392,10 @@ void BC66_Initialize_AT_Commands_Handler ( uint8_t current_cmd , uint8_t next_cm
 						dType_water_NB_IoT.dType_AT.ui8_pointer = _TCP_OPEN_1_;
 						dType_MQTT_watermetter.ui8_prev_MQTT_step = 0;
 					}
-				  break;
+				    break;
+				case _CHECK_SIM_ATTACH_BC66_:
+					dType_water_NB_IoT.dType_AT.ui8_pointer = _CHECK_SIM_ATTACH_BC66_;
+				    break;
 			}
 			break;
 			
@@ -451,7 +442,7 @@ uint8_t BC66_Check_Send_Data_Success_TCP ( void )
 {
 	uint8_t a = 0;
 	a = Search_String_In_Buffer ( (uint8_t*)dType_water_NB_IoT.dType_bc66_receive.ui8buf_rx , CountReceive_u16 , (uint8_t*)"SEND OK" , 7 );
-  return a;
+    return a;
 }
 
 /**

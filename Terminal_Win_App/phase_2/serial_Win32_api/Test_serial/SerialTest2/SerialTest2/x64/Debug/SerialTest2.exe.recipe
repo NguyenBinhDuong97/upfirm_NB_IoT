@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\Admin\Desktop\stm32f4\Upfirm_wireless_MQTT\Terminal_Win_App\phase_2\serial_Win32_api\Test_serial\SerialTest2\x64\Debug\SerialTest2.exe</FullPath>
+      <FullPath>D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Terminal_Win_App\phase_2\serial_Win32_api\Test_serial\SerialTest2\x64\Debug\SerialTest2.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

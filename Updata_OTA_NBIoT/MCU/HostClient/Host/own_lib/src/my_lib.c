@@ -112,7 +112,7 @@ uint8_t Search_String_In_Buffer ( uint8_t *src , uint16_t src_len , uint8_t *str
 uint8_t *Search_String_Location_In_Buffer ( uint8_t *src , uint16_t src_len , uint8_t *string , uint16_t string_len )
 {
 //	pointer_result = NULL;
-	static uint8_t *pointer_result = NULL;
+    uint8_t *pointer_result = NULL;
 	
 	uint8_t *pointer1 = NULL;
 	uint8_t *pointer2 = NULL;
@@ -140,6 +140,36 @@ uint8_t *Search_String_Location_In_Buffer ( uint8_t *src , uint16_t src_len , ui
 	return NULL;
 }
 
+uint8_t *Search_String_Location_In_Buffer_2 ( uint8_t *src , uint16_t src_len , uint8_t *string , uint16_t string_len )
+{
+//	pointer_result = NULL;
+    uint8_t *pointer_result = NULL;
+
+	uint8_t *pointer1 = NULL;
+	uint8_t *pointer2 = NULL;
+	uint8_t m = 0;
+	pointer1 = src;
+	pointer2 = string;
+	for ( uint16_t i=0 ; i < src_len ; i++ )
+	{
+		if ( *pointer1 == *pointer2 )
+		{
+			m++;
+			pointer2 = string + m;
+			if ( m == string_len )
+			{
+			  pointer_result = pointer1 - m + 1;
+			  return pointer_result;
+		    }
+		}
+		else
+		{
+			m = 0;
+		}
+		pointer1++;
+ 	}
+	return NULL;
+}
 /**
   * @brief   Reset buffer that was pointed to
   * @param   uint8_t *buffer: Pointer point to buffer that need to reset
@@ -319,3 +349,53 @@ void Send_RTC_Time_To_Terminal ( void )
 	
 	HAL_UART_Transmit ( &huart2 , ui8Arr_Bufsend , strlen ( (char*)ui8Arr_Bufsend ) , 500 );
 }
+
+uint8_t  Interger_To_Hex (int decimal, uint8_t *hexcimal)
+{
+	int quotient, remainder;
+	int i = 0;
+	int j;
+	uint8_t FictionArray[8] = {0x00};
+	uint8_t *pointer = FictionArray;
+
+    quotient = decimal;
+    while (quotient != 0)
+    {
+        remainder = quotient % 16;
+        if (remainder < 10)
+        {
+            *(pointer + i) = 48 + remainder;
+        }
+        else
+        {
+            *(pointer + i) = 55 + remainder;
+        }
+        i++;
+        quotient = quotient / 16;
+    }
+    for ( j = i; j >= 1; j--)
+    {
+    	*(hexcimal + i - j ) = *(pointer + j - 1);
+    }
+	return 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

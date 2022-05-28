@@ -59,13 +59,18 @@ extern char num_array[100];
 void strreverse(char* begin, char* end) ;
 //void itoa(int value, char* str, int base);
 uint8_t Search_String_In_Buffer ( uint8_t *src , uint16_t src_len , uint8_t *string , uint16_t string_len );
-void Reset_Buffer ( uint8_t *buffer , uint16_t length_buf );
-void Interger_To_Char ( uint32_t numb , uint8_t *buffer , uint16_t length_buf );
-uint8_t *Search_String_Location_In_Buffer ( uint8_t *src , uint16_t src_len , uint8_t *string , uint16_t string_len );
+void     Reset_Buffer ( uint8_t *buffer , uint16_t length_buf );
+void     Interger_To_Char ( uint32_t numb , uint8_t *buffer , uint16_t length_buf );
+uint8_t *Search_String_Location_In_Buffer (uint8_t *src , uint16_t src_len , uint8_t *string , uint16_t string_len);
+uint8_t *Search_String_Location_In_Buffer_2 (uint8_t *src , uint16_t src_len , uint8_t *string , uint16_t string_len);
+uint8_t  Interger_To_Hex (int decimal, uint8_t *hexcimal);
+
 void LPM_EnterStopMode ( void );
 void LPM_ExitStopMode( void );
 void Low_Power_Stop_Mode_Init ( void );
 void Send_RTC_Time_To_Terminal ( void );
+
+
 #ifdef __cplusplus
 }
 #endif

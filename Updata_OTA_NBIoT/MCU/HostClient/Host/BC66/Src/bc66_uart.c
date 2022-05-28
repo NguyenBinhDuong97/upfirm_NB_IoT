@@ -9,6 +9,7 @@
 #include "bc66_uart.h"
 #include "string.h"
 #include "bc66_cmd.h"
+#include "stdlib.h"
 /*---------------------------------------------------------------------------------------------*/
 
 /* declare variables area */
@@ -19,6 +20,10 @@
 /* declare string that excute on screen when over flow happen*/
 uint8_t string_over_flow[] = "Tran bo dem BC66 receive\r\n";
 
+sType_string bc66_rec_UART = {
+		.pData = dType_water_NB_IoT.dType_bc66_receive.ui8buf_rx,
+		.u16_len_data = 0,
+};
 
 /*---------------------------------------------------------------------------------------------*/
 
@@ -53,9 +58,19 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		 }
 		CountReceive_u16++;
 		 
-//		 if ( dType_water_NB_IoT.dType_AT.ui8_pointer != _TCP_SEND_DATA_ ) //test case send error and out send data MQTT
+//		if ( dType_water_NB_IoT.dType_AT.ui8_pointer != _TCP_SEND_DATA_ ) //test case send error and out send data MQTT
 			 
-			 HAL_UART_Receive_IT ( &uart_bc66 , &( dType_water_NB_IoT.dType_bc66_receive.ui8_rx_data ) , 1 ); //enable receive interrupt
+	    HAL_UART_Receive_IT ( &uart_bc66 , &( dType_water_NB_IoT.dType_bc66_receive.ui8_rx_data ) , 1 ); //enable receive interrupt
+	}
+	else if (huart->Instance == uart_debug.Instance)
+	{
+        *(WinUart.pData + WinUart.numb_rec) = WinUart.data;
+        WinUart.numb_rec++;
+        if (WinUart.numb_rec == WinUart.max_element)
+        {
+          //xu ly khi tran bo nho dem
+        }
+        HAL_UART_Receive_IT ( &uart_debug, &WinUart.data, 1 ); //enable receive interrupt
 	}
 }
 
@@ -91,7 +106,11 @@ void BC66_UART_Send_Data_To_BC66 ( uint8_t *data , uint16_t data_len )
 */
 void BC66_UART_Send_Data_To_Terminal ( uint8_t *Data , uint16_t data_length )
 {
-	HAL_UART_Transmit ( &uart_debug , Data , data_length , HAL_MAX_DELAY );
+	uint8_t length_array[5] = {0x00};
+	itoa (data_length, (char*)length_array, 10);
+	Convert_length_to_array ((uint8_t*)length_array, 5);
+	HAL_UART_Transmit (&uart_debug, length_array, 5, 500);
+	HAL_UART_Transmit (&uart_debug, Data, data_length, 500);
 }
 
 /**
@@ -126,8 +145,8 @@ uint8_t BC66_UART_Check_Receive_Process_Status (void)
 void BC66_UART_Clear_BC66_Data ( void )
 {
 	Reset_Buffer ( ( uint8_t* )dType_water_NB_IoT.dType_bc66_receive.ui8buf_rx , 500 );
-  dType_water_NB_IoT.dType_bc66_receive.ui16_rx_byte = 0;
-  dType_water_NB_IoT.dType_bc66_receive.ui16_pre_rx_byte = 0;  
+    dType_water_NB_IoT.dType_bc66_receive.ui16_rx_byte = 0;
+    dType_water_NB_IoT.dType_bc66_receive.ui16_pre_rx_byte = 0;
 	dType_water_NB_IoT.dType_bc66_receive.u8p_rx_pointer = dType_water_NB_IoT.dType_bc66_receive.ui8buf_rx;
 }
 

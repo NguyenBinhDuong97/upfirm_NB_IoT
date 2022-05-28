@@ -36,6 +36,7 @@
 #include "string.h"
 #include "queue.h"
 #include "my_freeRTOS.h"
+#include "uartWinnApp.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -56,12 +57,15 @@
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
 extern QueueHandle_t qBC66step;
-
+extern QueueHandle_t qPrintQueue;
 uint8_t ping_flag = OFF;
+//uint8_t BC66send_flag = OFF;
+//uint8_t BC
 /* USER CODE END Variables */
 osThreadId BC66_TaskHandle;
 osThreadId UART_BC66Handle;
 osThreadId UART_WinApp_TasHandle;
+osThreadId GateKeeperHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -71,6 +75,7 @@ osThreadId UART_WinApp_TasHandle;
 void Start_BC66_Task(void const * argument);
 void UART_BC66_Task(void const * argument);
 void StartUART_WinApp_Task(void const * argument);
+void StartGateKeeper(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -114,7 +119,8 @@ void MX_FREERTOS_Init(void) {
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
-   qBC66step = xQueueCreate( 50, sizeof( uint8_t ) );
+   qBC66step = xQueueCreate( 50, sizeof(uint8_t) );
+   qPrintQueue = xQueueCreate( 5, sizeof(sType_string) );
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
@@ -129,6 +135,10 @@ void MX_FREERTOS_Init(void) {
   /* definition and creation of UART_WinApp_Tas */
   osThreadDef(UART_WinApp_Tas, StartUART_WinApp_Task, osPriorityNormal, 0, 128);
   UART_WinApp_TasHandle = osThreadCreate(osThread(UART_WinApp_Tas), NULL);
+
+  /* definition and creation of GateKeeper */
+  osThreadDef(GateKeeper, StartGateKeeper, osPriorityAboveNormal, 0, 128);
+  GateKeeperHandle = osThreadCreate(osThread(GateKeeper), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -159,6 +169,7 @@ uint8_t event;
 void Start_BC66_Task(void const * argument)
 {
   /* USER CODE BEGIN Start_BC66_Task */
+  dType_water_NB_IoT.dType_bc66_reset.ui8_fail_time == MAX_FAIL_TIME;
   event = _PWR_ON_;
   xQueueSendToBack( qBC66step, &event, 0 );
   /* Infinite loop */
@@ -170,6 +181,7 @@ void Start_BC66_Task(void const * argument)
 		{
 			case _PWR_ON_:
 				BC66_Power_On ();
+				osDelay(10000);
 				break;
 			case _SYN_BAUDRATE_BC66_:
 				osDelay ( 10000 );
@@ -303,19 +315,20 @@ void UART_BC66_Task(void const * argument)
 		   {
 				dType_water_NB_IoT.dType_AT.ui8_result = BC66_Check_AT_Response ( dType_water_NB_IoT.dType_AT.ui8_pointer );
 
-		/*----------------------------------------------*/
+		 /*----------------------------------------------*/
 			// kiem tra va thuc hien cac tac vu URC gui ve
 				if ( dType_water_NB_IoT.dType_bc66_reset.ui8_reset_rx_buf_flag == NO )
 				{
 //				  dType_water_NB_IoT.dType_AT.dType_tcp.ui8_ena_send = BC66_Check_Ready_To_Send_Data_TCP();
 //				  dType_water_NB_IoT.dType_AT.dType_tcp.ui8_send_done = BC66_Check_Send_Data_Success_TCP();
-//					MQTT_Check_Packages_Result ();
+//				  MQTT_Check_Packages_Result ();
 				}
 	      /*----------------------------------------------*/
 	            else
 				{
 				  BC66_Check_MQTT_Receive ();
 				  BC66_UART_Send_Data_To_Terminal ( (uint8_t*)dType_water_NB_IoT.dType_bc66_receive.ui8buf_rx , CountReceive_u16 );
+				  //Push_BC66_Message_to_Queue();
 			      BC66_UART_Clear_BC66_Data ();
 				  CountReceive_u16 = 0;
 				}
@@ -336,13 +349,44 @@ void UART_BC66_Task(void const * argument)
 void StartUART_WinApp_Task(void const * argument)
 {
   /* USER CODE BEGIN StartUART_WinApp_Task */
-
+  uint32_t Win_uart_mark_time = 0;
+  Win_uart_mark_time = ui32_tick_count;
   /* Infinite loop */
   for(;;)
   {
+      if ( WinApp_Check_Time_Out ( Win_uart_mark_time , UART_CHECK_CYCLE ) == TRUE ) //xu ly uart: k bi miss du lieu -> <2 lan req tu ser
+	  {
+	      Win_uart_mark_time = ui32_tick_count;
+		  if ((WinApp_UART_Check_Receive_Process_Status() == DONE) && (WinUart.numb_rec !=0))
+		  {
+              WinApp_Handle_UART_Receive();
+              WinApp_Reset();
+		  }
+      }
     osDelay(10);
   }
   /* USER CODE END StartUART_WinApp_Task */
+}
+
+/* USER CODE BEGIN Header_StartGateKeeper */
+/**
+* @brief Function implementing the GateKeeper thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartGateKeeper */
+void StartGateKeeper(void const * argument)
+{
+  /* USER CODE BEGIN StartGateKeeper */
+  sType_string pcMessageToPrint;
+  /* Infinite loop */
+  for(;;)
+  {
+	xQueueReceive( qPrintQueue, &pcMessageToPrint, portMAX_DELAY );
+	UART_Send_Data_To_Terminal (&pcMessageToPrint);
+    osDelay(1);
+  }
+  /* USER CODE END StartGateKeeper */
 }
 
 /* Private application code --------------------------------------------------*/

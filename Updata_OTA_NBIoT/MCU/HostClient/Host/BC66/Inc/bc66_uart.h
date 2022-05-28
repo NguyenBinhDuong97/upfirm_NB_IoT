@@ -28,20 +28,18 @@
 
 /*---------------------------------------------------------------------------*/
 
-
 typedef struct 
 {
- uint8_t ui8_rx_data;                         // data receive from UART
- uint8_t ui8buf_rx[MAX_ELEMENT_RECEIVE];    // uart receive buffer
- uint8_t *u8p_rx_pointer;                     // poiter of uart receive buffer
+ uint8_t  ui8_rx_data;                         // data receive from UART
+ uint8_t  ui8buf_rx[MAX_ELEMENT_RECEIVE];      // uart receive buffer
+ uint8_t  *u8p_rx_pointer;                     // poiter of uart receive buffer
  uint16_t ui16_rx_byte;                        // bytes were received from UART module
  uint16_t ui16_pre_rx_byte;                    // bytes receive from previous check
- uint8_t ui8_rx_over_flow_flag;               // receive buffer over flow flag
+ uint8_t  ui8_rx_over_flow_flag;               // receive buffer over flow flag
 } sType_uart_receive;
 
-
 /*--------------------------------------------------------------------------*/
-
+extern sType_string bc66_rec_UART;
 extern volatile uint16_t CountReceive_u16;
 /*--------------------------------------------------------------------------*/
 

@@ -57,4 +57,4 @@
 "own_lib/src/my_lib.o"
 "own_lib/src/my_rtc.o"
 "own_lib/src/my_uart.o"
-"queue_VDP/queue_p.o"
+"uartWinApp/uartWinApp.o"

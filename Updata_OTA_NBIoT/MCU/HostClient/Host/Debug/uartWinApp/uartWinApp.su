@@ -1,0 +1,15 @@
+uartWinApp.c:50:9:WinApp_Check_Time_Out	24	static
+uartWinApp.c:60:9:fncReadyHandle	8	static
+uartWinApp.c:66:9:fncIdHandle	16	static
+uartWinApp.c:76:9:fncAddressHandle	8	static
+uartWinApp.c:81:9:fncDataHandle	8	static
+uartWinApp.c:86:9:fncEndHandle	8	static
+uartWinApp.c:91:9:WinApp_UART_Check_Receive_Process_Status	8	static
+uartWinApp.c:109:9:WinApp_Reset	8	static
+uartWinApp.c:117:9:WinApp_Handle_UART_Receive	24	static
+uartWinApp.c:131:6:Convert_length_to_array	40	static
+uartWinApp.c:147:9:Push_BC66_Message_to_Queue	8	static
+uartWinApp.c:154:9:Push_WinApp_Message_to_Queue	8	static
+uartWinApp.c:161:9:Push_Message_to_Queue	16	static
+uartWinApp.c:167:6:UART_Send_Data_To_Terminal	32	static
+uartWinApp.c:177:9:WinApp_Find_Extract_Signal_To_An_Array	32	static

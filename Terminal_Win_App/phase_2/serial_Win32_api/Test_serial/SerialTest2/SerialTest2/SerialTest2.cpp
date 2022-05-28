@@ -21,7 +21,7 @@ int main()
 
     char LengthArray[5];
     uint16_t LengthReceive;
-    char ReceiveArray[50];
+    char ReceiveArray[300];
 
     char TransData[50];
 
@@ -50,21 +50,21 @@ int main()
         {
             Reset_Buffer((uint8_t*)TransData, 50);
             Reset_Buffer((uint8_t*)LengthArray, 5);
-            Reset_Buffer((uint8_t*)ReceiveArray, 50);
-            std::cout << "\nData transfer: ";
+            Reset_Buffer((uint8_t*)ReceiveArray, 300);
+            //std::cout << "\nData transfer: ";
             //std::cin.ignore(1);
             //std::cin.getline(TransData, 50);
-            KeyBoard_Array_Input((char*)TransData, 50, '.');
-            n = strlen(TransData);
-            SeriApp_COM_SendArray ((char*)TransData, n);
+            //KeyBoard_Array_Input((char*)TransData, 50, '.');
+            //n = strlen(TransData);
+            //SeriApp_COM_SendArray ((char*)TransData, n);
 
             SeriApp_COM_getLength_ReceiveArray(LengthArray, LengthReceive);
             //SeriApp_COM_sendAck_Length_Receive();
-            std::cout << LengthReceive << std::endl;
-            wait(1000);
+            //std::cout << LengthReceive << std::endl;
+            //wait(1000);
             SeriApp_COM_getReceiveArray(ReceiveArray, LengthReceive);
             std::cout << ReceiveArray << std::endl;
-            wait(3000);
+            wait(1);
         }
 
         //com->getArray(buffer, 5);

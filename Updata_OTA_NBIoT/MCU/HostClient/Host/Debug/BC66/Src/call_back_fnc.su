@@ -6,5 +6,5 @@ call_back_fnc.c:131:9:FncCallback_MQTT_Pub_2	24	static
 call_back_fnc.c:147:9:FncCallback_MQTT_Ping_1	16	static
 call_back_fnc.c:164:9:FncCallback_MQTT_Ping_2	24	static
 call_back_fnc.c:179:6:Send_Debug_Infor	160	static
-call_back_fnc.c:203:9:FncCallback_MQTT_Sub_1	32	static
-call_back_fnc.c:219:9:FncCallback_MQTT_Sub_2	24	static
+call_back_fnc.c:203:9:FncCallback_MQTT_Sub_1	48	static
+call_back_fnc.c:221:9:FncCallback_MQTT_Sub_2	32	static

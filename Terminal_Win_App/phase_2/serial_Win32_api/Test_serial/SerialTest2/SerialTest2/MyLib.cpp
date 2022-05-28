@@ -1,8 +1,8 @@
 #include "MyLib.h"
 
-uint8_t Reset_Buffer(uint8_t* array, uint8_t numb)
+uint8_t Reset_Buffer(uint8_t* array, int numb)
 {
-	for (uint8_t ui8_i = 0; ui8_i < numb; ui8_i++)
+	for (int ui8_i = 0; ui8_i < numb; ui8_i++)
 	{
 		*(array + ui8_i) = 0x00;
 	}

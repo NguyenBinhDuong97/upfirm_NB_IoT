@@ -9,7 +9,7 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
--include queue_VDP/subdir.mk
+-include uartWinApp/subdir.mk
 -include own_lib/src/subdir.mk
 -include connect/subdir.mk
 -include Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/subdir.mk

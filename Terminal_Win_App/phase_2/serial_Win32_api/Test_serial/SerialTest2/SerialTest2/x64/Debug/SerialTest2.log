@@ -1,3 +1,8 @@
-﻿  SerialTest2.cpp
-C:\Users\Admin\Desktop\stm32f4\Upfirm_wireless_MQTT\Terminal_Win_App\phase_2\serial_Win32_api\Test_serial\SerialTest2\SerialTest2\SerialTest2.cpp(58,34): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-  SerialTest2.vcxproj -> C:\Users\Admin\Desktop\stm32f4\Upfirm_wireless_MQTT\Terminal_Win_App\phase_2\serial_Win32_api\Test_serial\SerialTest2\x64\Debug\SerialTest2.exe
+﻿  MyLib.cpp
+D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Terminal_Win_App\phase_2\serial_Win32_api\Test_serial\SerialTest2\SerialTest2\MyLib.cpp(30,22): warning C4018: '<': signed/unsigned mismatch
+  SerialApp.cpp
+D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Terminal_Win_App\phase_2\serial_Win32_api\Test_serial\SerialTest2\SerialTest2\SerialApp.cpp(224,89): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  SerialTest2.cpp
+D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Terminal_Win_App\phase_2\serial_Win32_api\Test_serial\SerialTest2\SerialTest2\SerialTest2.cpp(15,9): warning C4101: 'n': unreferenced local variable
+  Generating Code...
+  SerialTest2.vcxproj -> D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Terminal_Win_App\phase_2\serial_Win32_api\Test_serial\SerialTest2\x64\Debug\SerialTest2.exe

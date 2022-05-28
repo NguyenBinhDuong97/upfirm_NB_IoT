@@ -151,3 +151,22 @@ void MQTT_Check_Keepalive_Time ( void )
 	  }
   }
 }
+
+void MQTT_Create_Topic_To_Sub (uint8_t *topic, unsigned char dup,
+		                       unsigned short packetid, int qos)
+{
+	test_TopicFiltes[0].cstring = (char*)topic;
+	test_TopicFiltes[0].lenstring.len = 0;
+    test_TopicFiltes[0].lenstring.data = NULL;
+
+	test_requestedQoS[0] = qos;
+	Reset_Buffer ((uint8_t*)test_sub_array, 200);
+	test_MQTT_sub.buf = test_sub_array;
+	test_MQTT_sub.buflen = 200;
+	test_MQTT_sub.dup = dup;
+	test_MQTT_sub.packetid = packetid;
+	test_MQTT_sub.count = 1;
+	test_MQTT_sub.topicFilters = test_TopicFiltes;
+	test_MQTT_sub.requestedQoS = test_requestedQoS;
+}
+
