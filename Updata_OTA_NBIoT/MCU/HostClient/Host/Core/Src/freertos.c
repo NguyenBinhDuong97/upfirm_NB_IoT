@@ -169,7 +169,7 @@ uint8_t event;
 void Start_BC66_Task(void const * argument)
 {
   /* USER CODE BEGIN Start_BC66_Task */
-  dType_water_NB_IoT.dType_bc66_reset.ui8_fail_time == MAX_FAIL_TIME;
+ // dType_water_NB_IoT.dType_bc66_reset.ui8_fail_time == MAX_FAIL_TIME;
   event = _PWR_ON_;
   xQueueSendToBack( qBC66step, &event, 0 );
   /* Infinite loop */
@@ -181,20 +181,29 @@ void Start_BC66_Task(void const * argument)
 		{
 			case _PWR_ON_:
 				BC66_Power_On ();
-				osDelay(10000);
+				osDelay(5000);
 				break;
 			case _SYN_BAUDRATE_BC66_:
-				osDelay ( 10000 );
-			    BC66_Initialize_AT_Commands_Handler ( _SYN_BAUDRATE_BC66_ , _CHECK_PIN_BC66_ );
+//				osDelay ( 10000 );
+			    BC66_Initialize_AT_Commands_Handler ( _SYN_BAUDRATE_BC66_ , _OFF_SLEEP_BC66_ );
+
+//				HAL_UART_Transmit(&uart_bc66, (uint8_t*)"AT\r", 3, 500);
+//				osDelay(2000);
+//				HAL_UART_Transmit(&uart_bc66, (uint8_t*)"AT+QSCLK=0\r", 12, 500);
+//				osDelay(2000);
+//				HAL_UART_Transmit(&uart_bc66, (uint8_t*)"AT+CPIN?\r", 9, 500);
+//				osDelay(2000);
+//				HAL_UART_Transmit(&uart_bc66, (uint8_t*)"AT+QBAND=1,3\r", 13, 500);
+//				osDelay(2000);
+				break;
+			case _OFF_SLEEP_BC66_:
+				BC66_Initialize_AT_Commands_Handler ( _OFF_SLEEP_BC66_ , _CHECK_PIN_BC66_ );
 				break;
 			case _CHECK_PIN_BC66_:
 				BC66_Initialize_AT_Commands_Handler ( _CHECK_PIN_BC66_ , _SET_NB_BAND_BC66_ );
 			    break;
 			case _SET_NB_BAND_BC66_:
-				BC66_Initialize_AT_Commands_Handler ( _SET_NB_BAND_BC66_ , _OFF_SLEEP_BC66_ );
-				break;
-			case _OFF_SLEEP_BC66_:
-				BC66_Initialize_AT_Commands_Handler ( _OFF_SLEEP_BC66_ , _CHECK_SIM_ATTACH_BC66_ );
+				BC66_Initialize_AT_Commands_Handler ( _SET_NB_BAND_BC66_ , _CHECK_SIM_ATTACH_BC66_ );
 				break;
 			case _CHECK_SIM_ATTACH_BC66_:
 				BC66_Initialize_AT_Commands_Handler ( _CHECK_SIM_ATTACH_BC66_ , _SET_PSD_CONECTION_ );
@@ -234,6 +243,7 @@ void Start_BC66_Task(void const * argument)
 				break;
 			case _MQTT_OPEN_2_:
 				BC66_Initialize_AT_Commands_Handler ( _MQTT_OPEN_2_ , _IDLE_ );
+				Push_Message_to_Queue( &Connect_String );
 			    break;
 			case _MQTT_PUB_1_:
 				BC66_Initialize_AT_Commands_Handler ( _MQTT_PUB_1_ , _MQTT_PUB_2_ );
@@ -327,8 +337,8 @@ void UART_BC66_Task(void const * argument)
 	            else
 				{
 				  BC66_Check_MQTT_Receive ();
-				  BC66_UART_Send_Data_To_Terminal ( (uint8_t*)dType_water_NB_IoT.dType_bc66_receive.ui8buf_rx , CountReceive_u16 );
-				  //Push_BC66_Message_to_Queue();
+//				  BC66_UART_Send_Data_To_Terminal ( (uint8_t*)dType_water_NB_IoT.dType_bc66_receive.ui8buf_rx , CountReceive_u16 );
+				  Push_BC66_Message_to_Queue();
 			      BC66_UART_Clear_BC66_Data ();
 				  CountReceive_u16 = 0;
 				}

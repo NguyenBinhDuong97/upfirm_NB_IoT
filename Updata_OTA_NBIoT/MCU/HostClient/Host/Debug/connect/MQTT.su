@@ -2,4 +2,5 @@ MQTT.c:91:6:MQTT_Init_Connect	8	static
 MQTT.c:105:6:MQTT_Init_Pub_Opts	8	static
 MQTT.c:123:6:MQTT_Init_Sub_Opts	8	static
 MQTT.c:139:6:MQTT_Check_Keepalive_Time	8	static
-MQTT.c:155:6:MQTT_Create_Topic_To_Sub	32	static
+MQTT.c:155:6:MQTT_Create_Topic_To_Sub	40	static
+MQTT.c:181:6:MQTT_Create_Message_To_Pub	32	static

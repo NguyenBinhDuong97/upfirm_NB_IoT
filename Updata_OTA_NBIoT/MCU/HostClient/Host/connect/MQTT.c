@@ -93,8 +93,8 @@ void MQTT_Init_Connect ( void )
 	test_conect.clientID.cstring = "VNMILK";
 	test_conect.keepAliveInterval = 60;
 	test_conect.cleansession = 1;
-	test_conect.username.cstring = "admin";
-	test_conect.password.cstring = "admin";
+//	test_conect.username.cstring = "admin";
+//	test_conect.password.cstring = "admin";
 }
 
 /**
@@ -152,21 +152,47 @@ void MQTT_Check_Keepalive_Time ( void )
   }
 }
 
-void MQTT_Create_Topic_To_Sub (uint8_t *topic, unsigned char dup,
-		                       unsigned short packetid, int qos)
+void MQTT_Create_Topic_To_Sub (uint8_t *topic, uint16_t topic_length,
+		                       unsigned char dup, unsigned short packetid, int qos)
 {
-	test_TopicFiltes[0].cstring = (char*)topic;
-	test_TopicFiltes[0].lenstring.len = 0;
-    test_TopicFiltes[0].lenstring.data = NULL;
-
-	test_requestedQoS[0] = qos;
 	Reset_Buffer ((uint8_t*)test_sub_array, 200);
+// 	memset (test_sub_array, 0x00, 200*sizeof(char));
+//	memmove (test_sub_array, topic, 7*sizeof(uint8_t*));
+
+//    char *ptr = NULL;
+//    ptr = test_MQTT_sub.topicFilters->cstring;
+//
+	for ( uint8_t i = 0; i < topic_length; i++)
+	{
+		*(test_sub_array + i) = *((char*)topic + i);
+	}
+//	test_TopicFiltes[0].lenstring.len = 0;
+//  test_TopicFiltes[0].lenstring.data = NULL;
+	test_requestedQoS[0] = qos;
 	test_MQTT_sub.buf = test_sub_array;
 	test_MQTT_sub.buflen = 200;
 	test_MQTT_sub.dup = dup;
 	test_MQTT_sub.packetid = packetid;
 	test_MQTT_sub.count = 1;
-	test_MQTT_sub.topicFilters = test_TopicFiltes;
+	test_MQTT_sub.topicFilters->cstring = (char*)test_sub_array;
 	test_MQTT_sub.requestedQoS = test_requestedQoS;
+}
+
+void MQTT_Create_Message_To_Pub (uint8_t *message, uint16_t message_length, unsigned char dup,
+		                         int qos, unsigned char retained, unsigned short packetid,
+								 uint8_t* topicName)
+{
+	Reset_Buffer ((uint8_t*)test_pub_array, 200);
+	for ( uint8_t i = 0; i < message_length; i++)
+	{
+		*(test_pub_array + i) = *((char*)message + i);
+	}
+	test_pub_mes.dup = dup;
+	test_pub_mes.qos = qos;
+	test_pub_mes.retained = retained;
+	test_pub_mes.packetid = packetid;
+	test_pub_mes.topicName.cstring = (char*)topicName;
+	test_pub_mes.payload = (unsigned char*)test_pub_array;
+	test_pub_mes.payloadlen = message_length;
 }
 

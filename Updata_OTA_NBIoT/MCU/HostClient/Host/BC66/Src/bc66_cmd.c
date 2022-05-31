@@ -99,7 +99,7 @@ const sType_AT_struct dTypeArr_set_AT[] =
  { _CHECK_IP_ADDRESS_          ,    { (uint8_t*)"AT+QIPADDR\r" , 11 , 10000 }                                , { (uint8_t*)"OK" , 2 , 0 }                          , NULL },
  
  // TCP setting
- { _TCP_SET_DATA_TEXT_FORMAT_  ,    { (uint8_t*)"AT+QICFG=\"dataformat\",1,1\r" , 26 , 5000 }                , { (uint8_t*)"OK" , 2 , 0 }                          , NULL },
+ { _TCP_SET_DATA_TEXT_FORMAT_  ,    { (uint8_t*)"AT+QICFG=\"dataformat\",0,1\r" , 26 , 5000 }                , { (uint8_t*)"OK" , 2 , 0 }                          , NULL },
  { _TCP_SET_VIEW_MODE_         ,    { (uint8_t*)"AT+QICFG=\"viewmode\",1\r" , 22 , 5000 }                    , { (uint8_t*)"OK" , 2 , 0 }                          , NULL },
  { _TCP_SET_SHOW_LENGTH_       ,    { (uint8_t*)"AT+QICFG=\"showlength\",0\r" , 24 , 5000 }                  , { (uint8_t*)"OK" , 2 , 0 }                          , NULL },
  
@@ -285,7 +285,7 @@ void BC66_Power_On ( void )
 	 BC66_Reset ();
 	 HAL_Delay ( 2000 );
 	 //dType_water_NB_IoT.dType_AT.ui8_pointer = _CHECK_PIN_BC66_;
-     event = _CHECK_PIN_BC66_;
+     event = _SYN_BAUDRATE_BC66_;
 	 xQueueSendToBack(qBC66step, &event, 0);
 	}
 }
@@ -319,9 +319,9 @@ void BC66_Initialize_AT_Commands_Handler ( uint8_t current_cmd , uint8_t next_cm
 				case _MQTT_PUB_2_:
 				  test_pub_mes.dup = 0;
 				  dType_MQTT_watermetter.ui32_keep_alive_mark_time = ui32_tick_count;
-				  ui32_send_cplt++;
+//				  ui32_send_cplt++;
 				  dType_MQTT_watermetter.dType_MQTT_fail.ui8_pub = 0;
-				  Send_Debug_Infor();
+//				  Send_Debug_Infor();
 					break;
 				case _MQTT_PINGREQ_2_:
 //					if ( dType_MQTT_watermetter.ui8_prev_MQTT_step != 0 )
@@ -544,8 +544,8 @@ void BC66_TCP_Close_Scan_And_Handler_Error ( void )
 {
 	for ( uint8_t ui8_reason = _MQTT_SEND_SUCCESS_ ; ui8_reason <= _TCP_OPEN_FAIL_ ; ++ui8_reason )
 	{
-		BC66_Handle_Reason_Close_TCP ( dType_TCP_close_reason[ui8_reason].ui8_reason_fail , 
-		                               dType_TCP_close_reason[ui8_reason].ui8_max_fail_time ,
+		BC66_Handle_Reason_Close_TCP ( dType_TCP_close_reason[ui8_reason].ui8_reason_fail,
+		                               dType_TCP_close_reason[ui8_reason].ui8_max_fail_time,
 		                               dType_TCP_close_reason[ui8_reason].FncHandler_Err );
 	}
 }

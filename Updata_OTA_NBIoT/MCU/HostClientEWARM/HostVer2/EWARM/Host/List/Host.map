@@ -1,0 +1,932 @@
+###############################################################################
+#
+# IAR ELF Linker V8.40.2.214/W32 for ARM                  31/May/2022  14:14:21
+# Copyright 2007-2019 IAR Systems AB.
+#
+#    Output file  =
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Exe\Host.out
+#    Map file     =
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\List\Host.map
+#    Command line =
+#        -f C:\Users\Admin\AppData\Local\Temp\EW4600.tmp
+#        (D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\bc66_cmd.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\bc66_uart.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\call_back_fnc.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\cmsis_os.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\croutine.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\event_groups.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\freertos.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\gpio.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\heap_4.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\list.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\main.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\MQTT.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\MQTTConnectClient.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\MQTTConnectServer.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\MQTTDeserializePublish.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\MQTTFormat.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\MQTTPacket.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\MQTTSerializePublish.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\MQTTSubscribeClient.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\MQTTSubscribeServer.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\MQTTUnsubscribeClient.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\MQTTUnsubscribeServer.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\my_lib.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\my_rtc.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\my_uart.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\port.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\portasm.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\queue.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\rtc.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\startup_stm32l082xx.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\stm32l0xx_hal.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\stm32l0xx_hal_cortex.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\stm32l0xx_hal_dma.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\stm32l0xx_hal_exti.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\stm32l0xx_hal_flash.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\stm32l0xx_hal_flash_ex.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\stm32l0xx_hal_flash_ramfunc.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\stm32l0xx_hal_gpio.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\stm32l0xx_hal_i2c.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\stm32l0xx_hal_i2c_ex.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\stm32l0xx_hal_msp.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\stm32l0xx_hal_pwr.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\stm32l0xx_hal_pwr_ex.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\stm32l0xx_hal_rcc.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\stm32l0xx_hal_rcc_ex.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\stm32l0xx_hal_rtc.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\stm32l0xx_hal_rtc_ex.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\stm32l0xx_hal_tim.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\stm32l0xx_hal_tim_ex.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\stm32l0xx_hal_timebase_tim.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\stm32l0xx_hal_uart.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\stm32l0xx_hal_uart_ex.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\stm32l0xx_it.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\stream_buffer.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\system_stm32l0xx.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\tasks.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\timers.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\uartWinApp.o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj\usart.o
+#        --no_out_extension -o
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Exe\Host.out
+#        --redirect _Printf=_PrintfFullNoMb --redirect _Scanf=_ScanfFullNoMb
+#        --map
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\List\Host.map
+#        --config
+#        D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM/stm32l082xx_flash.icf
+#        --semihosting --entry __iar_program_start --vfe --text_out locale)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The basic heap was selected because no calls to memory allocation
+functions were found in the application outside of system library
+functions, and there are calls to deallocation functions in the
+application.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at address 0x800'0000 { ro section .intvec };
+"P1":  place in [from 0x800'0000 to 0x802'ffff] { ro };
+define block CSTACK with size = 1K, alignment = 8 { };
+define block HEAP with size = 512, alignment = 8 { };
+"P2":  place in [from 0x2000'0000 to 0x2000'4fff] {
+          rw, block CSTACK, block HEAP };
+initialize by copy { rw };
+
+  Section            Kind         Address    Size  Object
+  -------            ----         -------    ----  ------
+"A0":                                        0xc0
+  .intvec            ro code   0x800'0000    0xc0  startup_stm32l082xx.o [1]
+                             - 0x800'00c0    0xc0
+
+"P1":                                      0x65fd
+  .text              ro code   0x800'00c0   0xde8  stm32l0xx_hal_uart.o [1]
+  .text              ro code   0x800'0ea8   0x13c  usart.o [1]
+  .text              ro code   0x800'0fe4     0xc  stm32l0xx_hal.o [1]
+  .text              ro code   0x800'0ff0    0xb2  stm32l0xx_hal_dma.o [1]
+  .text              ro code   0x800'10a2     0x2  stm32l0xx_hal_uart.o [1]
+  .text              ro code   0x800'10a4     0x2  stm32l0xx_hal_uart.o [1]
+  .text              ro code   0x800'10a6    0x7e  lz77_init_single.o [4]
+  .text              ro code   0x800'1124     0x2  stm32l0xx_hal_uart_ex.o [1]
+  .rodata            const     0x800'1126     0x2  bc66_cmd.o [1]
+  .text              ro code   0x800'1128   0x91c  stm32l0xx_hal_rcc.o [1]
+  .text              ro code   0x800'1a44    0x32  I64Mul.o [4]
+  .text              ro code   0x800'1a76    0x6a  I64DivMod.o [4]
+  .text              ro code   0x800'1ae0    0xe0  I32DivModFast.o [4]
+  .text              ro code   0x800'1bc0     0x2  stm32l0xx_hal_uart.o [1]
+  .rodata            const     0x800'1bc2     0x2  xlocale_c.o [2]
+  .text              ro code   0x800'1bc4   0x17c  bc66_uart.o [1]
+  .text              ro code   0x800'1d40   0x10a  main.o [1]
+  .text              ro code   0x800'1e4a    0x14  memset.o [4]
+  .text              ro code   0x800'1e5e     0x2  startup_stm32l082xx.o [1]
+  .text              ro code   0x800'1e60   0x260  stm32l0xx_hal_gpio.o [1]
+  .text              ro code   0x800'20c0    0xd4  stm32l0xx_hal_cortex.o [1]
+  .text              ro code   0x800'2194    0x78  stm32l0xx_hal_timebase_tim.o [1]
+  .text              ro code   0x800'220c     0x2  I64DivZer.o [4]
+  .text              ro code   0x800'220e     0x2  startup_stm32l082xx.o [1]
+  .text              ro code   0x800'2210     0x2  IntDivZer.o [4]
+  .text              ro code   0x800'2212     0x2  startup_stm32l082xx.o [1]
+  .text              ro code   0x800'2214    0x4e  ABImemset.o [4]
+  .text              ro code   0x800'2262     0x2  startup_stm32l082xx.o [1]
+  .text              ro code   0x800'2264   0x242  my_lib.o [1]
+  .text              ro code   0x800'24a6     0x2  startup_stm32l082xx.o [1]
+  .text              ro code   0x800'24a8   0x278  uartWinApp.o [1]
+  .text              ro code   0x800'2720    0x2c  stm32l0xx_hal.o [1]
+  .text              ro code   0x800'274c    0x90  gpio.o [1]
+  .text              ro code   0x800'27dc   0x108  rtc.o [1]
+  .text              ro code   0x800'28e4   0x12c  MQTT.o [1]
+  .text              ro code   0x800'2a10   0x36c  freertos.o [1]
+  .text              ro code   0x800'2d7c    0xa4  cmsis_os.o [1]
+  .text              ro code   0x800'2e20   0x1f8  stm32l0xx_hal_rcc_ex.o [1]
+  .text              ro code   0x800'3018    0x18  stm32l0xx_hal.o [1]
+  .text              ro code   0x800'3030   0x29a  stm32l0xx_hal_tim.o [1]
+  .text              ro code   0x800'32ca     0x2  startup_stm32l082xx.o [1]
+  .text              ro code   0x800'32cc   0x4dc  queue.o [1]
+  .text              ro code   0x800'37a8     0xe  strlen.o [4]
+  .text              ro code   0x800'37b6     0x2  startup_stm32l082xx.o [1]
+  .text              ro code   0x800'37b8    0x74  strcpy.o [4]
+  .text              ro code   0x800'382c    0x30  stm32l0xx_hal_msp.o [1]
+  .text              ro code   0x800'385c   0x626  stm32l0xx_hal_rtc.o [1]
+  .text              ro code   0x800'3e82     0x2  startup_stm32l082xx.o [1]
+  .text              ro code   0x800'3e84   0x4d0  bc66_cmd.o [1]
+  .text              ro code   0x800'4354    0x4e  ABImemcpy.o [4]
+  .text              ro code   0x800'43a2     0x2  startup_stm32l082xx.o [1]
+  .text              ro code   0x800'43a4   0x870  tasks.o [1]
+  .text              ro code   0x800'4c14     0x2  stm32l0xx_hal_tim.o [1]
+  .text              ro code   0x800'4c16     0x2  stm32l0xx_hal_tim.o [1]
+  .text              ro code   0x800'4c18     0x2  stm32l0xx_hal_tim.o [1]
+  .text              ro code   0x800'4c1a     0x2  stm32l0xx_hal_tim.o [1]
+  .text              ro code   0x800'4c1c   0x108  port.o [1]
+  .text              ro code   0x800'4d24    0x9c  list.o [1]
+  .text              ro code   0x800'4dc0   0x21c  heap_4.o [1]
+  .text              ro code   0x800'4fdc     0x2  stm32l0xx_hal_rtc.o [1]
+  .text              ro code   0x800'4fde     0x2  stm32l0xx_hal_rtc_ex.o [1]
+  .text              ro code   0x800'4fe0    0x2c  stm32l0xx_hal.o [1]
+  .text              ro code   0x800'500c   0x330  call_back_fnc.o [1]
+  CODE               ro code   0x800'533c    0x7c  portasm.o [1]
+  .text              ro code   0x800'53b8    0x1c  strcat.o [2]
+  .text              ro code   0x800'53d4    0x2e  strstr.o [2]
+  .text              ro code   0x800'5402     0x2  startup_stm32l082xx.o [1]
+  .text              ro code   0x800'5404   0x15c  iar_Stoulx.o [2]
+  .text              ro code   0x800'5560   0x28e  MQTTConnectClient.o [1]
+  .text              ro code   0x800'57ee     0x2  startup_stm32l082xx.o [1]
+  .text              ro code   0x800'57f0    0xe8  MQTTSerializePublish.o [1]
+  .text              ro code   0x800'58d8    0xe4  MQTTSubscribeClient.o [1]
+  .text              ro code   0x800'59bc    0x12  strchr.o [4]
+  .text              ro code   0x800'59ce    0x12  isspace.o [2]
+  .text              ro code   0x800'59e0    0x12  tolower.o [2]
+  .text              ro code   0x800'59f2     0x2  startup_stm32l082xx.o [1]
+  .text              ro code   0x800'59f4    0x16  memchr.o [4]
+  .text              ro code   0x800'5a0a     0x2  startup_stm32l082xx.o [1]
+  .text              ro code   0x800'5a0c   0x128  MQTTPacket.o [1]
+  .text              ro code   0x800'5b34    0x34  xlocale_c.o [2]
+  .rodata            const     0x800'5b68   0x400  bc66_cmd.o [1]
+  .rodata            const     0x800'5f68    0x64  call_back_fnc.o [1]
+  .rodata            const     0x800'5fcc    0x50  iar_Stoulx.o [2]
+  .text              ro code   0x800'601c    0x4c  stm32l0xx_it.o [1]
+  .text              ro code   0x800'6068    0x3c  zero_init3.o [4]
+  .rodata            const     0x800'60a4    0x34  bc66_cmd.o [1]
+  .rodata            const     0x800'60d8    0x28  bc66_cmd.o [1]
+  .text              ro code   0x800'6100    0x28  data_init.o [4]
+  .rodata            const     0x800'6128    0x24  bc66_cmd.o [1]
+  .iar.init_table    const     0x800'614c    0x20  - Linker created -
+  .text              ro code   0x800'616c    0x1e  cmain.o [4]
+  .text              ro code   0x800'618a     0x4  low_level_init.o [2]
+  .text              ro code   0x800'618e     0x8  exit.o [2]
+  .text              ro code   0x800'6196     0x2  startup_stm32l082xx.o [1]
+  .text              ro code   0x800'6198     0xa  cexit.o [4]
+  .text              ro code   0x800'61a2     0x2  startup_stm32l082xx.o [1]
+  .text              ro code   0x800'61a4    0x14  exit.o [5]
+  .rodata            const     0x800'61b8    0x1c  bc66_cmd.o [1]
+  .rodata            const     0x800'61d4    0x1c  bc66_cmd.o [1]
+  .rodata            const     0x800'61f0    0x1c  bc66_cmd.o [1]
+  .rodata            const     0x800'620c    0x1c  call_back_fnc.o [1]
+  .rodata            const     0x800'6228    0x1c  freertos.o [1]
+  .rodata            const     0x800'6244    0x1c  freertos.o [1]
+  .rodata            const     0x800'6260    0x1c  freertos.o [1]
+  .rodata            const     0x800'627c    0x1c  freertos.o [1]
+  .rodata            const     0x800'6298    0x18  bc66_cmd.o [1]
+  .rodata            const     0x800'62b0    0x18  bc66_cmd.o [1]
+  .rodata            const     0x800'62c8    0x18  bc66_cmd.o [1]
+  .rodata            const     0x800'62e0    0x18  call_back_fnc.o [1]
+  .rodata            const     0x800'62f8    0x14  bc66_cmd.o [1]
+  .rodata            const     0x800'630c    0x14  freertos.o [1]
+  .rodata            const     0x800'6320    0x14  MQTT.o [1]
+  .rodata            const     0x800'6334    0x14  uartWinApp.o [1]
+  .rodata            const     0x800'6348    0x10  bc66_cmd.o [1]
+  .rodata            const     0x800'6358    0x10  bc66_cmd.o [1]
+  .rodata            const     0x800'6368    0x10  bc66_cmd.o [1]
+  .rodata            const     0x800'6378    0x10  bc66_cmd.o [1]
+  .rodata            const     0x800'6388    0x10  bc66_cmd.o [1]
+  .rodata            const     0x800'6398    0x10  bc66_cmd.o [1]
+  .rodata            const     0x800'63a8    0x10  bc66_cmd.o [1]
+  .rodata            const     0x800'63b8    0x10  bc66_cmd.o [1]
+  .rodata            const     0x800'63c8    0x10  bc66_cmd.o [1]
+  .rodata            const     0x800'63d8    0x10  freertos.o [1]
+  .rodata            const     0x800'63e8    0x10  system_stm32l0xx.o [1]
+  .text              ro code   0x800'63f8    0x10  startup_stm32l082xx.o [1]
+  .rodata            const     0x800'6408     0xc  bc66_cmd.o [1]
+  .rodata            const     0x800'6414     0xc  bc66_cmd.o [1]
+  .rodata            const     0x800'6420     0xc  bc66_cmd.o [1]
+  .rodata            const     0x800'642c     0xc  bc66_cmd.o [1]
+  .rodata            const     0x800'6438     0xc  bc66_cmd.o [1]
+  .rodata            const     0x800'6444     0xc  bc66_cmd.o [1]
+  .rodata            const     0x800'6450     0xc  bc66_cmd.o [1]
+  .rodata            const     0x800'645c     0xc  bc66_cmd.o [1]
+  .rodata            const     0x800'6468     0xc  bc66_cmd.o [1]
+  .rodata            const     0x800'6474     0xc  bc66_cmd.o [1]
+  .rodata            const     0x800'6480     0xc  bc66_cmd.o [1]
+  .rodata            const     0x800'648c     0xc  bc66_cmd.o [1]
+  .rodata            const     0x800'6498     0xc  bc66_cmd.o [1]
+  .rodata            const     0x800'64a4     0xc  call_back_fnc.o [1]
+  .rodata            const     0x800'64b0     0xc  call_back_fnc.o [1]
+  .rodata            const     0x800'64bc     0xc  call_back_fnc.o [1]
+  .rodata            const     0x800'64c8     0xc  freertos.o [1]
+  .rodata            const     0x800'64d4     0xc  freertos.o [1]
+  .rodata            const     0x800'64e0     0xc  freertos.o [1]
+  .rodata            const     0x800'64ec     0xc  MQTT.o [1]
+  .rodata            const     0x800'64f8     0xc  system_stm32l0xx.o [1]
+  .text              ro code   0x800'6504     0xc  cstartup_M.o [4]
+  .rodata            const     0x800'6510     0x8  bc66_cmd.o [1]
+  .rodata            const     0x800'6518     0x8  bc66_cmd.o [1]
+  .rodata            const     0x800'6520     0x8  bc66_cmd.o [1]
+  .rodata            const     0x800'6528     0x8  bc66_cmd.o [1]
+  .rodata            const     0x800'6530     0x8  bc66_cmd.o [1]
+  .rodata            const     0x800'6538     0x8  MQTT.o [1]
+  .rodata            const     0x800'6540     0x8  MQTTConnectClient.o [1]
+  .rodata            const     0x800'6548     0x8  system_stm32l0xx.o [1]
+  .rodata            const     0x800'6550     0x8  tasks.o [1]
+  .rodata            const     0x800'6558     0x8  uartWinApp.o [1]
+  .rodata            const     0x800'6560     0x8  uartWinApp.o [1]
+  .rodata            const     0x800'6568     0x8  uartWinApp.o [1]
+  .rodata            const     0x800'6570     0x4  bc66_cmd.o [1]
+  .rodata            const     0x800'6574     0x4  bc66_cmd.o [1]
+  .rodata            const     0x800'6578     0x4  bc66_cmd.o [1]
+  .rodata            const     0x800'657c     0x4  heap_4.o [1]
+  .rodata            const     0x800'6580     0x4  MQTTConnectClient.o [1]
+  .rodata            const     0x800'6584     0x4  MQTTConnectClient.o [1]
+  .rodata            const     0x800'6588     0x4  MQTTConnectClient.o [1]
+  .rodata            const     0x800'658c     0x4  MQTTSerializePublish.o [1]
+  .rodata            const     0x800'6590     0x4  MQTTSubscribeClient.o [1]
+  .rodata            const     0x800'6594     0x4  uartWinApp.o [1]
+  .rodata            const     0x800'6598     0x4  uartWinApp.o [1]
+  .text              ro code   0x800'659c     0x2  startup_stm32l082xx.o [1]
+  .text              ro code   0x800'659e     0x2  startup_stm32l082xx.o [1]
+  .text              ro code   0x800'65a0     0x2  startup_stm32l082xx.o [1]
+  .text              ro code   0x800'65a2     0x2  startup_stm32l082xx.o [1]
+  .text              ro code   0x800'65a4     0x2  startup_stm32l082xx.o [1]
+  .text              ro code   0x800'65a6     0x2  startup_stm32l082xx.o [1]
+  .text              ro code   0x800'65a8     0x2  startup_stm32l082xx.o [1]
+  .text              ro code   0x800'65aa     0x2  startup_stm32l082xx.o [1]
+  .text              ro code   0x800'65ac     0x2  startup_stm32l082xx.o [1]
+  .text              ro code   0x800'65ae     0x2  startup_stm32l082xx.o [1]
+  .text              ro code   0x800'65b0     0x2  startup_stm32l082xx.o [1]
+  .rodata            const     0x800'65b2     0x1  bc66_cmd.o [1]
+  .text              ro code   0x800'65b4     0x2  system_stm32l0xx.o [1]
+  .rodata            const     0x800'65b6     0x0  zero_init3.o [4]
+  .rodata            const     0x800'65b6     0x0  lz77_init_single.o [4]
+  Initializer bytes  const     0x800'65b6   0x107  <for P2-1>
+                             - 0x800'66bd  0x65fd
+
+"P2", part 1 of 3:                          0x3fc
+  P2-1                        0x2000'0000   0x3fc  <Init block>
+    .data            inited   0x2000'0000   0x20c  bc66_cmd.o [1]
+    .data            inited   0x2000'020c    0x24  bc66_cmd.o [1]
+    .data            inited   0x2000'0230     0x8  bc66_uart.o [1]
+    .data            inited   0x2000'0238    0x10  main.o [1]
+    .data            inited   0x2000'0248    0x64  MQTT.o [1]
+    .data            inited   0x2000'02ac     0x4  MQTT.o [1]
+    .data            inited   0x2000'02b0     0xc  MQTT.o [1]
+    .data            inited   0x2000'02bc    0x58  MQTT.o [1]
+    .data            inited   0x2000'0314    0x28  my_lib.o [1]
+    .data            inited   0x2000'033c     0x4  port.o [1]
+    .data            inited   0x2000'0340     0x4  stm32l0xx_hal.o [1]
+    .data            inited   0x2000'0344     0x4  system_stm32l0xx.o [1]
+    .data            inited   0x2000'0348    0x50  uartWinApp.o [1]
+    .data            inited   0x2000'0398    0x10  uartWinApp.o [1]
+    .data            inited   0x2000'03a8     0x8  uartWinApp.o [1]
+    .data            inited   0x2000'03b0    0x48  xlocale_c.o [2]
+    .data            inited   0x2000'03f8     0x2  call_back_fnc.o [1]
+    .data            inited   0x2000'03fa     0x1  MQTT.o [1]
+    .data            inited   0x2000'03fb     0x1  stm32l0xx_hal.o [1]
+                            - 0x2000'03fc   0x3fc
+
+"P2", part 2 of 3:                         0x156c
+  .bss               zero     0x2000'03fc   0xc00  heap_4.o [1]
+  .bss               zero     0x2000'0ffc   0x200  freertos.o [1]
+  .bss               zero     0x2000'11fc   0x12c  call_back_fnc.o [1]
+  .bss               zero     0x2000'1328   0x12c  uartWinApp.o [1]
+  .bss               zero     0x2000'1454    0xc8  MQTT.o [1]
+  .bss               zero     0x2000'151c    0xc8  MQTT.o [1]
+  .bss               zero     0x2000'15e4    0x8c  tasks.o [1]
+  .bss               zero     0x2000'1670    0x84  usart.o [1]
+  .bss               zero     0x2000'16f4    0x84  usart.o [1]
+  .bss               zero     0x2000'1778    0x54  freertos.o [1]
+  .bss               zero     0x2000'17cc    0x40  stm32l0xx_hal_timebase_tim.o [1]
+  .bss               zero     0x2000'180c    0x28  MQTT.o [1]
+  .bss               zero     0x2000'1834    0x24  rtc.o [1]
+  .bss               zero     0x2000'1858    0x18  MQTT.o [1]
+  .bss               zero     0x2000'1870    0x14  tasks.o [1]
+  .bss               zero     0x2000'1884    0x14  tasks.o [1]
+  .bss               zero     0x2000'1898    0x14  tasks.o [1]
+  .bss               zero     0x2000'18ac    0x14  tasks.o [1]
+  .bss               zero     0x2000'18c0    0x14  tasks.o [1]
+  .bss               zero     0x2000'18d4    0x10  MQTT.o [1]
+  .bss               zero     0x2000'18e4     0x8  heap_4.o [1]
+  .bss               zero     0x2000'18ec     0x4  bc66_cmd.o [1]
+  .bss               zero     0x2000'18f0     0x4  call_back_fnc.o [1]
+  .bss               zero     0x2000'18f4     0x4  call_back_fnc.o [1]
+  .bss               zero     0x2000'18f8     0x4  freertos.o [1]
+  .bss               zero     0x2000'18fc     0x4  freertos.o [1]
+  .bss               zero     0x2000'1900     0x4  freertos.o [1]
+  .bss               zero     0x2000'1904     0x4  freertos.o [1]
+  .bss               zero     0x2000'1908     0x4  heap_4.o [1]
+  .bss               zero     0x2000'190c     0x4  heap_4.o [1]
+  .bss               zero     0x2000'1910     0x4  heap_4.o [1]
+  .bss               zero     0x2000'1914     0x4  heap_4.o [1]
+  .bss               zero     0x2000'1918     0x4  main.o [1]
+  .bss               zero     0x2000'191c     0x4  main.o [1]
+  .bss               zero     0x2000'1920     0x4  stm32l0xx_hal.o [1]
+  .bss               zero     0x2000'1924     0x4  tasks.o [1]
+  .bss               zero     0x2000'1928     0x4  tasks.o [1]
+  .bss               zero     0x2000'192c     0x4  tasks.o [1]
+  .bss               zero     0x2000'1930     0x4  tasks.o [1]
+  .bss               zero     0x2000'1934     0x4  tasks.o [1]
+  .bss               zero     0x2000'1938     0x4  tasks.o [1]
+  .bss               zero     0x2000'193c     0x4  tasks.o [1]
+  .bss               zero     0x2000'1940     0x4  tasks.o [1]
+  .bss               zero     0x2000'1944     0x4  tasks.o [1]
+  .bss               zero     0x2000'1948     0x4  tasks.o [1]
+  .bss               zero     0x2000'194c     0x4  tasks.o [1]
+  .bss               zero     0x2000'1950     0x4  tasks.o [1]
+  .bss               zero     0x2000'1954     0x4  tasks.o [1]
+  .bss               zero     0x2000'1958     0x4  tasks.o [1]
+  .bss               zero     0x2000'195c     0x4  tasks.o [1]
+  .bss               zero     0x2000'1960     0x2  bc66_uart.o [1]
+  .bss               zero     0x2000'1962     0x1  call_back_fnc.o [1]
+  .bss               zero     0x2000'1963     0x1  freertos.o [1]
+  .bss               zero     0x2000'1964     0x1  freertos.o [1]
+                            - 0x2000'1965  0x1569
+
+"P2", part 3 of 3:                          0x400
+  CSTACK                      0x2000'1968   0x400  <Block>
+    CSTACK           uninit   0x2000'1968   0x400  <Block tail>
+                            - 0x2000'1d68   0x400
+
+Unused ranges:
+
+         From           To      Size
+         ----           --      ----
+   0x800'66bd   0x802'ffff  0x2'9943
+  0x2000'1d68  0x2000'4fff    0x3298
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address      Size
+          -------      ----
+Zero (__iar_zero_init3)
+    1 destination range, total size 0x1569:
+          0x2000'03fc  0x1569
+
+Copy/lz77 (__iar_lz77_init_single3)
+    1 source range, total size 0x107 (25% of destination):
+           0x800'65b6   0x107
+    1 destination range, total size 0x3fc:
+          0x2000'0000   0x3fc
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module                        ro code  ro data  rw data
+    ------                        -------  -------  -------
+command line/config:
+    -------------------------------------------------------
+    Total:
+
+D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj: [1]
+    MQTT.o                            300       93      685
+    MQTTConnectClient.o               654       20
+    MQTTPacket.o                      296
+    MQTTSerializePublish.o            232        4
+    MQTTSubscribeClient.o             228        4
+    bc66_cmd.o                      1'232    1'827      564
+    bc66_uart.o                       380        2       10
+    call_back_fnc.o                   816      189      311
+    cmsis_os.o                        164
+    freertos.o                        876      184      614
+    gpio.o                            144
+    heap_4.o                          540        4    3'096
+    list.o                            156
+    main.o                            266        4       24
+    my_lib.o                          578       10       40
+    port.o                            264        1        4
+    portasm.o                         124
+    queue.o                         1'244
+    rtc.o                             264                36
+    startup_stm32l082xx.o             260
+    stm32l0xx_hal.o                   124        2        9
+    stm32l0xx_hal_cortex.o            212
+    stm32l0xx_hal_dma.o               178
+    stm32l0xx_hal_gpio.o              608
+    stm32l0xx_hal_msp.o                48
+    stm32l0xx_hal_rcc.o             2'332
+    stm32l0xx_hal_rcc_ex.o            504
+    stm32l0xx_hal_rtc.o             1'576
+    stm32l0xx_hal_rtc_ex.o              2
+    stm32l0xx_hal_tim.o               674
+    stm32l0xx_hal_timebase_tim.o      120                64
+    stm32l0xx_hal_uart.o            3'566
+    stm32l0xx_hal_uart_ex.o             2
+    stm32l0xx_it.o                     76
+    system_stm32l0xx.o                  2       37        4
+    tasks.o                         2'160        8      300
+    uartWinApp.o                      632       79      404
+    usart.o                           316               264
+    -------------------------------------------------------
+    Total:                         22'150    2'468    6'429
+
+dl6M_tlf.a: [2]
+    exit.o                              8
+    iar_Stoulx.o                      348       80
+    isspace.o                          18
+    low_level_init.o                    4
+    strcat.o                           28
+    strstr.o                           46
+    tolower.o                          18
+    xlocale_c.o                        52       20       72
+    -------------------------------------------------------
+    Total:                            522      100       72
+
+m6M_tl.a: [3]
+    -------------------------------------------------------
+    Total:
+
+rt6M_tl.a: [4]
+    ABImemcpy.o                        78
+    ABImemset.o                        78
+    I32DivModFast.o                   224
+    I64DivMod.o                       106
+    I64DivZer.o                         2
+    I64Mul.o                           50
+    IntDivZer.o                         2
+    cexit.o                            10
+    cmain.o                            30
+    cstartup_M.o                       12
+    data_init.o                        40
+    lz77_init_single.o                126
+    memchr.o                           22
+    memset.o                           20
+    strchr.o                           18
+    strcpy.o                          116
+    strlen.o                           14
+    zero_init3.o                       60
+    -------------------------------------------------------
+    Total:                          1'008
+
+shb_l.a: [5]
+    exit.o                             20
+    -------------------------------------------------------
+    Total:                             20
+
+    Gaps                                1
+    Linker created                              32    1'024
+-----------------------------------------------------------
+    Grand Total:                   23'701    2'600    7'525
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                       Address   Size  Type      Object
+-----                       -------   ----  ----      ------
+.iar.init_table$$Base    0x800'614c          --   Gb  - Linker created -
+.iar.init_table$$Limit   0x800'616c          --   Gb  - Linker created -
+?main                    0x800'616d         Code  Gb  cmain.o [4]
+AHBPrescTable            0x800'63e8   0x10  Data  Gb  system_stm32l0xx.o [1]
+APBPrescTable            0x800'6548    0x8  Data  Gb  system_stm32l0xx.o [1]
+BC66_Check_AT_Response   0x800'3f61   0x34  Code  Gb  bc66_cmd.o [1]
+BC66_Check_MQTT_Receive
+                         0x800'42d5   0x5c  Code  Gb  bc66_cmd.o [1]
+BC66_Check_Reset         0x800'3f95   0x5a  Code  Gb  bc66_cmd.o [1]
+BC66_Check_Time_Out      0x800'3f4b   0x16  Code  Gb  bc66_cmd.o [1]
+BC66_Excute_AT_Cmd       0x800'3e85   0xc6  Code  Gb  bc66_cmd.o [1]
+BC66_Handle_Reason_Close_TCP
+                         0x800'4215   0x18  Code  Gb  bc66_cmd.o [1]
+BC66_Handler_TCP_Close_MQTT_Max_Open_Fail
+                         0x800'4239    0xe  Code  Gb  bc66_cmd.o [1]
+BC66_Handler_TCP_Close_MQTT_Max_Ping_Fail
+                         0x800'4265    0xe  Code  Gb  bc66_cmd.o [1]
+BC66_Handler_TCP_Close_MQTT_Max_Pub_Fail
+                         0x800'4247    0xe  Code  Gb  bc66_cmd.o [1]
+BC66_Handler_TCP_Close_None_Err
+                         0x800'422d    0x8  Code  Gb  bc66_cmd.o [1]
+BC66_Handler_TCP_Close_TCP_Max_Open_Fail
+                         0x800'425d    0x8  Code  Gb  bc66_cmd.o [1]
+BC66_Initialize_AT_Commands_Handler
+                         0x800'406d  0x19a  Code  Gb  bc66_cmd.o [1]
+BC66_Power_On            0x800'4017   0x4a  Code  Gb  bc66_cmd.o [1]
+BC66_Reset               0x800'3fef   0x28  Code  Gb  bc66_cmd.o [1]
+BC66_TCP_Close_Scan_And_Handler_Error
+                         0x800'427d   0x3a  Code  Gb  bc66_cmd.o [1]
+BC66_TaskHandle         0x2000'18f8    0x4  Data  Gb  freertos.o [1]
+BC66_UART_Check_Receive_Process_Status
+                         0x800'1cc7   0x3c  Code  Gb  bc66_uart.o [1]
+BC66_UART_Clear_BC66_Data
+                         0x800'1d03   0x24  Code  Gb  bc66_uart.o [1]
+BC66_UART_Receive_Init   0x800'1c39   0x2e  Code  Gb  bc66_uart.o [1]
+BC66_UART_Send_Data_To_BC66
+                         0x800'1c67   0x18  Code  Gb  bc66_uart.o [1]
+BC66_UART_Send_Data_To_Terminal
+                         0x800'1c7f   0x48  Code  Gb  bc66_uart.o [1]
+BC66_con_opt            0x2000'020c   0x24  Data  Gb  bc66_cmd.o [1]
+CSTACK$$Base            0x2000'1968          --   Gb  - Linker created -
+CSTACK$$Limit           0x2000'1d68          --   Gb  - Linker created -
+Convert_length_to_array
+                         0x800'25a3   0x80  Code  Gb  uartWinApp.o [1]
+CountReceive_u16        0x2000'1960    0x2  Data  Gb  bc66_uart.o [1]
+Error_Handler            0x800'1e45    0x6  Code  Gb  main.o [1]
+FncCallback_MQTT_Open_1
+                         0x800'50bd   0x28  Code  Gb  call_back_fnc.o [1]
+FncCallback_MQTT_Ping_1
+                         0x800'51b1   0x2e  Code  Gb  call_back_fnc.o [1]
+FncCallback_MQTT_Pub_1   0x800'50e5   0xa8  Code  Gb  call_back_fnc.o [1]
+FncCallback_MQTT_Pub_2   0x800'518d   0x24  Code  Gb  call_back_fnc.o [1]
+FncCallback_MQTT_Sub_1   0x800'524f   0x42  Code  Gb  call_back_fnc.o [1]
+FncCallback_MQTT_Sub_2   0x800'529d   0x56  Code  Gb  call_back_fnc.o [1]
+FncCallback_TCP_Open_1   0x800'500d   0x64  Code  Gb  call_back_fnc.o [1]
+FncCallback_TCP_Open_2   0x800'5071   0x4c  Code  Gb  call_back_fnc.o [1]
+GateKeeperHandle        0x2000'1904    0x4  Data  Gb  freertos.o [1]
+HAL_DMA_Abort            0x800'0ff1   0x54  Code  Gb  stm32l0xx_hal_dma.o [1]
+HAL_DMA_Abort_IT         0x800'1045   0x5e  Code  Gb  stm32l0xx_hal_dma.o [1]
+HAL_Delay                0x800'4fe1   0x2c  Code  Wk  stm32l0xx_hal.o [1]
+HAL_GPIO_Init            0x800'1e61  0x218  Code  Gb  stm32l0xx_hal_gpio.o [1]
+HAL_GPIO_WritePin        0x800'2081   0x1a  Code  Gb  stm32l0xx_hal_gpio.o [1]
+HAL_GetTick              0x800'0fe5    0xc  Code  Wk  stm32l0xx_hal.o [1]
+HAL_IncTick              0x800'3019   0x18  Code  Wk  stm32l0xx_hal.o [1]
+HAL_Init                 0x800'2721   0x28  Code  Gb  stm32l0xx_hal.o [1]
+HAL_InitTick             0x800'2195   0x68  Code  Gb  stm32l0xx_hal_timebase_tim.o [1]
+HAL_MspInit              0x800'382d   0x30  Code  Gb  stm32l0xx_hal_msp.o [1]
+HAL_NVIC_EnableIRQ       0x800'2179    0xe  Code  Gb  stm32l0xx_hal_cortex.o [1]
+HAL_NVIC_SetPriority     0x800'2165   0x14  Code  Gb  stm32l0xx_hal_cortex.o [1]
+HAL_RCCEx_PeriphCLKConfig
+                         0x800'2e21  0x1c0  Code  Gb  stm32l0xx_hal_rcc_ex.o [1]
+HAL_RCC_ClockConfig      0x800'16fd  0x1cc  Code  Gb  stm32l0xx_hal_rcc.o [1]
+HAL_RCC_GetClockConfig   0x800'19e1   0x3a  Code  Gb  stm32l0xx_hal_rcc.o [1]
+HAL_RCC_GetHCLKFreq      0x800'1997    0x6  Code  Gb  stm32l0xx_hal_rcc.o [1]
+HAL_RCC_GetPCLK1Freq     0x800'19a1   0x18  Code  Gb  stm32l0xx_hal_rcc.o [1]
+HAL_RCC_GetPCLK2Freq     0x800'19b9   0x18  Code  Gb  stm32l0xx_hal_rcc.o [1]
+HAL_RCC_GetSysClockFreq
+                         0x800'18e1   0xb6  Code  Gb  stm32l0xx_hal_rcc.o [1]
+HAL_RCC_OscConfig        0x800'1129  0x5a8  Code  Gb  stm32l0xx_hal_rcc.o [1]
+HAL_RTCEx_AlarmBEventCallback
+                         0x800'4fdf    0x2  Code  Wk  stm32l0xx_hal_rtc_ex.o [1]
+HAL_RTC_AlarmIRQHandler
+                         0x800'3d79   0x60  Code  Gb  stm32l0xx_hal_rtc.o [1]
+HAL_RTC_Init             0x800'385d   0xe0  Code  Gb  stm32l0xx_hal_rtc.o [1]
+HAL_RTC_MspInit          0x800'28ad   0x2a  Code  Gb  rtc.o [1]
+HAL_RTC_SetAlarm_IT      0x800'3b85  0x1e2  Code  Gb  stm32l0xx_hal_rtc.o [1]
+HAL_RTC_SetDate          0x800'3a6d  0x10c  Code  Gb  stm32l0xx_hal_rtc.o [1]
+HAL_RTC_SetTime          0x800'393d  0x12c  Code  Gb  stm32l0xx_hal_rtc.o [1]
+HAL_RTC_WaitForSynchro   0x800'3ddd   0x32  Code  Gb  stm32l0xx_hal_rtc.o [1]
+HAL_TIM_Base_Init        0x800'3031   0x4c  Code  Gb  stm32l0xx_hal_tim.o [1]
+HAL_TIM_Base_Start_IT    0x800'307d   0x6c  Code  Gb  stm32l0xx_hal_tim.o [1]
+HAL_TIM_IRQHandler       0x800'30f5  0x164  Code  Gb  stm32l0xx_hal_tim.o [1]
+HAL_TIM_PeriodElapsedCallback
+                         0x800'1e31   0x14  Code  Gb  main.o [1]
+HAL_UARTEx_WakeupCallback
+                         0x800'1125    0x2  Code  Wk  stm32l0xx_hal_uart_ex.o [1]
+HAL_UART_IRQHandler      0x800'02c1  0x320  Code  Gb  stm32l0xx_hal_uart.o [1]
+HAL_UART_Init            0x800'00c1   0x7a  Code  Gb  stm32l0xx_hal_uart.o [1]
+HAL_UART_MspInit         0x800'0f09   0xc0  Code  Gb  usart.o [1]
+HAL_UART_Receive_IT      0x800'0231   0x8c  Code  Gb  stm32l0xx_hal_uart.o [1]
+HAL_UART_RxCpltCallback
+                         0x800'1bc5   0x74  Code  Gb  bc66_uart.o [1]
+HAL_UART_Transmit        0x800'0141   0xf0  Code  Gb  stm32l0xx_hal_uart.o [1]
+HardFault_Handler        0x800'6021    0x4  Code  Gb  stm32l0xx_it.o [1]
+Interger_To_Char         0x800'241d   0x1e  Code  Gb  my_lib.o [1]
+Interger_To_Hex          0x800'2441   0x66  Code  Gb  my_lib.o [1]
+MQTTPacket_encode        0x800'5a0d   0x34  Code  Gb  MQTTPacket.o [1]
+MQTTPacket_len           0x800'5a41   0x26  Code  Gb  MQTTPacket.o [1]
+MQTTSerialize_connect    0x800'55eb  0x18a  Code  Gb  MQTTConnectClient.o [1]
+MQTTSerialize_connectLength
+                         0x800'5561   0x8a  Code  Gb  MQTTConnectClient.o [1]
+MQTTSerialize_pingreq    0x800'57dd   0x12  Code  Gb  MQTTConnectClient.o [1]
+MQTTSerialize_publish    0x800'5811   0xc2  Code  Gb  MQTTSerializePublish.o [1]
+MQTTSerialize_publishLength
+                         0x800'57f1   0x20  Code  Gb  MQTTSerializePublish.o [1]
+MQTTSerialize_subscribe
+                         0x800'5901   0xb6  Code  Gb  MQTTSubscribeClient.o [1]
+MQTTSerialize_subscribeLength
+                         0x800'58d9   0x28  Code  Gb  MQTTSubscribeClient.o [1]
+MQTTSerialize_zero       0x800'5775   0x56  Code  Gb  MQTTConnectClient.o [1]
+MQTT_Check_Keepalive_Time
+                         0x800'293d   0x32  Code  Gb  MQTT.o [1]
+MQTT_Create_Topic_To_Sub
+                         0x800'296f   0x64  Code  Gb  MQTT.o [1]
+MQTT_Init_Connect        0x800'28e5   0x10  Code  Gb  MQTT.o [1]
+MQTT_Init_Pub_Opts       0x800'28f5   0x28  Code  Gb  MQTT.o [1]
+MQTT_Init_Sub_Opts       0x800'291d   0x20  Code  Gb  MQTT.o [1]
+MQTTstrlen               0x800'5b17   0x1a  Code  Gb  MQTTPacket.o [1]
+MX_FREERTOS_Init         0x800'2a1f   0x7c  Code  Gb  freertos.o [1]
+MX_GPIO_Init             0x800'274d   0x90  Code  Gb  gpio.o [1]
+MX_RTC_Init              0x800'27dd   0xd0  Code  Gb  rtc.o [1]
+MX_USART1_UART_Init      0x800'0ea9   0x30  Code  Gb  usart.o [1]
+MX_USART2_UART_Init      0x800'0ed9   0x30  Code  Gb  usart.o [1]
+NMI_Handler              0x800'601d    0x4  Code  Gb  stm32l0xx_it.o [1]
+PLLMulTable              0x800'64f8    0xc  Data  Gb  system_stm32l0xx.o [1]
+PendSV_Handler           0x800'5343         Code  Gb  portasm.o [1]
+Push_BC66_Message_to_Queue
+                         0x800'2623   0x1a  Code  Gb  uartWinApp.o [1]
+Push_Message_to_Queue    0x800'263d   0x16  Code  Gb  uartWinApp.o [1]
+RTC_ByteToBcd2           0x800'3e65   0x1e  Code  Gb  stm32l0xx_hal_rtc.o [1]
+RTC_EnterInitMode        0x800'3e15   0x3c  Code  Gb  stm32l0xx_hal_rtc.o [1]
+RTC_IRQHandler           0x800'6025    0xa  Code  Gb  stm32l0xx_it.o [1]
+Ready_String            0x2000'03a8    0x8  Data  Lc  uartWinApp.o [1]
+Region$$Table$$Base      0x800'614c          --   Gb  - Linker created -
+Region$$Table$$Limit     0x800'616c          --   Gb  - Linker created -
+Reset_Buffer             0x800'23fd   0x20  Code  Gb  my_lib.o [1]
+SVC_Handler              0x800'5381         Code  Gb  portasm.o [1]
+Search_String_In_Buffer
+                         0x800'22dd   0x66  Code  Gb  my_lib.o [1]
+Search_String_Location_In_Buffer
+                         0x800'2343   0x5c  Code  Gb  my_lib.o [1]
+Search_String_Location_In_Buffer_2
+                         0x800'239f   0x5e  Code  Gb  my_lib.o [1]
+Send_Debug_Infor         0x800'51df   0x70  Code  Gb  call_back_fnc.o [1]
+StartGateKeeper          0x800'2d2d   0x20  Code  Gb  freertos.o [1]
+StartUART_WinApp_Task    0x800'2ced   0x3a  Code  Gb  freertos.o [1]
+Start_BC66_Task          0x800'2a9b  0x1ca  Code  Gb  freertos.o [1]
+SysTick_Handler          0x800'4cbf   0x20  Code  Gb  port.o [1]
+SystemClock_Config       0x800'1d87   0x94  Code  Gb  main.o [1]
+SystemCoreClock         0x2000'0344    0x4  Data  Gb  system_stm32l0xx.o [1]
+SystemInit               0x800'65b5    0x2  Code  Gb  system_stm32l0xx.o [1]
+TIM2_IRQHandler          0x800'602f   0x12  Code  Gb  stm32l0xx_it.o [1]
+TIM_Base_SetConfig       0x800'3259   0x5e  Code  Lc  stm32l0xx_hal_tim.o [1]
+UART_AdvFeatureConfig    0x800'092d   0xde  Code  Gb  stm32l0xx_hal_uart.o [1]
+UART_BC66Handle         0x2000'18fc    0x4  Data  Gb  freertos.o [1]
+UART_BC66_Task           0x800'2c75   0x5e  Code  Gb  freertos.o [1]
+UART_CheckIdleState      0x800'0a15   0x64  Code  Gb  stm32l0xx_hal_uart.o [1]
+UART_DMAAbortOnError     0x800'0cd1   0x18  Code  Lc  stm32l0xx_hal_uart.o [1]
+UART_EndRxTransfer       0x800'0c59   0x62  Code  Lc  stm32l0xx_hal_uart.o [1]
+UART_EndTransmit_IT      0x800'0ce9   0x2e  Code  Lc  stm32l0xx_hal_uart.o [1]
+UART_REC_WIN            0x2000'0348   0x50  Data  Gb  uartWinApp.o [1]
+UART_RxISR_16BIT         0x800'0ddd   0xc6  Code  Lc  stm32l0xx_hal_uart.o [1]
+UART_RxISR_8BIT          0x800'0d17   0xc6  Code  Lc  stm32l0xx_hal_uart.o [1]
+UART_Send_Data_To_Terminal
+                         0x800'2653   0x42  Code  Gb  uartWinApp.o [1]
+UART_SetConfig           0x800'05f5  0x328  Code  Gb  stm32l0xx_hal_uart.o [1]
+UART_Start_Receive_IT    0x800'0b65   0xd0  Code  Gb  stm32l0xx_hal_uart.o [1]
+UART_WaitOnFlagUntilTimeout
+                         0x800'0a7d   0xe2  Code  Gb  stm32l0xx_hal_uart.o [1]
+UART_WinApp_TasHandle   0x2000'1900    0x4  Data  Gb  freertos.o [1]
+USART1_IRQHandler        0x800'6041    0xa  Code  Gb  stm32l0xx_it.o [1]
+USART2_IRQHandler        0x800'604b    0xa  Code  Gb  stm32l0xx_it.o [1]
+WinApp_Check_Time_Out    0x800'24a9   0x18  Code  Gb  uartWinApp.o [1]
+WinApp_Find_Extract_Signal_To_An_Array
+                         0x800'2695   0x60  Code  Gb  uartWinApp.o [1]
+WinApp_Handle_UART_Receive
+                         0x800'2555   0x4e  Code  Gb  uartWinApp.o [1]
+WinApp_RecBuff          0x2000'1328  0x12c  Data  Gb  uartWinApp.o [1]
+WinApp_Reset             0x800'253f   0x16  Code  Gb  uartWinApp.o [1]
+WinApp_UART_Check_Receive_Process_Status
+                         0x800'2513   0x2c  Code  Gb  uartWinApp.o [1]
+WinUart                 0x2000'0398   0x10  Data  Gb  uartWinApp.o [1]
+_LocaleC_isspace         0x800'5b41   0x14  Code  Gb  xlocale_c.o [2]
+_LocaleC_isupper         0x800'5b35    0x2  Code  Gb  xlocale_c.o [2]
+_LocaleC_tolower         0x800'5b55    0xc  Code  Gb  xlocale_c.o [2]
+__NVIC_EnableIRQ         0x800'20c1   0x18  Code  Lc  stm32l0xx_hal_cortex.o [1]
+__NVIC_SetPriority       0x800'20d9   0x8c  Code  Lc  stm32l0xx_hal_cortex.o [1]
+__aeabi_idiv             0x800'1b0d         Code  Gb  I32DivModFast.o [4]
+__aeabi_idiv0            0x800'2211         Code  Gb  IntDivZer.o [4]
+__aeabi_idivmod          0x800'1b0d         Code  Gb  I32DivModFast.o [4]
+__aeabi_ldiv0            0x800'220d         Code  Gb  I64DivZer.o [4]
+__aeabi_lmul             0x800'1a45         Code  Gb  I64Mul.o [4]
+__aeabi_memcpy           0x800'4389         Code  Gb  ABImemcpy.o [4]
+__aeabi_memcpy4          0x800'4355         Code  Gb  ABImemcpy.o [4]
+__aeabi_memcpy8          0x800'4355         Code  Gb  ABImemcpy.o [4]
+__aeabi_memset           0x800'2215         Code  Gb  ABImemset.o [4]
+__aeabi_uidiv            0x800'1b13         Code  Gb  I32DivModFast.o [4]
+__aeabi_uidivmod         0x800'1b13         Code  Gb  I32DivModFast.o [4]
+__aeabi_uldivmod         0x800'1a77         Code  Gb  I64DivMod.o [4]
+__cmain                  0x800'616d         Code  Gb  cmain.o [4]
+__exit                   0x800'61a5   0x14  Code  Gb  exit.o [5]
+__iar_Memchr             0x800'59f5         Code  Gb  memchr.o [4]
+__iar_Memcpy             0x800'4395         Code  Gb  ABImemcpy.o [4]
+__iar_Memset4_word       0x800'2235         Code  Gb  ABImemset.o [4]
+__iar_Memset_word        0x800'2221         Code  Gb  ABImemset.o [4]
+__iar_Stoulx             0x800'5405  0x14c  Code  Gb  iar_Stoulx.o [2]
+__iar_Strchr             0x800'59bd         Code  Gb  strchr.o [4]
+__iar_data_init3         0x800'6101   0x28  Code  Gb  data_init.o [4]
+__iar_globLocale        0x2000'03b0   0x48  Data  Lc  xlocale_c.o [2]
+__iar_global_Locale      0x800'5b61    0x4  Code  Gb  xlocale_c.o [2]
+__iar_lz77_init_single3
+                         0x800'10a7   0x7e  Code  Gb  lz77_init_single.o [4]
+__iar_program_start      0x800'6505         Code  Gb  cstartup_M.o [4]
+__iar_zero_init3         0x800'6069   0x3c  Code  Gb  zero_init3.o [4]
+__low_level_init         0x800'618b    0x4  Code  Gb  low_level_init.o [2]
+__vector_table           0x800'0000         Data  Gb  startup_stm32l082xx.o [1]
+_call_main               0x800'6179         Code  Gb  cmain.o [4]
+_exit                    0x800'6199         Code  Gb  cexit.o [4]
+_main                    0x800'6187         Code  Gb  cmain.o [4]
+atoi                     0x800'5551    0x4  Code  Gb  iar_Stoulx.o [2]
+bc66_rec_UART           0x2000'0230    0x8  Data  Gb  bc66_uart.o [1]
+dTypeArr_set_AT          0x800'5b68  0x400  Data  Gb  bc66_cmd.o [1]
+dType_MQTT_watermetter  0x2000'18d4   0x10  Data  Gb  MQTT.o [1]
+dType_TCP_close_reason   0x800'60d8   0x28  Data  Gb  bc66_cmd.o [1]
+dType_water_NB_IoT      0x2000'0000  0x20c  Data  Gb  bc66_cmd.o [1]
+deba                     0x800'65b2    0x1  Data  Gb  bc66_cmd.o [1]
+digits                   0x800'5ff4   0x28  Data  Lc  iar_Stoulx.o [2]
+event                   0x2000'1964    0x1  Data  Gb  freertos.o [1]
+exit                     0x800'618f    0x8  Code  Gb  exit.o [2]
+fncAddressHandle         0x800'2507    0x4  Code  Gb  uartWinApp.o [1]
+fncDataHandle            0x800'250b    0x4  Code  Gb  uartWinApp.o [1]
+fncEndHandle             0x800'250f    0x4  Code  Gb  uartWinApp.o [1]
+fncIdHandle              0x800'24cd   0x3a  Code  Gb  uartWinApp.o [1]
+fncReadyHandle           0x800'24c1    0xc  Code  Gb  uartWinApp.o [1]
+hrtc                    0x2000'1834   0x24  Data  Gb  rtc.o [1]
+htim2                   0x2000'17cc   0x40  Data  Gb  stm32l0xx_hal_timebase_tim.o [1]
+huart1                  0x2000'1670   0x84  Data  Gb  usart.o [1]
+huart2                  0x2000'16f4   0x84  Data  Gb  usart.o [1]
+isspace                  0x800'59cf   0x12  Code  Gb  isspace.o [2]
+itoa                     0x800'2265   0x60  Code  Gb  my_lib.o [1]
+itoa::num               0x2000'0314   0x28  Data  Lc  my_lib.o [1]
+main                     0x800'1d41   0x46  Code  Gb  main.o [1]
+makeFreeRtosPriority     0x800'2d7d   0x18  Code  Lc  cmsis_os.o [1]
+memchr                   0x800'59f5         Code  Gb  memchr.o [4]
+memset                   0x800'1e4b   0x14  Code  Gb  memset.o [4]
+ndigs                    0x800'5fcc   0x28  Data  Lc  iar_Stoulx.o [2]
+osDelay                  0x800'2dff   0x22  Code  Gb  cmsis_os.o [1]
+osKernelStart            0x800'2d95    0xa  Code  Gb  cmsis_os.o [1]
+osThreadCreate           0x800'2d9f   0x60  Code  Gb  cmsis_os.o [1]
+ping_flag               0x2000'1963    0x1  Data  Gb  freertos.o [1]
+prvAddCurrentTaskToDelayedList
+                         0x800'4b95   0x66  Code  Lc  tasks.o [1]
+prvAddNewTaskToReadyList
+                         0x800'451d   0x7c  Code  Lc  tasks.o [1]
+prvCheckTasksWaitingTermination
+                         0x800'4a21   0x38  Code  Lc  tasks.o [1]
+prvCopyDataFromQueue     0x800'36cb   0x34  Code  Lc  queue.o [1]
+prvCopyDataToQueue       0x800'3631   0x9a  Code  Lc  queue.o [1]
+prvDeleteTCB             0x800'4a59   0x38  Code  Lc  tasks.o [1]
+prvHeapInit              0x800'4f05   0x5e  Code  Lc  heap_4.o [1]
+prvIdleTask              0x800'49c3   0x16  Code  Lc  tasks.o [1]
+prvInitialiseNewQueue    0x800'338d   0x22  Code  Lc  queue.o [1]
+prvInitialiseNewTask     0x800'4481   0x9c  Code  Lc  tasks.o [1]
+prvInitialiseTaskLists   0x800'49dd   0x44  Code  Lc  tasks.o [1]
+prvInsertBlockIntoFreeList
+                         0x800'4f63   0x5c  Code  Lc  heap_4.o [1]
+prvIsQueueEmpty          0x800'376d   0x1c  Code  Lc  queue.o [1]
+prvIsQueueFull           0x800'3789   0x1e  Code  Lc  queue.o [1]
+prvResetNextTaskUnblockTime
+                         0x800'4a91   0x26  Code  Lc  tasks.o [1]
+prvSetupTimerInterrupt   0x800'4cdf   0x24  Code  Lc  port.o [1]
+prvTaskExitError         0x800'4c39   0x16  Code  Lc  port.o [1]
+prvUnlockQueue           0x800'36ff   0x6e  Code  Lc  queue.o [1]
+pvPortMalloc             0x800'4dc1   0xe2  Code  Gb  heap_4.o [1]
+pxCurrentTCB            0x2000'1924    0x4  Data  Gb  tasks.o [1]
+pxDelayedTaskList       0x2000'1928    0x4  Data  Lc  tasks.o [1]
+pxEnd                   0x2000'1908    0x4  Data  Lc  heap_4.o [1]
+pxOverflowDelayedTaskList
+                        0x2000'192c    0x4  Data  Lc  tasks.o [1]
+pxPortInitialiseStack    0x800'4c1d   0x1a  Code  Gb  port.o [1]
+pxReadyTasksLists       0x2000'15e4   0x8c  Data  Lc  tasks.o [1]
+qBC66step               0x2000'191c    0x4  Data  Gb  main.o [1]
+qPrintQueue             0x2000'1918    0x4  Data  Gb  main.o [1]
+start_string            0x2000'0238   0x10  Data  Gb  main.o [1]
+strcat                   0x800'53b9   0x1c  Code  Gb  strcat.o [2]
+strchr                   0x800'59bd         Code  Gb  strchr.o [4]
+strcpy                   0x800'37b9         Code  Gb  strcpy.o [4]
+strlen                   0x800'37a9         Code  Gb  strlen.o [4]
+strreverse               0x800'22c5   0x18  Code  Gb  my_lib.o [1]
+strstr                   0x800'53d5   0x2e  Code  Gb  strstr.o [2]
+test_MQTT_sub           0x2000'1858   0x18  Data  Gb  MQTT.o [1]
+test_TopicFiltes        0x2000'02b0    0xc  Data  Gb  MQTT.o [1]
+test_conect             0x2000'02bc   0x58  Data  Gb  MQTT.o [1]
+test_pub_array          0x2000'1454   0xc8  Data  Gb  MQTT.o [1]
+test_pub_len_payload    0x2000'03fa    0x1  Data  Gb  MQTT.o [1]
+test_pub_mes            0x2000'180c   0x28  Data  Gb  MQTT.o [1]
+test_pub_payload        0x2000'0248   0x64  Data  Gb  MQTT.o [1]
+test_pub_topic           0x800'6320   0x14  Data  Gb  MQTT.o [1]
+test_requestedQoS       0x2000'02ac    0x4  Data  Gb  MQTT.o [1]
+test_sub_array          0x2000'151c   0xc8  Data  Gb  MQTT.o [1]
+tolower                  0x800'59e1   0x12  Code  Gb  tolower.o [2]
+ucHeap                  0x2000'03fc  0xc00  Data  Lc  heap_4.o [1]
+ui16_Buflen             0x2000'03f8    0x2  Data  Gb  call_back_fnc.o [1]
+ui32_send_cplt          0x2000'18f4    0x4  Data  Gb  call_back_fnc.o [1]
+ui32_tick_count         0x2000'18ec    0x4  Data  Gb  bc66_cmd.o [1]
+ui32_time_send          0x2000'18f0    0x4  Data  Gb  call_back_fnc.o [1]
+ui8_Buf                 0x2000'11fc  0x12c  Data  Gb  call_back_fnc.o [1]
+ui8_sub_dup             0x2000'1962    0x1  Data  Gb  call_back_fnc.o [1]
+ulSetInterruptMaskFromISR
+                         0x800'53a5         Code  Gb  portasm.o [1]
+uwTick                  0x2000'1920    0x4  Data  Gb  stm32l0xx_hal.o [1]
+uwTickFreq              0x2000'03fb    0x1  Data  Gb  stm32l0xx_hal.o [1]
+uwTickPrio              0x2000'0340    0x4  Data  Gb  stm32l0xx_hal.o [1]
+uxCriticalNesting       0x2000'033c    0x4  Data  Lc  port.o [1]
+uxCurrentNumberOfTasks  0x2000'1934    0x4  Data  Lc  tasks.o [1]
+uxDeletedTasksWaitingCleanUp
+                        0x2000'1930    0x4  Data  Lc  tasks.o [1]
+uxListRemove             0x800'4d97   0x2a  Code  Gb  list.o [1]
+uxPendedTicks           0x2000'1944    0x4  Data  Lc  tasks.o [1]
+uxSchedulerSuspended    0x2000'195c    0x4  Data  Lc  tasks.o [1]
+uxTaskNumber            0x2000'1950    0x4  Data  Lc  tasks.o [1]
+uxTopReadyPriority      0x2000'193c    0x4  Data  Lc  tasks.o [1]
+vApplicationGetIdleTaskMemory
+                         0x800'2a11    0xe  Code  Gb  freertos.o [1]
+vClearInterruptMaskFromISR
+                         0x800'53ad         Code  Gb  portasm.o [1]
+vListInitialise          0x800'4d25   0x1e  Code  Gb  list.o [1]
+vListInitialiseItem      0x800'4d43    0x6  Code  Gb  list.o [1]
+vListInsert              0x800'4d61   0x36  Code  Gb  list.o [1]
+vListInsertEnd           0x800'4d49   0x18  Code  Gb  list.o [1]
+vPortEnterCritical       0x800'4c8d   0x14  Code  Gb  port.o [1]
+vPortExitCritical        0x800'4ca1   0x1e  Code  Gb  port.o [1]
+vPortFree                0x800'4ea5   0x60  Code  Gb  heap_4.o [1]
+vPortStartFirstTask      0x800'5383         Code  Gb  portasm.o [1]
+vPortYield               0x800'4c79   0x12  Code  Gb  port.o [1]
+vSetMSP                  0x800'533d         Code  Gb  portasm.o [1]
+vTaskDelay               0x800'4599   0x32  Code  Gb  tasks.o [1]
+vTaskInternalSetTimeOutState
+                         0x800'4935    0xe  Code  Gb  tasks.o [1]
+vTaskMissedYield         0x800'49bb    0x8  Code  Gb  tasks.o [1]
+vTaskPlaceOnEventList    0x800'4881   0x26  Code  Gb  tasks.o [1]
+vTaskStartScheduler      0x800'45e9   0x6a  Code  Gb  tasks.o [1]
+vTaskSuspendAll          0x800'4655    0xa  Code  Gb  tasks.o [1]
+vTaskSwitchContext       0x800'4825   0x5c  Code  Gb  tasks.o [1]
+writeCString             0x800'5aa3   0x2e  Code  Gb  MQTTPacket.o [1]
+writeChar                0x800'5a67    0xc  Code  Gb  MQTTPacket.o [1]
+writeInt                 0x800'5a73   0x30  Code  Gb  MQTTPacket.o [1]
+writeMQTTString          0x800'5ad1   0x46  Code  Gb  MQTTPacket.o [1]
+xBlockAllocatedBit      0x2000'1914    0x4  Data  Lc  heap_4.o [1]
+xDelayedTaskList1       0x2000'1870   0x14  Data  Lc  tasks.o [1]
+xDelayedTaskList2       0x2000'1884   0x14  Data  Lc  tasks.o [1]
+xFreeBytesRemaining     0x2000'190c    0x4  Data  Lc  heap_4.o [1]
+xHeapStructSize          0x800'657c    0x4  Data  Lc  heap_4.o [1]
+xIdleStack              0x2000'0ffc  0x200  Data  Lc  freertos.o [1]
+xIdleTaskHandle         0x2000'1958    0x4  Data  Lc  tasks.o [1]
+xIdleTaskTCBBuffer      0x2000'1778   0x54  Data  Lc  freertos.o [1]
+xMinimumEverFreeBytesRemaining
+                        0x2000'1910    0x4  Data  Lc  heap_4.o [1]
+xNextTaskUnblockTime    0x2000'1954    0x4  Data  Lc  tasks.o [1]
+xNumOfOverflows         0x2000'194c    0x4  Data  Lc  tasks.o [1]
+xPendingReadyList       0x2000'1898   0x14  Data  Lc  tasks.o [1]
+xPortStartScheduler      0x800'4c4f   0x2a  Code  Gb  port.o [1]
+xQueueGenericCreate      0x800'3345   0x48  Code  Gb  queue.o [1]
+xQueueGenericReset       0x800'32cd   0x76  Code  Gb  queue.o [1]
+xQueueGenericSend        0x800'33b1  0x14e  Code  Gb  queue.o [1]
+xQueueReceive            0x800'3501  0x130  Code  Gb  queue.o [1]
+xSchedulerRunning       0x2000'1940    0x4  Data  Lc  tasks.o [1]
+xStart                  0x2000'18e4    0x8  Data  Lc  heap_4.o [1]
+xSuspendedTaskList      0x2000'18c0   0x14  Data  Lc  tasks.o [1]
+xTaskCheckForTimeOut     0x800'494d   0x6e  Code  Gb  tasks.o [1]
+xTaskCreate              0x800'4415   0x6c  Code  Gb  tasks.o [1]
+xTaskCreateStatic        0x800'43a5   0x70  Code  Gb  tasks.o [1]
+xTaskGetSchedulerState   0x800'4ab7   0x1e  Code  Gb  tasks.o [1]
+xTaskIncrementTick       0x800'472d   0xe2  Code  Gb  tasks.o [1]
+xTaskPriorityDisinherit
+                         0x800'4ae9   0x6e  Code  Gb  tasks.o [1]
+xTaskRemoveFromEventList
+                         0x800'48b5   0x6a  Code  Gb  tasks.o [1]
+xTaskResumeAll           0x800'4661   0xb8  Code  Gb  tasks.o [1]
+xTasksWaitingTermination
+                        0x2000'18ac   0x14  Data  Lc  tasks.o [1]
+xTickCount              0x2000'1938    0x4  Data  Lc  tasks.o [1]
+xYieldPending           0x2000'1948    0x4  Data  Lc  tasks.o [1]
+
+
+[1] = D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\EWARM\Host\Obj
+[2] = dl6M_tlf.a
+[3] = m6M_tl.a
+[4] = rt6M_tl.a
+[5] = shb_l.a
+
+  23'701 bytes of readonly  code memory
+   2'600 bytes of readonly  data memory
+   7'525 bytes of readwrite data memory
+
+Errors: none
+Warnings: none

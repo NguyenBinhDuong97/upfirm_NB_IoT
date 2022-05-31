@@ -1,7 +1,7 @@
 call_back_fnc.c:32:9:FncCallback_TCP_Open_1	112	static
 call_back_fnc.c:53:9:FncCallback_TCP_Open_2	48	static
 call_back_fnc.c:82:9:FncCallback_MQTT_Open_1	16	static
-call_back_fnc.c:100:9:FncCallback_MQTT_Pub_1	88	static
+call_back_fnc.c:100:9:FncCallback_MQTT_Pub_1	72	static
 call_back_fnc.c:131:9:FncCallback_MQTT_Pub_2	24	static
 call_back_fnc.c:147:9:FncCallback_MQTT_Ping_1	16	static
 call_back_fnc.c:164:9:FncCallback_MQTT_Ping_2	24	static

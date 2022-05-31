@@ -13,6 +13,11 @@
 		<item key="caseSensitive" value="false"/>
 		<item key="searchFlags" value="227191"/>
 		<list key="previousPatterns">
+			<item value="_UPDATE_SIG_"/>
+			<item value="fncReadyHandle"/>
+			<item value="_READY_SIG_"/>
+			<item value="e"/>
+			<item value="MQTT_Create_Topic_To_Sub"/>
 			<item value="sType_BC66"/>
 			<item value="MX_FREERTOS_Init"/>
 			<item value="s"/>

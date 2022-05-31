@@ -99,25 +99,25 @@ uint32_t ui32_time_send = 0;
 uint32_t ui32_send_cplt = 0;
 uint8_t FncCallback_MQTT_Pub_1 (void)
 {
-	uint8_t ui8Arr_Payload[20] = {0x00};
-	uint16_t ui16_Arr_len = 20;
+//	uint8_t ui8Arr_Payload[20] = {0x00};
+//	uint16_t ui16_Arr_len = 20;
 	uint16_t ui16_serialize_len = 0;
-	ui32_time_send++;
+//	ui32_time_send++;
 	
 	Reset_Buffer ( ui8_Buf , ui16_Buflen );
-	Interger_To_Char ( ui32_send_cplt , ui8Arr_Payload , ui16_Arr_len );
+//	Interger_To_Char ( ui32_send_cplt , ui8Arr_Payload , ui16_Arr_len );
+//
+//	test_pub_mes.buf = ui8_Buf;
+//	test_pub_mes.buflen = ui16_Buflen;
+//	test_pub_mes.qos = 1;
+//	test_pub_mes.retained = 0;
+//	test_pub_mes.packetid = 39;
+//	test_pub_mes.topicName.cstring = (char*)"0866495609";
+//	test_pub_mes.payload = (unsigned char*)ui8Arr_Payload;
+//	test_pub_mes.payloadlen = strlen( (char*)ui8Arr_Payload );
 	
-	test_pub_mes.buf = ui8_Buf;
-	test_pub_mes.buflen = ui16_Buflen;
-	test_pub_mes.qos = 1;
-	test_pub_mes.retained = 0;
-	test_pub_mes.packetid = 39;
-	test_pub_mes.topicName.cstring = (char*)"0866495609";
-	test_pub_mes.payload = (unsigned char*)ui8Arr_Payload;
-	test_pub_mes.payloadlen = strlen( (char*)ui8Arr_Payload );
-	
-    ui16_serialize_len = MQTTSerialize_publish ( test_pub_mes.buf , test_pub_mes.buflen , test_pub_mes.dup , test_pub_mes.qos , test_pub_mes.retained ,
-	                                              test_pub_mes.packetid  , test_pub_mes.topicName , test_pub_mes.payload , test_pub_mes.payloadlen );	
+    ui16_serialize_len = MQTTSerialize_publish (ui8_Buf , ui16_Buflen, test_pub_mes.dup, test_pub_mes.qos, test_pub_mes.retained,
+	                                            test_pub_mes.packetid, test_pub_mes.topicName, test_pub_mes.payload, test_pub_mes.payloadlen);
 	BC66_UART_Send_Data_To_BC66 ( ui8_Buf , ui16_serialize_len );
 	osDelay (100);
 	return 1;
@@ -131,7 +131,7 @@ uint8_t FncCallback_MQTT_Pub_1 (void)
 uint8_t FncCallback_MQTT_Pub_2 (void)
 {
 	uint8_t ui8_response_receive = 0;
-	ui8_response_receive = Search_String_In_Buffer ( (uint8_t*)dType_water_NB_IoT.dType_bc66_receive.ui8buf_rx , CountReceive_u16 , (uint8_t*)"+QIURC: \"recv\",0,4,4002" , 23 );
+	ui8_response_receive = Search_String_In_Buffer ( (uint8_t*)dType_water_NB_IoT.dType_bc66_receive.ui8buf_rx , CountReceive_u16 , (uint8_t*)"4002" , 4 );
 	if ( ui8_response_receive != FALSE )
 		return 1;
 	else 

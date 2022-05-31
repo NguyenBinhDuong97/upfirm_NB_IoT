@@ -15,11 +15,11 @@ extern uint8_t event;
 
 sUartWinApp UART_REC_WIN[]=
 {
-    { _READY_SIG_,         { (uint8_t*)"ready", 5 },          fncReadyHandle },
-	{ _ID_SIG_,            { (uint8_t*)"id", 2},              fncIdHandle},
-	{ _UPDATE_SIG_,        { (uint8_t*)"address", 7 },        fncAddressHandle },
-	{ _DATA_SIG_,          { (uint8_t*)"data", 4},            fncDataHandle},
-	{ _END_SIG_,           { (uint8_t*)"end", 3 },            fncEndHandle},
+    { _APPZONE_SIG_,       {(uint8_t*)"appzone", 7 },        fncAppZoneHandle },
+	{ _ID_SIG_,            {(uint8_t*)"id", 2},              fncIdHandle},
+	{ _ADDRESS_SIG_,       {(uint8_t*)"address", 7},         fncAddressHandle },
+	{ _DATA_SIG_,          {(uint8_t*)"data", 4},            fncDataHandle},
+	{ _END_SIG_,           {(uint8_t*)"end", 3},             fncEndHandle},
 };
 
 volatile sWinAppRec WinUart = {
@@ -36,9 +36,15 @@ sType_string uart_rec_WinApp = {
 };
 
 static sType_string Ready_String = {
-      .pData = (uint8_t*)"da nhan duoc Ready\n",
+      .pData = (uint8_t*)"da nhan duoc appzone signal\n",
 	  .u16_len_data = 19,
 };
+
+sType_string Connect_String = {
+      .pData = (uint8_t*)"Connect Success\n",
+	  .u16_len_data = 16,
+};
+/*===============================================================================*/
 
 /**
   * @brief   Check time out of event
@@ -57,9 +63,14 @@ uint8_t WinApp_Check_Time_Out ( uint32_t mark , uint32_t cycle )
 		return FALSE;
 }
 
-uint8_t fncReadyHandle(void)
+uint8_t fncAppZoneHandle(void)
 {
-	Push_Message_to_Queue( &Ready_String );
+//	Push_Message_to_Queue( &Ready_String );
+	uint8_t AppZoneArray[7] = {0x00};
+	WinApp_Find_Extract_Signal_To_An_Array(AppZoneArray, 7, _APPZONE_SIG_);
+	MQTT_Create_Message_To_Pub (AppZoneArray, 7, 0, 1, 0, 95, test_sub_array);
+    event = _MQTT_PUB_1_;
+    xQueueSendToBack( qBC66step, &event, 0 );
 	return 1;
 }
 
@@ -67,7 +78,7 @@ uint8_t fncIdHandle (void)
 {
     uint8_t IdArray[7] = {0x00};
     WinApp_Find_Extract_Signal_To_An_Array(IdArray, 7, _ID_SIG_);
-    MQTT_Create_Topic_To_Sub (IdArray, 0, 98, 1);
+    MQTT_Create_Topic_To_Sub (IdArray, 7, 0, 98, 1);
     event = _MQTT_SUBSCRIBE_1_;
     xQueueSendToBack( qBC66step, &event, 0 );
     return 1;
@@ -116,7 +127,7 @@ uint8_t WinApp_Reset(void)
 
 uint8_t WinApp_Handle_UART_Receive(void)
 {
-	for (uint8_t i = 0; i <= _END_SIG_; i++)
+	for (uint8_t i = _APPZONE_SIG_; i <= _END_SIG_; i++)
 	{
 		if (Search_String_In_Buffer (WinUart.pData, WinUart.numb_rec,
 		                             UART_REC_WIN[i].ReceiveString.pData,

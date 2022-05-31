@@ -1,0 +1,20 @@
+MQTTSerializePublish.pbi: \
+  D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\LibMQTT\source\MQTTSerializePublish.c \
+  D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\LibMQTT\inc\MQTTPacket.h \
+  D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\LibMQTT\inc/MQTTConnect.h \
+  D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\LibMQTT\inc/MQTTPacket.h \
+  D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\LibMQTT\inc/MQTTFormat.h \
+  D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\LibMQTT\inc/StackTrace.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\stdio.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\ycheck.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\yvals.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\DLib_Defaults.h \
+  C:\\Program\ Files\ (x86)\\IAR\ Systems\\Embedded\ Workbench\ 8.3\\arm\\inc\\c\\DLib_Config_Full.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\DLib_Product.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\ysizet.h \
+  D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\LibMQTT\inc/MQTTPublish.h \
+  D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\LibMQTT\inc/MQTTSubscribe.h \
+  D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\LibMQTT\inc/MQTTUnsubscribe.h \
+  D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClientEWARM\HostVer2\LibMQTT\inc\StackTrace.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\string.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\DLib_Product_string.h

@@ -23,9 +23,9 @@
 #include "stdlib.h"
 
 typedef enum{
-	_READY_SIG_,
+	_APPZONE_SIG_,
 	_ID_SIG_,
-	_UPDATE_SIG_,
+	_ADDRESS_SIG_,
 	_DATA_SIG_,
 	_END_SIG_,
 } eUartWinCaseRec;
@@ -47,8 +47,10 @@ typedef struct{
 
 extern volatile sWinAppRec WinUart;
 extern sType_string uart_rec_WinApp;
+extern sType_string Connect_String;
 
-uint8_t fncReadyHandle(void);
+
+uint8_t fncAppZoneHandle(void);
 uint8_t fncIdHandle (void);
 uint8_t fncAddressHandle (void);
 uint8_t fncDataHandle (void);

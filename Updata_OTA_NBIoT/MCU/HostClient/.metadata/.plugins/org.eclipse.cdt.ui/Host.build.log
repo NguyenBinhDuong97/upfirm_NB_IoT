@@ -1,10 +1,20 @@
-11:44:57 **** Incremental Build of configuration Debug for project Host ****
+04:11:28 **** Incremental Build of configuration Debug for project Host ****
 make -j4 all 
+arm-none-eabi-gcc "D:/Source_Tree_data/projects/NB_IoT/Update_OTA/upfirm_NB_IoT/Updata_OTA_NBIoT/MCU/HostClient/Host/BC66/Src/bc66_cmd.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L082xx -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM0 -I"D:/Source_Tree_data/projects/NB_IoT/Update_OTA/upfirm_NB_IoT/Updata_OTA_NBIoT/MCU/HostClient/Host/LibMQTT/inc" -I"D:/Source_Tree_data/projects/NB_IoT/Update_OTA/upfirm_NB_IoT/Updata_OTA_NBIoT/MCU/HostClient/Host/own_lib/inc" -I"D:/Source_Tree_data/projects/NB_IoT/Update_OTA/upfirm_NB_IoT/Updata_OTA_NBIoT/MCU/HostClient/Host/BC66/Inc" -I"D:/Source_Tree_data/projects/NB_IoT/Update_OTA/upfirm_NB_IoT/Updata_OTA_NBIoT/MCU/HostClient/Host/connect" -I"D:/Source_Tree_data/projects/NB_IoT/Update_OTA/upfirm_NB_IoT/Updata_OTA_NBIoT/MCU/HostClient/Host/uartWinApp" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"BC66/Src/bc66_cmd.d" -MT"BC66/Src/bc66_cmd.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "BC66/Src/bc66_cmd.o"
+arm-none-eabi-gcc -o "Host.elf" @"objects.list"   -mcpu=cortex-m0plus -T"D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClient\Host\STM32L082KZTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Host.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Host.elf
+ 
+arm-none-eabi-objdump -h -S  Host.elf  > "Host.list"
+arm-none-eabi-objcopy  -O binary  Host.elf  "Host.bin"
 arm-none-eabi-size   Host.elf 
    text	   data	    bss	    dec	    hex	filename
-  37584	   1016	   7056	  45656	   b258	Host.elf
+  37464	   1024	   7040	  45528	   b1d8	Host.elf
 Finished building: default.size.stdout
  
+Finished building: Host.bin
+ 
+Finished building: Host.list
+ 
 
-11:44:57 Build Finished. 0 errors, 0 warnings. (took 735ms)
+04:11:30 Build Finished. 0 errors, 0 warnings. (took 1s.811ms)
 
