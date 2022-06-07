@@ -105,7 +105,7 @@ int main(void)
   MX_USART2_UART_Init();
   MX_RTC_Init();
   /* USER CODE BEGIN 2 */
-  BC66_UART_Receive_Init ();
+  BC66_UART_Receive_Init();
   HAL_UART_Receive_IT (&uart_debug, (uint8_t*)&WinUart.data, 1); //enable receive interrupt
   BC66_UART_Send_Data_To_Terminal (start_string, strlen ((char*)"Staring...\r\n"));
   MQTT_Init_Connect();

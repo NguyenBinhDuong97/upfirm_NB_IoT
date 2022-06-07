@@ -3,4 +3,8 @@ WinUart
 test_TopicFiltes[0].cstring
 test_MQTT_sub
 test_TopicFiltes[0]
-topic
+test_pub_mes
+dType_water_NB_IoT
+dType_MQTT_watermetter
+sub_flag
+ping_flag

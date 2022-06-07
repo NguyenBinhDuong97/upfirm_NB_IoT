@@ -8,6 +8,7 @@
 #include "uartWinnApp.h"
 
 uint8_t WinApp_RecBuff[300];
+uint8_t sub_flag = OFF;
 
 extern QueueHandle_t qPrintQueue;
 extern QueueHandle_t qBC66step;
@@ -17,7 +18,7 @@ sUartWinApp UART_REC_WIN[]=
 {
     { _APPZONE_SIG_,       {(uint8_t*)"appzone", 7 },        fncAppZoneHandle },
 	{ _ID_SIG_,            {(uint8_t*)"id", 2},              fncIdHandle},
-	{ _ADDRESS_SIG_,       {(uint8_t*)"address", 7},         fncAddressHandle },
+//	{ _ADDRESS_SIG_,       {(uint8_t*)"address", 7},         fncAddressHandle },
 	{ _DATA_SIG_,          {(uint8_t*)"data", 4},            fncDataHandle},
 	{ _END_SIG_,           {(uint8_t*)"end", 3},             fncEndHandle},
 };
@@ -69,6 +70,10 @@ uint8_t fncAppZoneHandle(void)
 	uint8_t AppZoneArray[7] = {0x00};
 	WinApp_Find_Extract_Signal_To_An_Array(AppZoneArray, 7, _APPZONE_SIG_);
 	MQTT_Create_Message_To_Pub (AppZoneArray, 7, 0, 1, 0, 95, test_sub_array);
+	while (dType_water_NB_IoT.dType_AT.ui8_pointer != _IDLE_)
+	{
+		osDelay(1);
+	}
     event = _MQTT_PUB_1_;
     xQueueSendToBack( qBC66step, &event, 0 );
 	return 1;
@@ -79,8 +84,13 @@ uint8_t fncIdHandle (void)
     uint8_t IdArray[7] = {0x00};
     WinApp_Find_Extract_Signal_To_An_Array(IdArray, 7, _ID_SIG_);
     MQTT_Create_Topic_To_Sub (IdArray, 7, 0, 98, 1);
+    while (dType_water_NB_IoT.dType_AT.ui8_pointer != _IDLE_)
+    {
+    	osDelay(1);
+    }
     event = _MQTT_SUBSCRIBE_1_;
     xQueueSendToBack( qBC66step, &event, 0 );
+    sub_flag= ON;
     return 1;
 };
 
@@ -91,6 +101,17 @@ uint8_t fncAddressHandle (void)
 
 uint8_t fncDataHandle (void)
 {
+	uint8_t lengthArray = 0;
+	uint8_t ArrayPub[12] = {0x00};
+    WinApp_Find_Extract_Data_Signal_To_An_Array (ArrayPub);
+    lengthArray =  strlen ((char*)ArrayPub);
+    MQTT_Create_Message_To_Pub (ArrayPub, lengthArray, 0, 1, 0, 99, test_sub_array);
+    while (dType_water_NB_IoT.dType_AT.ui8_pointer != _IDLE_)
+    {
+    	osDelay(1);
+    }
+    event = _MQTT_PUB_1_;
+    xQueueSendToBack( qBC66step, &event, 0 );
 	return 1;
 };
 
@@ -202,5 +223,43 @@ uint8_t WinApp_Find_Extract_Signal_To_An_Array (uint8_t *array, uint16_t numb_el
     }
 	return 1;
 }
+
+/*
+ *
+ * @param array pointer point to array that store data will be publish through MQTT
+ */
+uint8_t WinApp_Find_Extract_Data_Signal_To_An_Array (uint8_t *array)
+{
+	int data_length = 0;
+	uint8_t data_length_array[3] = {0x00};
+
+    uint8_t *pointer = NULL;
+    pointer = Search_String_Location_In_Buffer_2(WinUart.pData, WinUart.numb_rec,
+    		                                   UART_REC_WIN[_DATA_SIG_].ReceiveString.pData,
+											   UART_REC_WIN[_DATA_SIG_].ReceiveString.u16_len_data);
+    if (pointer == NULL)
+    	return 0;
+    else
+    {
+        pointer = pointer + 4; // "data" co 4 ki tu
+        for (uint8_t i = 0; i < 3; i++)
+        {
+    	    *(data_length_array + i) = *(pointer + i);
+        }
+    	data_length = atoi ((char*)data_length_array);
+    	pointer = pointer + 3;
+    	for (int i = 0; i < data_length; i++)
+    	{
+    		 *(array + i) = *(pointer + i);
+    	}
+    }
+	return 1;
+}
+
+
+
+
+
+
 
 

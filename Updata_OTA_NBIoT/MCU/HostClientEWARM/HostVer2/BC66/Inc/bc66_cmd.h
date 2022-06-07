@@ -31,7 +31,7 @@ struct_Gdgdfgdf sTesst;
 
 
 /* defination macro of uart response process checking cycle */
-#define UART_CHECK_CYCLE 50UL
+#define UART_CHECK_CYCLE 40UL
 
 /* defination macro of maximum time that process allow to not reset the module */
 #define MAX_FAIL_TIME 10UL
@@ -217,7 +217,7 @@ void BC66_Handler_TCP_Close_TCP_Max_Open_Fail (void);
 void BC66_Handler_TCP_Close_MQTT_Max_Ping_Fail (void);
 void BC66_TCP_Close_Scan_And_Handler_Error ( void );
 
-void BC66_Check_MQTT_Receive ( void );
+uint8_t BC66_Check_MQTT_Receive ( void );
 
 void BC66_WakeUp_DeepSleep ( void );
 /*----------------------------------------------------------------------*/

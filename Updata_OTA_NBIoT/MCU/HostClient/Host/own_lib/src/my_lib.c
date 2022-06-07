@@ -380,8 +380,28 @@ uint8_t  Interger_To_Hex (int decimal, uint8_t *hexcimal)
 	return 1;
 }
 
+uint8_t Convert_Char_To_Hex (uint8_t *array, uint16_t arrayLength)
+{
+	uint8_t HexChar[2] = {0x00};
+	uint8_t fictionArray[200] = {0x00};
+	uint16_t HexArrayLength = 0;
+	int value = 0;
+	char character = 0;
 
-
+	memcpy (fictionArray, array, arrayLength);
+	Reset_Buffer(array, arrayLength);
+	for (uint16_t i = 0; i < arrayLength; i++)
+	{
+		Reset_Buffer(HexChar, 2);
+		value = *(fictionArray + i);
+		Interger_To_Hex (value, HexChar);
+		for (uint8_t k = 0; k < 2; k++)
+		{
+			*(array + HexArrayLength++) = *(HexChar + k);
+		}
+	}
+	return 1;
+}
 
 
 

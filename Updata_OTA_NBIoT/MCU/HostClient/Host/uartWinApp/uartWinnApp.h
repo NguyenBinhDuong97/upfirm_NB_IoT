@@ -25,7 +25,7 @@
 typedef enum{
 	_APPZONE_SIG_,
 	_ID_SIG_,
-	_ADDRESS_SIG_,
+//	_ADDRESS_SIG_,
 	_DATA_SIG_,
 	_END_SIG_,
 } eUartWinCaseRec;
@@ -48,6 +48,7 @@ typedef struct{
 extern volatile sWinAppRec WinUart;
 extern sType_string uart_rec_WinApp;
 extern sType_string Connect_String;
+extern uint8_t sub_flag;
 
 
 uint8_t fncAppZoneHandle(void);
@@ -67,4 +68,5 @@ uint8_t Push_BC66_Message_to_Queue (void);
 uint8_t Push_WinApp_Message_to_Queue (void);
 void    UART_Send_Data_To_Terminal ( sType_string *Message );
 uint8_t Push_Message_to_Queue (sType_string *Message);
+uint8_t WinApp_Find_Extract_Data_Signal_To_An_Array (uint8_t *array);
 #endif /* UARTWINNAPP_H_ */

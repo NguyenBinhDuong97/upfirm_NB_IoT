@@ -61,6 +61,8 @@ extern QueueHandle_t qPrintQueue;
 uint8_t ping_flag = OFF;
 //uint8_t BC66send_flag = OFF;
 //uint8_t BC
+BaseType_t xStatus;
+
 /* USER CODE END Variables */
 osThreadId BC66_TaskHandle;
 osThreadId UART_BC66Handle;
@@ -171,7 +173,11 @@ void Start_BC66_Task(void const * argument)
   /* USER CODE BEGIN Start_BC66_Task */
  // dType_water_NB_IoT.dType_bc66_reset.ui8_fail_time == MAX_FAIL_TIME;
   event = _PWR_ON_;
-  xQueueSendToBack( qBC66step, &event, 0 );
+  xStatus = xQueueSendToBack( qBC66step, &event, 0 );
+  if (xStatus != pdPASS)
+  {
+	  BC66_UART_Send_Data_To_Terminal ((uint8_t*)"loi push\r\n", 10);
+  }
   /* Infinite loop */
   for(;;)
   {
@@ -321,27 +327,33 @@ void UART_BC66_Task(void const * argument)
 		{
 			uart_mark_time = ui32_tick_count;
 			dType_water_NB_IoT.dType_AT.ui8_result = NOT_MATCH;
+
 		   if ( (BC66_UART_Check_Receive_Process_Status() == DONE) && (CountReceive_u16 !=0) )
 		   {
 				dType_water_NB_IoT.dType_AT.ui8_result = BC66_Check_AT_Response ( dType_water_NB_IoT.dType_AT.ui8_pointer );
-
+				Push_BC66_Message_to_Queue();
+			    if (sub_flag == ON)
+				BC66_Check_MQTT_Receive ();
+			    BC66_UART_Clear_BC66_Data ();
+				CountReceive_u16 = 0;
 		 /*----------------------------------------------*/
 			// kiem tra va thuc hien cac tac vu URC gui ve
-				if ( dType_water_NB_IoT.dType_bc66_reset.ui8_reset_rx_buf_flag == NO )
-				{
-//				  dType_water_NB_IoT.dType_AT.dType_tcp.ui8_ena_send = BC66_Check_Ready_To_Send_Data_TCP();
-//				  dType_water_NB_IoT.dType_AT.dType_tcp.ui8_send_done = BC66_Check_Send_Data_Success_TCP();
-//				  MQTT_Check_Packages_Result ();
-				}
-	      /*----------------------------------------------*/
-	            else
-				{
-				  BC66_Check_MQTT_Receive ();
-//				  BC66_UART_Send_Data_To_Terminal ( (uint8_t*)dType_water_NB_IoT.dType_bc66_receive.ui8buf_rx , CountReceive_u16 );
-				  Push_BC66_Message_to_Queue();
-			      BC66_UART_Clear_BC66_Data ();
-				  CountReceive_u16 = 0;
-				}
+//				if ( dType_water_NB_IoT.dType_bc66_reset.ui8_reset_rx_buf_flag == NO )
+//				{
+////				  dType_water_NB_IoT.dType_AT.dType_tcp.ui8_ena_send = BC66_Check_Ready_To_Send_Data_TCP();
+////				  dType_water_NB_IoT.dType_AT.dType_tcp.ui8_send_done = BC66_Check_Send_Data_Success_TCP();
+////				  MQTT_Check_Packages_Result ();
+//				}
+//	      /*----------------------------------------------*/
+//	            else
+//				{
+//	              if (sub_flag == ON)
+//				  BC66_Check_MQTT_Receive ();
+////			  BC66_UART_Send_Data_To_Terminal ( (uint8_t*)dType_water_NB_IoT.dType_bc66_receive.ui8buf_rx , CountReceive_u16 );
+//				  Push_BC66_Message_to_Queue();
+//			      BC66_UART_Clear_BC66_Data ();
+//				  CountReceive_u16 = 0;
+//				}
 //			den_bao_hieu = COUNTINUE;
 		   }
 		 }
@@ -404,4 +416,3 @@ void StartGateKeeper(void const * argument)
 
 /* USER CODE END Application */
 
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

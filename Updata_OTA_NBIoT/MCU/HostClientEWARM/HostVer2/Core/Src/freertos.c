@@ -59,6 +59,9 @@
 extern QueueHandle_t qBC66step;
 extern QueueHandle_t qPrintQueue;
 uint8_t ping_flag = OFF;
+//uint8_t BC66send_flag = OFF;
+//uint8_t BC
+BaseType_t xStatus;
 /* USER CODE END Variables */
 osThreadId BC66_TaskHandle;
 osThreadId UART_BC66Handle;
@@ -167,21 +170,22 @@ uint8_t event;
 void Start_BC66_Task(void const * argument)
 {
   /* USER CODE BEGIN Start_BC66_Task */
-  event = _PWR_ON_;
-  xQueueSendToBack( qBC66step, &event, 0 );
+//  event = _PWR_ON_;
+//  xQueueSendToBack( qBC66step, &event, 0 );
+  dType_water_NB_IoT.dType_AT.ui8_pointer = _PWR_ON_;
   /* Infinite loop */
   for(;;)
   {
       BC66_Check_Reset();
-      xQueueReceive( qBC66step, &dType_water_NB_IoT.dType_AT.ui8_pointer, 0 );
+//      xQueueReceive( qBC66step, &dType_water_NB_IoT.dType_AT.ui8_pointer, 0 );
       switch ( dType_water_NB_IoT.dType_AT.ui8_pointer )
       {
           case _PWR_ON_:
-              BC66_Power_On ();
-              osDelay(10000);
+              BC66_Power_On();
+              osDelay (5000);
               break;
           case _SYN_BAUDRATE_BC66_:
-              osDelay ( 10000 );
+//              osDelay (10000);
               BC66_Initialize_AT_Commands_Handler ( _SYN_BAUDRATE_BC66_ , _CHECK_PIN_BC66_ );
               break;
           case _OFF_SLEEP_BC66_:
@@ -278,7 +282,6 @@ void Start_BC66_Task(void const * argument)
 //			case _MCU_LOW_PWR_:
 //				Low_Power_Stop_Mode_Init();
 //				break;
-
           case _IDLE_:
               break;
           }
@@ -307,10 +310,15 @@ void UART_BC66_Task(void const * argument)
       {
           uart_mark_time = ui32_tick_count;
           dType_water_NB_IoT.dType_AT.ui8_result = NOT_MATCH;
-          if ( (BC66_UART_Check_Receive_Process_Status() == DONE) && (CountReceive_u16 !=0) )
+          if ((BC66_UART_Check_Receive_Process_Status() == DONE) && (CountReceive_u16 !=0))
           {
-              dType_water_NB_IoT.dType_AT.ui8_result = BC66_Check_AT_Response ( dType_water_NB_IoT.dType_AT.ui8_pointer );
-
+              dType_water_NB_IoT.dType_AT.ui8_result = BC66_Check_AT_Response (dType_water_NB_IoT.dType_AT.ui8_pointer);
+//              Push_BC66_Message_to_Queue();
+                if (sub_flag == ON)
+                  BC66_Check_MQTT_Receive();
+//              BC66_UART_Clear_BC66_Data();
+//              CountReceive_u16 = 0;
+                Push_BC66_Message_to_Queue();
               /*----------------------------------------------*/
               // kiem tra va thuc hien cac tac vu URC gui ve
               if ( dType_water_NB_IoT.dType_bc66_reset.ui8_reset_rx_buf_flag == NO )
@@ -322,10 +330,10 @@ void UART_BC66_Task(void const * argument)
 	      /*----------------------------------------------*/
 	      else
               {
-                  BC66_Check_MQTT_Receive ();
-                  //BC66_UART_Send_Data_To_Terminal ( (uint8_t*)dType_water_NB_IoT.dType_bc66_receive.ui8buf_rx , CountReceive_u16 );
-                  Push_BC66_Message_to_Queue();
-                  BC66_UART_Clear_BC66_Data ();
+//                  BC66_Check_MQTT_Receive ();
+//                  //BC66_UART_Send_Data_To_Terminal ( (uint8_t*)dType_water_NB_IoT.dType_bc66_receive.ui8buf_rx , CountReceive_u16 );
+//                  Push_BC66_Message_to_Queue();
+                  BC66_UART_Clear_BC66_Data();
                   CountReceive_u16 = 0;
               }
 //			den_bao_hieu = COUNTINUE;

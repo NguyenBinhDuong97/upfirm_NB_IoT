@@ -61,7 +61,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		 
 //		if ( dType_water_NB_IoT.dType_AT.ui8_pointer != _TCP_SEND_DATA_ ) //test case send error and out send data MQTT
 			 
-	    HAL_UART_Receive_IT ( &uart_bc66 , &( dType_water_NB_IoT.dType_bc66_receive.ui8_rx_data ) , 1 ); //enable receive interrupt
+	    HAL_UART_Receive_IT ( &uart_bc66 , &(dType_water_NB_IoT.dType_bc66_receive.ui8_rx_data), 1 ); //enable receive interrupt
 	}
 	else if (huart->Instance == uart_debug.Instance)
 	{
@@ -145,10 +145,10 @@ uint8_t BC66_UART_Check_Receive_Process_Status (void)
 */
 void BC66_UART_Clear_BC66_Data ( void )
 {
-	Reset_Buffer ( ( uint8_t* )dType_water_NB_IoT.dType_bc66_receive.ui8buf_rx , 500 );
+    Reset_Buffer ( ( uint8_t* )dType_water_NB_IoT.dType_bc66_receive.ui8buf_rx , 500 );
     dType_water_NB_IoT.dType_bc66_receive.ui16_rx_byte = 0;
     dType_water_NB_IoT.dType_bc66_receive.ui16_pre_rx_byte = 0;
-	dType_water_NB_IoT.dType_bc66_receive.u8p_rx_pointer = dType_water_NB_IoT.dType_bc66_receive.ui8buf_rx;
+    dType_water_NB_IoT.dType_bc66_receive.u8p_rx_pointer = dType_water_NB_IoT.dType_bc66_receive.ui8buf_rx;
 }
 
 

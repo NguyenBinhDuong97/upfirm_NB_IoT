@@ -97,7 +97,9 @@ void MQTT_Init_Connect ( void );
 void MQTT_Init_Pub_Opts ( void );
 void MQTT_Init_Sub_Opts ( void );
 void MQTT_Check_Keepalive_Time ( void );
-void MQTT_Create_Topic_To_Sub (uint8_t *topic, unsigned char dup, unsigned short packetid, int qos);
-
+void MQTT_Create_Topic_To_Sub (uint8_t *topic, uint16_t topic_length, unsigned char dup, unsigned short packetid, int qos);
+void MQTT_Create_Message_To_Pub (uint8_t *message, uint16_t message_length, unsigned char dup,
+		                         int qos, unsigned char retained, unsigned short packetid,
+								 uint8_t* topicName);
 #endif
 

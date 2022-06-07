@@ -69,7 +69,7 @@ void LPM_EnterStopMode ( void );
 void LPM_ExitStopMode( void );
 void Low_Power_Stop_Mode_Init ( void );
 void Send_RTC_Time_To_Terminal ( void );
-
+uint8_t Convert_Char_To_Hex (uint8_t *array, uint16_t arrayLength);
 
 #ifdef __cplusplus
 }

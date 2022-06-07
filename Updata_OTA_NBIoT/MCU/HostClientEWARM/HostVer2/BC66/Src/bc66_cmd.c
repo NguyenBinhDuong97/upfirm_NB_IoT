@@ -87,7 +87,7 @@ const sType_AT_struct dTypeArr_set_AT[] =
  { _CHECK_PIN_BC66_            ,    { (uint8_t*)"AT+CPIN?\r" , 9 , 5000 }                                    , { (uint8_t*)"+CPIN: READY" , 12 , 0 }               , NULL },
  { _SET_NB_BAND_BC66_          ,    { (uint8_t*)"AT+QBAND=1,3\r" , 13 , 5000 }                               , { (uint8_t*)"OK" , 2 , 0 }                          , NULL },
  { _OFF_SLEEP_BC66_            ,    { (uint8_t*)"AT+QSCLK=0\r" , 12 , 5000 }                                 , { (uint8_t*)"OK" , 2 , 0 }                          , NULL },
- { _CHECK_SIM_ATTACH_BC66_     ,    { (uint8_t*)"AT+CGATT?\r" , 10 , 12000 }                                 , { (uint8_t*)"+CGATT: 1" , 9 , 0 }                   , NULL },
+ { _CHECK_SIM_ATTACH_BC66_     ,    { (uint8_t*)"AT+CGATT?\r" , 10 , 12000 }                                , { (uint8_t*)"+CGATT: 1" , 9 , 0 }                   , NULL },
  { _SET_PSD_CONECTION_         ,    { (uint8_t*)"AT+QCGDEFCONT=\"IP\",\"nbiot\"\r" , 27 , 5000 }             , { (uint8_t*)"OK" , 2 , 0 }                          , NULL },
  { _FREE_LOCK_NB_FREQUENCY_    ,    { (uint8_t*)"AT+QLOCKF=0\r" , 12 , 5000}                                 , { (uint8_t*)"OK" , 2 , 0 }                          , NULL },
  { _ENABLE_WAKEUP_INDICATION_  ,    { (uint8_t*)"AT+QATWAKEUP=1\r" , 15 , 5000}                              , { (uint8_t*)"OK" , 2 , 0 }                          , NULL },
@@ -143,6 +143,7 @@ extern uint8_t ui8_sub_dup;
 extern uint8_t event;
 extern QueueHandle_t qBC66step;
 extern uint8_t ping_flag;
+extern BaseType_t xStatus;
 /*-----------------------------------------------------------------------------------------*/
                              /* defination of functions */
 
@@ -157,35 +158,35 @@ uint8_t BC66_Excute_AT_Cmd ( uint8_t AT_command )
 	uint32_t time_mark = 0;
 	//uint8_t ui8_call_back_result = 0;
 	dType_water_NB_IoT.dType_AT.ui8_result = NOT_MATCH;
-    uint8_t ui8_fnc_result = 0;
+        uint8_t ui8_fnc_result = 0;
 	
 	if ( dTypeArr_set_AT[AT_command].dType_AT_req.data != NULL )
 	 BC66_UART_Send_Data_To_BC66 ( dTypeArr_set_AT[AT_command].dType_AT_req.data , dTypeArr_set_AT[AT_command].dType_AT_req.ui16_data_len );
 	 
 	// ko chuoi check	 
-  if (dTypeArr_set_AT[AT_command].dType_AT_res.data == NULL )
-  {
-	 if ( dTypeArr_set_AT[AT_command].FUNC != NULL )
+        if (dTypeArr_set_AT[AT_command].dType_AT_res.data == NULL )
+        {
+	   if ( dTypeArr_set_AT[AT_command].FUNC != NULL )
 	   return dTypeArr_set_AT[AT_command].FUNC();
 	}
 	
 	// bat dau tinh thoi gian phan hoi
-  time_mark = ui32_tick_count; 
+        time_mark = ui32_tick_count; 
 	
-  // doi phan hoi 
+         // doi phan hoi 
 	do
 	{
-   if ( BC66_Check_Time_Out( time_mark , dTypeArr_set_AT[AT_command].dType_AT_req.ui32_time_res ) == TRUE )
+           if ( BC66_Check_Time_Out( time_mark , dTypeArr_set_AT[AT_command].dType_AT_req.ui32_time_res ) == TRUE )
 	   break;
-		 osDelay (5);
+              osDelay (5);
 	} while ( dType_water_NB_IoT.dType_AT.ui8_result != MATCH );
-  ui8_fnc_result = dType_water_NB_IoT.dType_AT.ui8_result;
+        ui8_fnc_result = dType_water_NB_IoT.dType_AT.ui8_result;
 	
-  // ket qua dung mong muon
+        // ket qua dung mong muon
 	if ( dType_water_NB_IoT.dType_AT.ui8_result == MATCH )
 	{
 	  if ( dTypeArr_set_AT[AT_command].FUNC != NULL ) 
-      ui8_fnc_result = dTypeArr_set_AT[AT_command].FUNC();	
+          ui8_fnc_result = dTypeArr_set_AT[AT_command].FUNC();	
 	}
   return ui8_fnc_result;	 
 }
@@ -284,9 +285,9 @@ void BC66_Power_On ( void )
 	 BC66_PWR_KEY_UP;
 	 BC66_Reset ();
 	 HAL_Delay ( 2000 );
-	 //dType_water_NB_IoT.dType_AT.ui8_pointer = _CHECK_PIN_BC66_;
-         event = _OFF_SLEEP_BC66_;
-	 xQueueSendToBack(qBC66step, &event, 0);
+	 dType_water_NB_IoT.dType_AT.ui8_pointer = _OFF_SLEEP_BC66_;
+//         event = _SYN_BAUDRATE_BC66_;
+//	 xQueueSendToBack(qBC66step, &event, 0);
 	}
 }
 
@@ -303,98 +304,183 @@ void BC66_Initialize_AT_Commands_Handler ( uint8_t current_cmd , uint8_t next_cm
   switch ( BC66_Excute_AT_Cmd ( current_cmd ) )
   {
     case BC66_RESP_OK:
-    	  event = next_cmd;
-    	  xQueueSendToBack( qBC66step, &event, 0 );
-		  //dType_water_NB_IoT.dType_AT.ui8_pointer = next_cmd;
+//    	  event = next_cmd;
+//    	  xStatus = xQueueSendToBack( qBC66step, &event, 0 );
+//    	  if (xStatus != pdPASS)
+//    	  {
+//    		  BC66_UART_Send_Data_To_Terminal ((uint8_t*)"loi push\r\n", 10);
+//    	  }
+		  dType_water_NB_IoT.dType_AT.ui8_pointer = next_cmd;
 		  dType_water_NB_IoT.dType_bc66_reset.ui8_fail_time = 0;
 		  switch ( dType_water_NB_IoT.dType_AT.ui8_pointer )
 			{
 				case _MQTT_OPEN_2_:
 				  dType_MQTT_watermetter.ui8_start_keepalive = ON;
 				  dType_MQTT_watermetter.ui32_keep_alive_mark_time = ui32_tick_count;
-				  dType_MQTT_watermetter.ui32_keep_alive_time = 50000;
+				  dType_MQTT_watermetter.ui32_keep_alive_time = 50000; // correct is 50000 this is just for test
 				  dType_MQTT_watermetter.dType_MQTT_fail.ui8_open = 0;
+
 				  ui8_sub_dup = 0;
+				  ping_flag = OFF;
 				  break;
 				case _MQTT_PUB_2_:
 				  test_pub_mes.dup = 0;
 				  dType_MQTT_watermetter.ui32_keep_alive_mark_time = ui32_tick_count;
-				  ui32_send_cplt++;
 				  dType_MQTT_watermetter.dType_MQTT_fail.ui8_pub = 0;
-				  Send_Debug_Infor();
-					break;
+				  break;
 				case _MQTT_PINGREQ_2_:
-//					if ( dType_MQTT_watermetter.ui8_prev_MQTT_step != 0 )
-//					{
+//				  if ( dType_MQTT_watermetter.ui8_prev_MQTT_step != 0 )
+//				  {
 //				    dType_water_NB_IoT.dType_AT.ui8_pointer = dType_MQTT_watermetter.ui8_prev_MQTT_step;
-//		            }
+//		                  }
 					dType_MQTT_watermetter.ui32_keep_alive_mark_time = ui32_tick_count;
 					ping_flag = OFF;
 					break;
 			}
 			break;
 		case BC66_RESP_FAIL:
-			dType_water_NB_IoT.dType_bc66_reset.ui8_fail_time++;
+	            dType_water_NB_IoT.dType_bc66_reset.ui8_fail_time++;
 		    switch ( dType_water_NB_IoT.dType_AT.ui8_pointer )
 			{
 				case _TCP_OPEN_2_:
-					if ( dType_water_NB_IoT.dType_bc66_reset.ui8_fail_time >= 3 )
-					  dType_water_NB_IoT.dType_AT.ui8_pointer = _TCP_CLOSE_;
-					else
-					  dType_water_NB_IoT.dType_AT.ui8_pointer = _TCP_OPEN_1_;
-				    break;
-				case _MQTT_OPEN_2_:
-				    dType_MQTT_watermetter.dType_MQTT_fail.ui8_open++;
-					dType_water_NB_IoT.dType_AT.ui8_pointer = _TCP_CLOSE_;
+			        if ( dType_water_NB_IoT.dType_bc66_reset.ui8_fail_time >= 3 )
+				{
+			          dType_water_NB_IoT.dType_AT.ui8_pointer = _TCP_CLOSE_;
+//			    	  event = _TCP_CLOSE_;
+//			    	  xStatus = xQueueSendToBack( qBC66step, &event, 0 );
+//			    	  if (xStatus != pdPASS)
+//			    	  {
+//			    		  BC66_UART_Send_Data_To_Terminal ((uint8_t*)"loi push\r\n", 10);
+//			    	  }
+				}
+				else
+				{
+			          dType_water_NB_IoT.dType_AT.ui8_pointer = _TCP_OPEN_1_;
+//			    	  event = _TCP_OPEN_1_;
+//			    	  xStatus = xQueueSendToBack( qBC66step, &event, 0 );
+//			    	  if (xStatus != pdPASS)
+//			    	  {
+//			    		  BC66_UART_Send_Data_To_Terminal ((uint8_t*)"loi push\r\n", 10);
+//			    	  }
+				}
+				break;
+			case _MQTT_OPEN_2_:
+                                dType_MQTT_watermetter.dType_MQTT_fail.ui8_open++;
+				dType_water_NB_IoT.dType_AT.ui8_pointer = _TCP_CLOSE_;
+			        event = _TCP_CLOSE_;
+//			        xStatus = xQueueSendToBack( qBC66step, &event, 0 );
+//			        if (xStatus != pdPASS)
+//			        {
+//			      	  BC66_UART_Send_Data_To_Terminal ((uint8_t*)"loi push\r\n", 10);
+//			        }
 					break;
 				case _MQTT_PUB_1_:
 					if ( Search_String_In_Buffer( (uint8_t*)dType_water_NB_IoT.dType_bc66_receive.ui8buf_rx , CountReceive_u16 , (uint8_t*)"closed" , 6 ) == TRUE )
 					{
-						dType_MQTT_watermetter.ui8_start_keepalive = OFF;
-						dType_water_NB_IoT.dType_AT.ui8_pointer = _TCP_OPEN_1_;
+					dType_MQTT_watermetter.ui8_start_keepalive = OFF;
+					dType_water_NB_IoT.dType_AT.ui8_pointer = _TCP_OPEN_1_;
+//				    	  event = _TCP_OPEN_1_;
+//				    	  xStatus = xQueueSendToBack( qBC66step, &event, 0 );
+//				    	  if (xStatus != pdPASS)
+//				    	  {
+//				    		  BC66_UART_Send_Data_To_Terminal ((uint8_t*)"loi push\r\n", 10);
+//				    	  }
 						dType_MQTT_watermetter.ui8_prev_MQTT_step = 0;
 					}
 					break;
 				case _MQTT_PUB_2_:
-					dType_MQTT_watermetter.dType_MQTT_fail.ui8_pub++;
+				    dType_MQTT_watermetter.dType_MQTT_fail.ui8_pub++;
 				    test_pub_mes.dup = 1;
+                                   
 				    if ( dType_MQTT_watermetter.dType_MQTT_fail.ui8_pub == 3)
-						dType_water_NB_IoT.dType_AT.ui8_pointer = _TCP_CLOSE_;
-					else {
+				    {
+//				    	  event = _TCP_CLOSE_;
+//				    	  xStatus = xQueueSendToBack( qBC66step, &event, 0 );
+//				    	  if (xStatus != pdPASS)
+//				    	  {
+//                                              BC66_UART_Send_Data_To_Terminal ((uint8_t*)"loi push\r\n", 10);
+//				    	  }
+                                       dType_water_NB_IoT.dType_AT.ui8_pointer = _TCP_CLOSE_;
+				    }
+
+                                    else
+                                    {
+//				    	  event = _MQTT_PUB_1_;
+//				    	  xStatus = xQueueSendToBack( qBC66step, &event, 0 );
+//				    	  if (xStatus != pdPASS)
+//				    	  {
+//				    		  BC66_UART_Send_Data_To_Terminal ((uint8_t*)"loi push\r\n", 10);
+//				    	  }
 					  dType_water_NB_IoT.dType_AT.ui8_pointer = _MQTT_PUB_1_;
-					}
-					  dType_MQTT_watermetter.ui8_prev_MQTT_step = _MQTT_PUB_1_;
-	                 // server test hay bi tu ngat ket noi them phan nay vao de xu ly viec tu ngat ket noi do
+                                    }
+                                    dType_MQTT_watermetter.ui8_prev_MQTT_step = _MQTT_PUB_1_;
+	                           // server test hay bi tu ngat ket noi them phan nay vao de xu ly viec tu ngat ket noi do
 					if ( Search_String_In_Buffer( (uint8_t*)dType_water_NB_IoT.dType_bc66_receive.ui8buf_rx , CountReceive_u16 , (uint8_t*)"closed" , 6 ) == TRUE )
 					{
-						dType_MQTT_watermetter.ui8_start_keepalive = OFF;
-						dType_water_NB_IoT.dType_AT.ui8_pointer = _TCP_OPEN_1_;
+				          dType_MQTT_watermetter.ui8_start_keepalive = OFF;
+					  dType_water_NB_IoT.dType_AT.ui8_pointer = _TCP_OPEN_1_;
+//				    	  event = _TCP_OPEN_1_;
+//				    	  xStatus = xQueueSendToBack( qBC66step, &event, 0 );
+//				    	  if (xStatus != pdPASS)
+//				    	  {
+//				    		  BC66_UART_Send_Data_To_Terminal ((uint8_t*)"loi push\r\n", 10);
+//				    	  }
 						dType_MQTT_watermetter.ui8_prev_MQTT_step = 0;
 					}
 					break;
 				case _MQTT_PINGREQ_2_:
 					dType_MQTT_watermetter.dType_MQTT_fail.ui8_ping++;
-				    dType_water_NB_IoT.dType_AT.ui8_pointer = _TCP_CLOSE_;
+				  dType_water_NB_IoT.dType_AT.ui8_pointer = _TCP_CLOSE_;
+//			    	  event = _TCP_CLOSE_;
+//			    	  xStatus = xQueueSendToBack( qBC66step, &event, 0 );
+//			    	  if (xStatus != pdPASS)
+//			    	  {
+//			    		  BC66_UART_Send_Data_To_Terminal ((uint8_t*)"loi push\r\n", 10);
+//			    	  }
 				    if ( Search_String_In_Buffer( (uint8_t*)dType_water_NB_IoT.dType_bc66_receive.ui8buf_rx , CountReceive_u16 , (uint8_t*)"closed" , 6 ) == TRUE )
 					{
-						dType_MQTT_watermetter.ui8_start_keepalive = OFF;
-						dType_water_NB_IoT.dType_AT.ui8_pointer = _TCP_OPEN_1_;
+                                          dType_MQTT_watermetter.ui8_start_keepalive = OFF;
+					  dType_water_NB_IoT.dType_AT.ui8_pointer = _TCP_OPEN_1_;
+//				    	  event = _TCP_OPEN_1_;
+//				    	  xStatus = xQueueSendToBack( qBC66step, &event, 0 );
+//				    	  if (xStatus != pdPASS)
+//				    	  {
+//				    		  BC66_UART_Send_Data_To_Terminal ((uint8_t*)"loi push\r\n", 10);
+//				    	  }
 						dType_MQTT_watermetter.ui8_prev_MQTT_step = 0;
 					}
 					break;
 				case _MQTT_SUBSCRIBE_2_:
-					dType_water_NB_IoT.dType_AT.ui8_pointer = _MQTT_SUBSCRIBE_1_;
+                                  dType_water_NB_IoT.dType_AT.ui8_pointer = _MQTT_SUBSCRIBE_1_;
+//			    	  event = _MQTT_SUBSCRIBE_1_;
+//			    	  xStatus = xQueueSendToBack( qBC66step, &event, 0 );
+//			    	  if (xStatus != pdPASS)
+//			    	  {
+//			    		  BC66_UART_Send_Data_To_Terminal ((uint8_t*)"loi push\r\n", 10);
+//			    	  }
 					dType_MQTT_watermetter.ui8_prev_MQTT_step = _MQTT_SUBSCRIBE_1_;
 	                // server test hay bi tu ngat ket noi them phan nay vao de xu ly viec tu ngat ket noi do
 					if ( Search_String_In_Buffer( (uint8_t*)dType_water_NB_IoT.dType_bc66_receive.ui8buf_rx , CountReceive_u16 , (uint8_t*)"closed" , 6 ) == TRUE )
 					{
 						dType_MQTT_watermetter.ui8_start_keepalive = OFF;
 						dType_water_NB_IoT.dType_AT.ui8_pointer = _TCP_OPEN_1_;
+//				    	event = _TCP_OPEN_1_;
+//				    	xStatus = xQueueSendToBack( qBC66step, &event, 0 );
+//				    	if (xStatus != pdPASS)
+//				    	{
+//				    		BC66_UART_Send_Data_To_Terminal ((uint8_t*)"loi push\r\n", 10);
+//				    	}
 						dType_MQTT_watermetter.ui8_prev_MQTT_step = 0;
 					}
 				    break;
 				case _CHECK_SIM_ATTACH_BC66_:
-					dType_water_NB_IoT.dType_AT.ui8_pointer = _CHECK_SIM_ATTACH_BC66_;
+				  dType_water_NB_IoT.dType_AT.ui8_pointer = _CHECK_SIM_ATTACH_BC66_;
+//			    	event = _CHECK_SIM_ATTACH_BC66_;
+//			    	  xStatus = xQueueSendToBack( qBC66step, &event, 0 );
+//			    	  if (xStatus != pdPASS)
+//			    	  {
+//			    		  BC66_UART_Send_Data_To_Terminal ((uint8_t*)"loi push\r\n", 10);
+//			    	  }
 				    break;
 			}
 			break;
@@ -544,34 +630,40 @@ void BC66_TCP_Close_Scan_And_Handler_Error ( void )
 {
 	for ( uint8_t ui8_reason = _MQTT_SEND_SUCCESS_ ; ui8_reason <= _TCP_OPEN_FAIL_ ; ++ui8_reason )
 	{
-		BC66_Handle_Reason_Close_TCP ( dType_TCP_close_reason[ui8_reason].ui8_reason_fail , 
-		                               dType_TCP_close_reason[ui8_reason].ui8_max_fail_time ,
+		BC66_Handle_Reason_Close_TCP ( dType_TCP_close_reason[ui8_reason].ui8_reason_fail,
+		                               dType_TCP_close_reason[ui8_reason].ui8_max_fail_time,
 		                               dType_TCP_close_reason[ui8_reason].FncHandler_Err );
 	}
 }
+
 /**
   * @brief  ham check va xu ly cac thong tin nhan tu server
 */
 //extern uint8_t *pointer_result;
-void BC66_Check_MQTT_Receive ( void )
+uint8_t BC66_Check_MQTT_Receive ( void )
 {
+	uint8_t topic_hex_array[200] = {0x00};
 	uint8_t *pointer = NULL;
-	uint8_t ui8Arr_emptyArr[8] = {0x00};
-	uint8_t *ui8Ptr_Arr = ui8Arr_emptyArr;
-	pointer = Search_String_Location_In_Buffer ( (uint8_t*)dType_water_NB_IoT.dType_bc66_receive.ui8buf_rx , CountReceive_u16 , 
-		                                           (uint8_t*)"+QIURC: \"recv\",0,20,3212000A3038363634393536303900" , 50 );
-//	pointer = pointer_result;
-	if ( pointer != NULL )
-  {
-//		pointer = pointer + 52;
-		for ( uint8_t i = 0 ; i < 8 ; ++i )
-		{
-			*(ui8Ptr_Arr + i) = *(pointer + i);
-		}
-		BC66_UART_Send_Data_To_Terminal ( (uint8_t*)"\r\n" , 2 );
-		BC66_UART_Send_Data_To_Terminal ( (uint8_t*)ui8Arr_emptyArr , 8 );
-		BC66_UART_Send_Data_To_Terminal ( (uint8_t*)"\r\n" , 2 ); 
+	uint16_t topic_length = 0;
+	topic_length = strlen ((char*)test_sub_array);
+//    memcpy (topic_hex_array, test_sub_array, topic_length);
+	for (uint16_t i = 0; i < topic_length; i++)
+	{
+		*(topic_hex_array + i) = *(test_sub_array + i);
 	}
+    Convert_Char_To_Hex (topic_hex_array, topic_length);
+    topic_length = strlen ((char*)topic_hex_array);
+	pointer = Search_String_Location_In_Buffer_2 ((uint8_t*)dType_water_NB_IoT.dType_bc66_receive.ui8buf_rx, CountReceive_u16,
+		                                           (uint8_t*)topic_hex_array, topic_length);
+	if ( pointer != NULL )
+    {
+
+//		BC66_UART_Send_Data_To_Terminal ( (uint8_t*)"da nhan duoc tu server mqtt" ,27);
+//		BC66_UART_Send_Data_To_Terminal ( (uint8_t*)"\r\n" , 2 );
+
+		return 1;
+	}
+    return 0;
 }
 
 void BC66_WakeUp_DeepSleep ( void )

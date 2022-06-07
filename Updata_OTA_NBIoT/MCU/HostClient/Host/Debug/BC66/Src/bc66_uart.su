@@ -1,6 +1,6 @@
-bc66_uart.c:43:6:HAL_UART_RxCpltCallback	16	static
-bc66_uart.c:83:6:BC66_UART_Receive_Init	8	static
-bc66_uart.c:98:6:BC66_UART_Send_Data_To_BC66	24	static
-bc66_uart.c:108:6:BC66_UART_Send_Data_To_Terminal	32	static
-bc66_uart.c:123:9:BC66_UART_Check_Receive_Process_Status	8	static
-bc66_uart.c:146:6:BC66_UART_Clear_BC66_Data	8	static
+D:/Source_Tree_data/projects/NB_IoT/Update_OTA/upfirm_NB_IoT/Updata_OTA_NBIoT/MCU/HostClient/Host/BC66/Src/bc66_uart.c:43:6:HAL_UART_RxCpltCallback	16	static
+D:/Source_Tree_data/projects/NB_IoT/Update_OTA/upfirm_NB_IoT/Updata_OTA_NBIoT/MCU/HostClient/Host/BC66/Src/bc66_uart.c:83:6:BC66_UART_Receive_Init	8	static
+D:/Source_Tree_data/projects/NB_IoT/Update_OTA/upfirm_NB_IoT/Updata_OTA_NBIoT/MCU/HostClient/Host/BC66/Src/bc66_uart.c:98:6:BC66_UART_Send_Data_To_BC66	24	static
+D:/Source_Tree_data/projects/NB_IoT/Update_OTA/upfirm_NB_IoT/Updata_OTA_NBIoT/MCU/HostClient/Host/BC66/Src/bc66_uart.c:108:6:BC66_UART_Send_Data_To_Terminal	32	static
+D:/Source_Tree_data/projects/NB_IoT/Update_OTA/upfirm_NB_IoT/Updata_OTA_NBIoT/MCU/HostClient/Host/BC66/Src/bc66_uart.c:123:9:BC66_UART_Check_Receive_Process_Status	8	static
+D:/Source_Tree_data/projects/NB_IoT/Update_OTA/upfirm_NB_IoT/Updata_OTA_NBIoT/MCU/HostClient/Host/BC66/Src/bc66_uart.c:146:6:BC66_UART_Clear_BC66_Data	8	static

@@ -13,6 +13,13 @@
 		<item key="caseSensitive" value="false"/>
 		<item key="searchFlags" value="227191"/>
 		<list key="previousPatterns">
+			<item value="SystemInit"/>
+			<item value="SystemCoreClockUpdate"/>
+			<item value="ui8_reset_rx_buf_flag"/>
+			<item value="ping_flag"/>
+			<item value="BC66_Check_MQTT_Receive"/>
+			<item value="a"/>
+			<item value="test_sub_array"/>
 			<item value="_UPDATE_SIG_"/>
 			<item value="fncReadyHandle"/>
 			<item value="_READY_SIG_"/>

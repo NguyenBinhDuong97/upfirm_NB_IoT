@@ -1,0 +1,30 @@
+!SESSION 2022-06-06 16:36:41.944 -----------------------------------------------
+eclipse.buildId=Version 1.9.0
+java.version=11.0.11
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2022-06-06 16:37:18.321
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2022-06-06 16:37:18.556
+!MESSAGE Log4j initialized with config file D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClient\Host\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-06-06 16:37:36.118
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2022-06-06 16:38:31.125 -----------------------------------------------
+eclipse.buildId=Version 1.9.0
+java.version=11.0.11
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2022-06-06 16:38:48.805
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2022-06-06 16:38:48.868
+!MESSAGE Log4j initialized with config file D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClient\Host\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-06-06 16:38:54.760
+!MESSAGE Started RMI Server, listening on port 41337

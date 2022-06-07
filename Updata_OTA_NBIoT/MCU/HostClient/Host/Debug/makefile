@@ -1,6 +1,6 @@
 ################################################################################
 # Automatically-generated file. Do not edit!
-# Toolchain: GNU Tools for STM32 (9-2020-q2-update)
+# Toolchain: GNU Tools for STM32 (10.3-2021.10)
 ################################################################################
 
 -include ../makefile.init
@@ -16,12 +16,14 @@ RM := rm -rf
 -include Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM0/subdir.mk
 -include Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/subdir.mk
 -include Middlewares/Third_Party/FreeRTOS/Source/subdir.mk
+-include Middlewares/FreeRTOS/subdir.mk
 -include LibMQTT/source/subdir.mk
 -include Drivers/STM32L0xx_HAL_Driver/Src/subdir.mk
+-include Drivers/STM32L0xx_HAL_Driver/subdir.mk
+-include Drivers/CMSIS/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
 -include BC66/Src/subdir.mk
--include subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -46,21 +48,21 @@ $(wildcard ../makefile.targets) \
 
 BUILD_ARTIFACT_NAME := Host
 BUILD_ARTIFACT_EXTENSION := elf
-BUILD_ARTIFACT_PREFIX := 
-BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME).$(BUILD_ARTIFACT_EXTENSION)
+BUILD_ARTIFACT_PREFIX :=
+BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
 Host.elf \
+
+MAP_FILES += \
+Host.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
 Host.list \
-
-OBJCOPY_BIN += \
-Host.bin \
 
 
 # All Target
@@ -70,7 +72,7 @@ all: main-build
 main-build: Host.elf secondary-outputs
 
 # Tool invocations
-Host.elf: $(OBJS) $(USER_OBJS) D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClient\Host\STM32L082KZTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+Host.elf Host.map: $(OBJS) $(USER_OBJS) D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClient\Host\STM32L082KZTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	arm-none-eabi-gcc -o "Host.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0plus -T"D:\Source_Tree_data\projects\NB_IoT\Update_OTA\upfirm_NB_IoT\Updata_OTA_NBIoT\MCU\HostClient\Host\STM32L082KZTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Host.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
@@ -85,17 +87,12 @@ Host.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-Host.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "Host.bin"
-	@echo 'Finished building: $@'
-	@echo ' '
-
 # Other Targets
 clean:
-	-$(RM) *
+	-$(RM) Host.elf Host.list Host.map default.size.stdout
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'
@@ -104,7 +101,6 @@ fail-specified-linker-script-missing:
 warn-no-linker-script-specified:
 	@echo 'Warning: No linker script specified. Check the linker settings in the build configuration.'
 
-.PHONY: all clean dependents fail-specified-linker-script-missing warn-no-linker-script-specified
-.SECONDARY:
+.PHONY: all clean dependents main-build fail-specified-linker-script-missing warn-no-linker-script-specified
 
 -include ../makefile.targets
